@@ -1,5 +1,7 @@
 \section{Finite field extensions}
 
+\subsection{Ramification and inertia}
+
     \begin{theorem}\label{prop:efg_relation_for_the_extensions_of_absolute_value}
         Let \(L/K\) be a finite field extension, and \(v \in M_K\) an absolute value on \(K\). Then we have
         \[
@@ -15,3 +17,30 @@
     \begin{definition}\label{def:ramification_and_inertation_index}
         \Yang{To be added.}
     \end{definition}
+
+\subsection{Places of number fields}
+
+    \begin{theorem}\label{thm:place_of_number_fields}
+        Let \(\kk\) be a number field.
+        Then 
+        \[ M_\kk^\infty = \{\text{embeddings } \sigma: \kk \to \bbC\} \]
+        and
+        \[ M_\kk^\rmf = \{\text{non-zero prime ideals } \frakp \subseteq \calO_\kk\}. \]
+        \Yang{To be revised.}
+    \end{theorem}
+
+    \begin{proposition}[Product formula]\label{prop:product_formula_for_number_fields}
+        Let \(\kk\) be a number field.
+        For each \(x \in \kk^\times\), we have
+        \[
+            \prod_{v \in M_\kk} |x|_v^{n_v} = 1,
+        \]
+        where
+        \[
+            n_v := \begin{cases}
+                [\kk_v : \bbR], & v \in M_\kk^\infty; \\
+                1, & v \in M_\kk^0.
+            \end{cases}
+        \]
+        \Yang{To be revised.}
+    \end{proposition}

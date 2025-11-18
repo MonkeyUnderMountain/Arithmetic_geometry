@@ -52,38 +52,17 @@
 
     \begin{notation}\label{notation:notation_for_valuations_on_fields}
         Let \(\kk\) be a field.
-        We denote by \(M_\kk\) the set of all absolute values (i.e., valuations) on \(\kk\).
+        We denote by \(M_\kk\) the set of \Yang{equivalence class} all absolute values (i.e., valuations) on \(\kk\).
         For each \(v \in M_\kk\), we also call \(v\) a \emph{place} of \(\kk\).
     \end{notation}
 
 \subsection{Non-archimedean place}
 
 
-\subsection{Number field case}
+\subsection{Places of field of rational numbers}
 
     In this section, let \(\kk\) be a number field.
 
-    \begin{theorem}\label{thm:place_of_number_fields}
-        Let \(\kk\) be a number field.
-        Then 
-        \[ M_\kk^\infty = \{\text{embeddings } \sigma: \kk \to \bbC\} \]
-        and
-        \[ M_\kk^\rmf = \{\text{non-zero prime ideals } \frakp \subseteq \calO_\kk\}. \]
-        \Yang{To be revised.}
+    \begin{theorem}[Ostrowski's theorem]\label{theorem:ostrowski_theorem}
+        Every nontrivial absolute value on \(\bbQ\) is equivalent to either the usual absolute value \(|\cdot|_\infty\) or a \(p\)-adic absolute value \(|\cdot|_p\) for some prime number \(p\).
     \end{theorem}
-
-    \begin{proposition}[Product formula]\label{prop:product_formula_for_number_fields}
-        Let \(\kk\) be a number field.
-        For each \(x \in \kk^\times\), we have
-        \[
-            \prod_{v \in M_\kk} |x|_v^{n_v} = 1,
-        \]
-        where
-        \[
-            n_v := \begin{cases}
-                [\kk_v : \bbR], & v \in M_\kk^\infty; \\
-                1, & v \in M_\kk^0.
-            \end{cases}
-        \]
-        \Yang{To be revised.}
-    \end{proposition}
