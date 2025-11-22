@@ -158,7 +158,7 @@
     \begin{remark}\label{rmk:closure_of_polynomials_with_respect_to_supremum_norm_is_Tate_algebra}
         Recall the Weierstrass-Stone theorem in classical analysis which states that 
         the closure of the polynomial ring \(\bbC[T_1, \ldots, T_n]\) with respect to the supremum norm on a closed polydisc \(E \subset \bbC^n\) is the ring of all complex-valued continuous functions on \(E\).
-        
+        \Yang{This is wrong.}
         In the context of non-archimedean analysis, \cref{prop:gauss_norm_coincides_with_the_suprum_norm} can be viewed as an analogue of this theorem.
         It states that the closure of the polynomial ring \(\kkk[T_1, \ldots, T_n]\) with respect to the supremum norm on a closed polydisc \(E(0,\underline{r}) \subset \kkk^n\) is the Tate algebra \(\kkk\{ \underline{T/r} \} \).
         
@@ -169,34 +169,12 @@
     % Then following shows that analytic functions over non-archimedean fields share some nice properties as in the case of complex analysis.
     % \Yang{To be revised.}
 
-    \begin{theorem}[Strassman]\label{prop:rigidity_of_analytic_series}
-        Let \(\kk\) be a complete non-archimedean field with non-trivial valuation and \(f = \sum a_n T^n \in \kk\{T/r\}\) be an analytic function.
-        Suppose that \(\|a_N\|r^N > \|a_n\|r^n\) for all \(n > N\).
-        Then \(f\) has at most \(N\) zeros in the closed ball \(E(0,r)\).
-        % \Yang{To be checked.}
-    \end{theorem}
-    \begin{proof}
-        We induct on \(N\).
-        The case \(N = 0\) is direct from \cref{prop:restricted_power_series_invertible_iff_the_constant_item_controls_others}.
-        Suppose that the conclusion holds for \(N-1\).
-        Let \(x\) be a zero of \(f\) in \(E(0,r)\).
-        Set 
-        \[ g(T) = \frac{f(T) - f(x)}{T - x} = \sum_{k=0}^{+\infty} \left( \sum_{n=k+1}^{+\infty} a_n x^{n-k-1} \right) T^{k} = \sum_{n=0}^{+\infty} b_k T^k. \]
-        That is,
-        \[ b_k = \sum_{n=0}^\infty a_{k+1+n} x^n. \]
-        Hence we have 
-        \[ \|b_k\|r^k = \max_{n\geq k+1} \|a_{n} x^{n-k-1}\|r^k \leq \max_{n \geq k+1}\|a_{n}\| r^{n-1} \to 0 \quad \text{ as } k \to \infty. \]
-        It follows that \(g(T) \in \kk\{T/r\}\).
+    \Yang{Recall the Runge theorem in complex analysis.}
 
-        For every \(n > N\), we have 
-        \[ \|a_N\| > \|a_{n}\|r^{n-N} \geq \|a_n x^{n-N}\|. \]
-        Hence 
-        \[ \left\|\sum_{n=N}^{N+m} a_n x^{n-N}\right\| = \|a_N\| \]
-        for every \(m \in \bbN\) by \cref{prop:all_triangles_in_ultra-metric_space_are_isosceles}.
-        Take \(m \to +\infty\), we have \(\|b_{N-1}\| = \|a_N\|\).
-        For every \(k > N - 1\), we have
-        \[ \|b_k\|r^k = \max_{n \geq k+1} \|a_n\| r^{n-1} \leq \max_{n > N} \|a_n\| r^{n-1} < \|a_N\| r^{N-1} = \|b_{N-1}\| r^{N-1}. \]
-        By the induction hypothesis, \(g\) has at most \(N-1\) zeros in \(E(0,r)\).
-        It follows that \(f\) has at most \(N\) zeros in \(E(0,r)\) since \(f(T) = (T - x) \cdot g(T)\).
-        % \Yang{To be add.}
-    \end{proof}
+    \begin{definition}\label{def:analytic_function_on_closed_subset_of_k^n}
+        Let \(\kk\) be a complete non-archimedean field.
+        A function \(f:E(0,\underline{r}) \to \kk\) is called \emph{analytic} if there exists \(F \in \kk\{ \underline{T/r} \} \) such that \(f = F\) as functions from \(E(0,\underline{r})\) to \(\kk\).
+        \Yang{To be revised.}
+    \end{definition}
+
+    
