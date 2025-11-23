@@ -1,5 +1,8 @@
 \section{Tate algebras}
 
+
+\subsection{Tate algebras}
+
  \begin{notation}\label{notation:mult-label_for_Tate_algebra}
         Let \(T = (T_1, \ldots, T_n)\) be a tuple of \(n\) indeterminates, \(r = (r_1, \ldots, r_n)\) be a tuple of \(n\) positive real numbers, and \(\alpha = (\alpha_1, \ldots, \alpha_n) \in \bbN^n\) be a multi-index.
         We use the following notations:
@@ -13,10 +16,6 @@
                 We say that \(\lim_{|\alpha| \to +\infty} x_\alpha = x \in X\) if for every \(\varepsilon > 0\), there exists \(N \in \bbN\) such that for all \(\alpha \in \bbN^n\) with \(|\alpha| > N\), we have \(d(x_\alpha, x) < \varepsilon\).
         \end{itemize}
     \end{notation}
-
-
-   
-
 
     \begin{definition}\label{def:Tate_algebra}
         Let \(\kk\) be a complete non-archimedean field.
@@ -57,7 +56,6 @@
         \end{step}
 
         The linearity and positive-definiteness of the gauss norm are direct from the definition.
-        % Suppose that \(f = \sum_{\alpha \in \bbN^n} a_\alpha T^\alpha\) and \(g = \sum_{\alpha \in \bbN^n} b_\alpha T^\alpha\) are two elements in \(\kk\{ \underline{T/r} \} \).
         We have
         \[
             \|f + g\| = \sup_{\alpha \in \bbN^n} \|a_\alpha + b_\alpha\| r^\alpha \leq \sup_{\alpha \in \bbN^n} \max\{\|a_\alpha\| + \|b_\alpha\|\} r^\alpha \leq \max\{\|f\|, \|g\|\}
@@ -134,10 +132,7 @@
         It follows that \(g \in \kk\{ \underline{T/r} \} \).
     \end{proof}
 
-    % \begin{definition}\label{def:derivative_operators}
-    %     Let \(\kk\) be a complete non-archimedean field.
 
-    % \end{definition}
     Let \(\kk\) be a complete non-archimedean field.
     Recall that the formal derivative operator \(\partial_i: \kk[[\underline{T}]] \to \kk[[\underline{T}]] \) is defined by
     \[
@@ -159,3 +154,187 @@
         \[ \lim_{|\alpha| \to +\infty} \| \alpha_1 a_\alpha \| r_1^{\alpha_1 - 1} r_2^{\alpha_2} \cdots r_n^{\alpha_n} \leq  \frac{1}{r_1} \lim_{|\alpha| \to +\infty} \|a_\alpha\| r^\alpha = 0. \]
         The conclusion follows.
     \end{proof}
+
+
+\subsection{Analytic functions on closed polydisks}
+
+    \begin{proposition}\label{prop:Tate_algebra_as_functions_ring}
+        Let \(\kk\) be a complete non-archimedean field.
+        Then for every \(f \in \kk\{ \underline{T/r} \} \), we can associate a function \(F_f:E(0,\underline{r}) \to \kk\) defined by
+        \[ F_f(x) := \sum_{\alpha \in \bbN^n} a_\alpha x^\alpha \quad \text{ for } x = (x_1, \ldots, x_n) \in E(0,\underline{r}). \]
+        This defines a homomorphism of \(\kk\)-algebras from \(\kk\{ \underline{T/r} \} \) to the ring of all functions from \(E(0,\underline{r})\) to \(\kk\).
+    \end{proposition}
+    \begin{proof}
+        Given \(f = \sum_{\alpha \in \bbN^n} a_\alpha T^\alpha \in \kk\{ \underline{T/r} \} \) and \(x = (x_1, \ldots, x_n) \in E(0,\underline{r})\), we have
+        \[ \left\|\sum_{|\alpha| = n} a_\alpha x^\alpha\right\| \leq \max_{|\alpha| = n} \|a_\alpha\| r^\alpha \to 0 \quad \text{ as } n \to +\infty. \]
+        Hence by \cref{prop:convergence_in_ultra-metric_space}, the series \(F_f(x) = \sum_{\alpha \in \bbN^n} a_\alpha x^\alpha\) converges in \(\kk\).
+        This defines a function \(F_f:E(0,\underline{r}) \to \kk\).
+
+        Let \(g = \sum_{\alpha \in \bbN^n} b_\alpha T^\alpha \in \kk\{ \underline{T/r} \} \).
+        Set 
+        \[ A_n = \sum_{|\alpha|<n} a_\alpha x^\alpha, \quad B_n = \sum_{|\beta|<n} b_\beta x^\beta, \quad C_n = \sum_{|\gamma|<n} \left(\sum_{\alpha+\beta = \gamma} a_\alpha b_\beta \right) x^\gamma. \]
+        We need to show that \(F_f(x)F_g(x) = \lim A_nB_n = \lim C_n = F_{fg}(x)\).
+        Note that 
+        \[ A_nB_n - C_n = \sum_{\substack{|\alpha|<n, |\beta|<n \\ |\alpha + \beta| \geq n}} a_\alpha b_\beta x^{\alpha + \beta}. \]
+        Given \(\varepsilon > 0\), there exists \(N \in \bbN\) such that for all \(|\alpha| > N\), we have \(\|a_\alpha\| r^\alpha < \varepsilon/\|g\|\) and \(\|b_\alpha\| r^\alpha < \varepsilon/\|f\|\).
+        For any \(n > 2N\), we have
+        \[ \|A_nB_n - C_n\| \leq \max_{\substack{|\alpha|<n, |\beta|<n \\ |\alpha + \beta| \geq n}} \|a_\alpha\| \|b_\beta\| \|x^{\alpha + \beta}\| < \max\left\{ \frac{\varepsilon}{\|g\|} \|b_{\beta}\|r^\beta, \frac{\varepsilon}{\|f\|} \|a_{\alpha}\|r^\alpha \right\} \leq \varepsilon. \]
+        Thus \(F_f(x)F_g(x) = (F_{fg})(x)\).
+        The addition and scalar multiplication can be verified directly.
+        We thus finish the proof.
+        % Hence above assignments define a homomorphism of \(\kk\)-algebras from \(\kk\{ \underline{T/r} \} \) to the ring of all functions from \(E(0,\underline{r})\) to \(\kk\).
+    \end{proof}
+
+        \begin{proposition}\label{prop:analytic_function_is_lipschitz}
+        Let \(\kk\) be a complete non-archimedean field with non-trivial valuation.
+        Then for every \(f \in \kk\{ \underline{T/r} \} \) and \(x,y \in E(0,\underline{r})\), we have
+        \[ \|f(y) - f(x)\|_\kk \leq L \cdot \|y - x\|_{\infty}, \]
+        where \(L = \max_{1 \leq i \leq n} \|f\|_g/r_i\).
+        % \Yang{To be checked.}
+    \end{proposition}
+    \begin{proof}
+        Set \(y - x = (h_1, \ldots, h_n)\) and \(x^{(0)} = x\), \(x^{(i)} = (x_1 + h_1, \ldots, x_i + h_i, x_{i+1}, \ldots, x_n)\) for \(i = 1, \ldots, n\).
+        We have
+        \[ \|f(y) - f(x)\|_\kk \leq \max_{1 \leq i \leq n} \|f(x^{(i)}) - f(x^{(i-1)})\|_\kk. \]
+        We only need to show that for every \(i = 1, \ldots, n\), we have
+        \[ \|f(x^{(i)}) - f(x^{(i-1)})\|_\kk \leq \frac{\|f\|_g}{r_i} \|h_i\|. \]
+        Without loss of generality and for simplicity, we assume that \(y = (x_1 + h, x_2, \ldots, x_n)\) and \(x = (x_1, x_2, \ldots, x_n)\).
+        Note that by the strong triangle inequality, we have \(\|h\| \leq r_1\).
+
+        Let \(f = \sum_{\alpha \in \bbN^n} a_\alpha T^\alpha \in \kk\{ \underline{T/r} \} \).
+        We have
+        \begin{align*}
+            f(y) - f(x) &= \sum_{\alpha \in \bbN^n} a_\alpha \left( (x_1 + h)^{\alpha_1} - x_1^{\alpha_1} \right) x_2^{\alpha_2} \cdots x_n^{\alpha_n} \\
+            &= \sum_{\alpha \in \bbN^n}\sum_{k=1}^{\alpha_1} \binom{\alpha_1}{k} a_\alpha x_1^{\alpha_1 - k} x_2^{\alpha_2} \cdots x_n^{\alpha_n}h^k.
+        \end{align*}
+        Note that
+        \[ \left\|\binom{\alpha_1}{k} a_\alpha x_1^{\alpha_1 - k} x_2^{\alpha_2} \cdots x_n^{\alpha_n} \right\| r_1^{k} \leq \|a_\alpha\| r^\alpha \leq \|f\|_g. \]
+        It follows that
+        \[ \|f(y) - f(x)\|_\kk \leq \max_{\alpha \in \bbN^n} \max_{1 \leq k \leq \alpha_1} \left\{ \left\|\binom{\alpha_1}{k} a_\alpha x_1^{\alpha_1 - k} x_2^{\alpha_2} \cdots x_n^{\alpha_n} \right\| \|h\|^k \right\} \leq \max_{k}\left\{\|f\|_g \left(\frac{\|h\|}{r_1}\right)^k\right\} \leq \|f\|_g \frac{\|h\|}{r_1}. \]
+        Thus the conclusion follows.
+        % \Yang{To be added.}
+    \end{proof}
+
+    \begin{lemma}\label{prop:convergence_of_restricted_power_series_imply_convergence_of_functions}
+        Let \(\kk\) be a complete non-archimedean field.
+        Then we have \(\|f(x)\| \leq \|f\|\) for every \(f \in \kk\{ \underline{T/r} \} \) and \(x \in E(0,\underline{r})\).
+        In particular, if \(f_n \to f\) as \(n \to +\infty\) in \(\kk\{ \underline{T/r} \} \), then we have \(\|f_n(x) - f(x)\| \to 0\) for every \(x \in E(0,\underline{r})\).
+    \end{lemma}
+    \begin{proof}
+        Let \(f = \sum_{\alpha \in \bbN^n} a_\alpha T^\alpha \in \kk\{ \underline{T/r} \} \) and \(x = (x_1, \ldots, x_n) \in E(0,\underline{r})\).
+        We have
+        \[ \left\| \sum_{|\alpha| < N} a_\alpha x^\alpha \right\| \leq \max_{|\alpha| < N} \|a_\alpha\| r^\alpha \leq \|f\| \]
+        for every \(N \in \bbN\).
+        Taking \(N \to +\infty\), we have \(\|f(x)\| \leq \|f\|\).
+        % \Yang{To be continued.}
+    \end{proof}
+
+    \begin{proposition}\label{prop:formal_derivative_is_the_derivative_of_functions}
+        Let \(\kk\) be a complete non-archimedean field with non-trivial valuation, and \(\partial_i = \partial/\partial T_i\) be the derivative operator on \(\kk\{ \underline{T/r} \} \) with respect to the indeterminate \(T_i\) for \(i = 1, \ldots, n\).
+        Then for every \(f \in \kk\{ \underline{T/r} \} \) and \(x \in E(0,\underline{r})\), we have
+        \[ F_{\partial_i(f)}(x) = \lim_{h \to 0} \frac{F_f(x_1, \ldots, x_i + h, \ldots, x_n) - F_f(x)}{h}. \]
+        % \Yang{To be checked.}
+    \end{proposition}
+    \begin{proof}
+        Without loss of generality, we can assume that \(i=1\).
+        Let \(f = \sum_{\alpha \in \bbN^n} a_\alpha T^\alpha \in \kk\{ \underline{T/r} \} \) and \(f_n = \sum_{|\alpha| < n} a_\alpha T^\alpha\) for \(n \in \bbN\).
+        Set \(x_h = (x_1 + h, x_2 \ldots, x_n)\) and \(L_f(h) = (F_f(x_h) - F_f(x))/h\) for \(h \in \kk^\times\).
+        Note that for fixed \(h\), we have \(\lim_{n\to \infty}L_{f_n}(h) = L_f(h)\).
+
+        We compute \(L_{f_n}(h) - F_{\partial f_n}(x)\) explicitly:
+        \begin{align*}
+            L_{f_n}(h) - F_{\partial f_n}(x) &= \frac{1}{h}\left(\sum_{|\alpha| < n}\sum_{k=1}^{\alpha_1} \binom{\alpha_1}{k}  a_\alpha x_1^{\alpha_1 - k} h^{k} x_2^{\alpha_2} \cdots x_n^{\alpha_n} - \sum_{|\alpha| < n} \alpha_1 a_\alpha x_1^{\alpha_1 - 1} h x_2^{\alpha_2} \cdots x_n^{\alpha_n} \right) \\
+            &= \sum_{|\alpha| < n} \sum_{k=2}^{\alpha_1} \binom{\alpha_1}{k} a_\alpha x_1^{\alpha_1 - k} x_2^{\alpha_2} \cdots x_n^{\alpha_n} h^{k-1}.
+        \end{align*}
+        Note that 
+        \[ M = \sup_{\alpha \in \bbN^n} \|a_\alpha x_1^{\alpha_1 - k} x_2^{\alpha_2} \cdots x_n^{\alpha_n}\| r_1^{k-1} \leq \|f\|/r_1 < +\infty. \]
+        Hence
+        \[ \|L_{f_n}(h) - F_{\partial f_n}(x)\| \leq \max_{2 \leq k\leq n}\left\{ M \frac{\|h\|^{k-1}}{r_1^{k-1}} \right\} \leq M \frac{\|h\|}{r_1} \]
+        for \(h \in \kk^\times\) with \(\|h\| < r_1\).
+        Taking \(n \to +\infty\), we have
+        \[ \|L_f(h) - F_{\partial f}(x)\| \leq M \frac{\|h\|}{r_1}. \]
+        Thus the conclusion follows.
+        % \Yang{To be continued.}
+    \end{proof}
+
+    \Yang{The following should be a theorem.}
+
+    \begin{corollary}\label{prop:restricted_power_series_to_function_ring_is_injective_in_char_0}
+        Let \(\kk\) be a complete non-archimedean field with non-trivial valuation of characteristic zero.
+        Then the assignment \(f \mapsto F_f\) in \cref{prop:Tate_algebra_as_functions_ring} is injective.
+    \end{corollary}
+    \begin{proof}
+        Note that if \(F_f = 0\), then for every \(i = 1, \ldots, n\), we have \(F_{\partial_i(f)} = 0\) by \cref{prop:formal_derivative_is_the_derivative_of_functions}.
+        By taking repeated derivatives, we have \(F_{\partial^\alpha f} = 0\) for every multi-index \(\alpha \in \bbN^n\).
+        Note that \(F_{\partial^\alpha f}(0) = \alpha! a_\alpha\).
+        It follows that \(a_\alpha = 0\) for every \(\alpha \in \bbN^n\) and thus \(f = 0\).
+    \end{proof}
+
+    \begin{remark}\label{rmk:restricted_power_series_to_function_ring_is_injective}
+        \cref{prop:restricted_power_series_to_function_ring_is_injective_in_char_0} holds for non-archimedean fields of positive characteristic as well.
+        The proof uses \cref{prop:Strassman_theorem} and induction on the number of variables.
+        The readers can try this as an exercise.
+    \end{remark}
+
+    From now on, we will identify an element \(f \in \kk\{ \underline{T/r} \} \) with the associated function \(F_f:E(0,\underline{r}) \to \kk\) as in \cref{prop:Tate_algebra_as_functions_ring}.
+
+    \begin{proposition}\label{prop:gauss_norm_coincides_with_the_suprum_norm}
+        Let \(\kkk\) be a complete, non-archimedean and algebraically closed field.
+        Then the gauss norm on the Tate algebra \(\kkk\{ \underline{T/r} \} \) coincides with the supremum norm
+        \[
+            \|f\|_{\sup} := \sup_{x \in E(0,\underline{r})} \|f(x)\|_{\kkk}.
+        \]
+        % \Yang{To be checked.}
+    \end{proposition}
+    \begin{proof}
+        Let \(f = \sum_{\alpha \in \bbN^n} a_\alpha T^\alpha \in \kkk\{ \underline{T/r} \} \).
+        We write \(f = g+h\) with \(g = \sum_{\alpha \in S} a_\alpha T^\alpha\) and \(h = \sum_{\alpha \notin S} a_\alpha T^\alpha\), where
+        \[ S = \left\{ \alpha \in \bbN^n : \|a_\alpha\| r^\alpha = \|f\| \right\}. \]
+        Note that \(S\) is a non-empty finite set and \(\|h\| < \|f\|\).
+        By \cref{prop:convergence_of_restricted_power_series_imply_convergence_of_functions}, we have \(\|h(x)\| < \|f\|\) for every \(x \in E(0,\underline{r})\).
+        It suffices to show that \(\|g\|_{\sup} = \|g\|\).
+
+        Since \(\kkk\) is algebraically closed, \(|\kkk^\times|\) is dense in \(\bbR_{>0}\).
+        For every pair \(\alpha, \beta \in S\) with \(\alpha \neq \beta\), the set \(\{t \in \bbR_{>0}^n : \|a_\alpha\| t^\alpha = \|a_\beta\| t^\beta\}\) is a proper closed subset of \(\bbR_{>0}^n\).
+        Thus we can find \(t_m \in |\kkk^\times|^n\) such that \(t_m < r\), \(t_m \to r\) as \(m \to +\infty\) and for every \(\alpha, \beta \in S\) with \(\alpha \neq \beta\), we have \(\|a_\alpha\|t_m^\alpha \neq \|a_\beta\|t_m^\beta\) for all \(m\).
+        For each \(m\), we can find \(x_m \in E(0,\underline{r})\) such that \(\|x_m^\alpha\| = t_m^\alpha\) for every \(\alpha \in S\) since \(t_m \in |\kkk^\times|^n\).
+        It follows that
+        \[ \|g(x_m)\| = \max_{\alpha \in S} \|a_\alpha\| \|x_m^\alpha\| = \max_{\alpha \in S} \|a_\alpha\| t_m^\alpha \to \|g\| \quad \text{ as } m \to +\infty. \]
+        Thus \(\|g\|_{\sup} = \|g\|\).
+        % \Yang{To be added.}
+    \end{proof}
+
+    \begin{remark}\label{prop:gauss_norm_does_not_coincides_with_the_suprum_norm_over_non-algebraically_closed_fields}
+        % The condition ``algebraically closed'' in \cref{prop:gauss_norm_coincides_with_the_suprum_norm} can be weakened to ``not locally compact''.
+        % \Yang{To be continued.}
+        If \(\kk\) is not algebraically closed, the gauss norm on the Tate algebra \(\kk\{ \underline{T/r} \} \) may not coincide with the supremum norm.
+        For example, consider the Tate algebra \(\bbQ_p\{T\}\).
+        The element \(f = T^p - T\) has gauss norm \(\|f\| = 1\).
+        However, for every \(x \in E(0,1) = \bbZ_p\), we have \(f(x) = x^p - x \equiv 0 \mod p\).
+        Thus \(\|f(x)\|_p \leq 1/p\) and \(\|f\|_{\sup} \leq 1/p < 1 = \|f\|\).
+        % \Yang{To be continued.}
+    \end{remark}
+
+    \begin{remark}\label{rmk:closure_of_polynomials_with_respect_to_supremum_norm_is_Tate_algebra}
+        Recall the Weierstrass-Stone theorem in classical analysis which states that 
+        the closure of the polynomial ring \(\bbC[T_1, \ldots, T_n]\) with respect to the supremum norm on a closed polydisc \(E \subset \bbC^n\) is the ring of all complex-valued continuous functions on \(E\).
+        \Yang{This is wrong.}
+        In the context of non-archimedean analysis, \cref{prop:gauss_norm_coincides_with_the_suprum_norm} can be viewed as an analogue of this theorem.
+        It states that the closure of the polynomial ring \(\kkk[T_1, \ldots, T_n]\) with respect to the supremum norm on a closed polydisc \(E(0,\underline{r}) \subset \kkk^n\) is the Tate algebra \(\kkk\{ \underline{T/r} \} \).
+        
+        From this perspective, the Tate algebra can be viewed as the ``correct'' analogue of the ring of continuous functions on a closed polydisc in non-archimedean analysis.
+        % \Yang{comparison with the Weierstrass-Stone theorem in classical analysis.}
+    \end{remark}
+
+    % Then following shows that analytic functions over non-archimedean fields share some nice properties as in the case of complex analysis.
+    % \Yang{To be revised.}
+
+    \Yang{Recall the Runge theorem in complex analysis.}
+
+    \begin{definition}\label{def:analytic_function_on_closed_subset_of_k^n}
+        Let \(\kk\) be a complete non-archimedean field.
+        A function \(f:E(0,\underline{r}) \to \kk\) is called \emph{analytic} if there exists \(F \in \kk\{ \underline{T/r} \} \) such that \(f = F\) as functions from \(E(0,\underline{r})\) to \(\kk\).
+        \Yang{To be revised.}
+    \end{definition}
+
+    \Yang{Composition of analytic functions.}
