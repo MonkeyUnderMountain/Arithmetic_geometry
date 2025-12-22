@@ -1,5 +1,4 @@
-\section{Tate algebras}
-
+\section{Local theory I: functions}
 
 \subsection{Tate algebras}
 
@@ -305,36 +304,36 @@
     \end{proof}
 
     \begin{remark}\label{prop:gauss_norm_does_not_coincides_with_the_suprum_norm_over_non-algebraically_closed_fields}
-        % The condition ``algebraically closed'' in \cref{prop:gauss_norm_coincides_with_the_suprum_norm} can be weakened to ``not locally compact''.
-        % \Yang{To be continued.}
-        If \(\kk\) is not algebraically closed, the gauss norm on the Tate algebra \(\kk\{ \underline{T/r} \} \) may not coincide with the supremum norm.
+        If \(\kk\) is locally compact (hence not algebraically closed), the gauss norm on the Tate algebra \(\kk\{ \underline{T/r} \} \) do not coincide with the supremum norm.
         For example, consider the Tate algebra \(\bbQ_p\{T\}\).
         The element \(f = T^p - T\) has gauss norm \(\|f\| = 1\).
         However, for every \(x \in E(0,1) = \bbZ_p\), we have \(f(x) = x^p - x \equiv 0 \mod p\).
         Thus \(\|f(x)\|_p \leq 1/p\) and \(\|f\|_{\sup} \leq 1/p < 1 = \|f\|\).
-        % \Yang{To be continued.}
     \end{remark}
 
     \begin{remark}\label{rmk:closure_of_polynomials_with_respect_to_supremum_norm_is_Tate_algebra}
-        Recall the Weierstrass-Stone theorem in classical analysis which states that 
-        the closure of the polynomial ring \(\bbC[T_1, \ldots, T_n]\) with respect to the supremum norm on a closed polydisc \(E \subset \bbC^n\) is the ring of all complex-valued continuous functions on \(E\).
-        \Yang{This is wrong.}
-        In the context of non-archimedean analysis, \cref{prop:gauss_norm_coincides_with_the_suprum_norm} can be viewed as an analogue of this theorem.
-        It states that the closure of the polynomial ring \(\kkk[T_1, \ldots, T_n]\) with respect to the supremum norm on a closed polydisc \(E(0,\underline{r}) \subset \kkk^n\) is the Tate algebra \(\kkk\{ \underline{T/r} \} \).
+        Recall that in classical complex analysis, 
+        the closure of the polynomial ring \(\bbC[T_1, \ldots, T_n]\) with respect to the supremum norm on a closed polydisc \(E(0,\underline{r}) \subset \bbC^n\) 
+        is the ring of all complex-valued continuous functions which are analytic on its interior \(B(0,\underline{r})\). 
+        % Recall the Weierstrass-Stone theorem in classical analysis which states that 
+        % the closure of the polynomial ring \(\bbC[T_1, \ldots, T_n]\) with respect to the supremum norm on a closed polydisc \(E \subset \bbC^n\) is the ring of all complex-valued continuous functions on \(E\).
+        % \Yang{This is wrong.}
+        % In the context of non-archimedean analysis, \cref{prop:gauss_norm_coincides_with_the_suprum_norm} can be viewed as an analogue of this theorem.
+        % It states that the closure of the polynomial ring \(\kkk[T_1, \ldots, T_n]\) with respect to the supremum norm on a closed polydisc \(E(0,\underline{r}) \subset \kkk^n\) is the Tate algebra \(\kkk\{ \underline{T/r} \} \).
         
-        From this perspective, the Tate algebra can be viewed as the ``correct'' analogue of the ring of continuous functions on a closed polydisc in non-archimedean analysis.
+        % From this perspective, the Tate algebra can be viewed as the ``correct'' analogue of the ring of continuous functions on a closed polydisc in non-archimedean analysis.
         % \Yang{comparison with the Weierstrass-Stone theorem in classical analysis.}
     \end{remark}
 
     % Then following shows that analytic functions over non-archimedean fields share some nice properties as in the case of complex analysis.
     % \Yang{To be revised.}
 
-    \Yang{Recall the Runge theorem in complex analysis.}
+    % \Yang{Recall the Runge theorem in complex analysis.}
 
-    \begin{definition}\label{def:analytic_function_on_closed_subset_of_k^n}
-        Let \(\kk\) be a complete non-archimedean field.
-        A function \(f:E(0,\underline{r}) \to \kk\) is called \emph{analytic} if there exists \(F \in \kk\{ \underline{T/r} \} \) such that \(f = F\) as functions from \(E(0,\underline{r})\) to \(\kk\).
-        \Yang{To be revised.}
-    \end{definition}
+    % \begin{definition}\label{def:analytic_function_on_closed_subset_of_k^n}
+    %     Let \(\kk\) be a complete non-archimedean field.
+    %     A function \(f:E(0,\underline{r}) \to \kk\) is called \emph{analytic} if there exists \(F \in \kk\{ \underline{T/r} \} \) such that \(f = F\) as functions from \(E(0,\underline{r})\) to \(\kk\).
+    %     \Yang{To be revised.}
+    % \end{definition}
 
-    \Yang{Composition of analytic functions.}
+    % \Yang{Composition of analytic functions.}
