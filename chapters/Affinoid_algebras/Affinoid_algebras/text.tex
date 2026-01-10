@@ -33,6 +33,9 @@
         Let \(A\) be an affinoid \(\kk\)-algebra.
         Then \(A\) is noetherian, and every ideal of \(A\) is closed.
     \end{proposition}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
     \begin{proposition}\label{prop:the_norm_on_affinoid_is_bounded_by_spectral_radius}
         Let \(A\) be an affinoid \(\kk\)-algebra.
@@ -41,11 +44,45 @@
             \|f^n\| \leq C \rho(f)^n.   
         \]
     \end{proposition}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
     \begin{proposition}\label{prop:affinoid_algebra_is_strict_when_radius_in_the_radical_of_valuation_set}
         Let \(A\) be an affinoid \(\kk\)-algebra.
         If and only if \(\rho(f) \in \sqrt{|\kk|}\) for all \(f \in A\), then \(A\) is strict.
         \Yang{To be complete.}
     \end{proposition}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
 \subsection{Noetherian normalization theorem}
+
+    \begin{theorem}\label{thm:noetherian_normalization_theorem}
+        Let \(A\) be an affinoid \(\kk\)-algebra.
+        Then there exists a finite injective homomorphism
+        \[
+            \varphi: \kk\{ r_1^{-1} T_1, \ldots, r_d^{-1} T_d \} \hookrightarrow A
+        \]
+        for some \(d \in \bbN\) and \(r_1, \ldots, r_d \in \bbR_{>0}\).
+        \Yang{To be checked.}
+    \end{theorem}
+
+
+\subsection{Tate algebras and Weierstrass division}
+
+
+\subsection{Reduction}
+ 
+    \begin{definition}\label{def:reduction_of_affinoid_algebra}
+        Let \(A\) be an affinoid \(\kk\)-algebra.
+        We define the \emph{reduction} of \(A\) as 
+        \[
+            \widetilde{A} = A^\circ / A^{\circ \circ},
+        \]
+        where 
+        \[
+            A^\circ = \{ f \in A : \|f\|_{\sup} \leq 1 \}, \quad A^{\circ \circ} = \{ f \in A : \|f\|_{\sup} < 1 \}.
+        \]
+    \end{definition}
