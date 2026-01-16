@@ -31,7 +31,7 @@
     \begin{example}\label{eg:spectrum_of_valuation_field}
         Let \((\kk, |\cdot|)\) be a complete valuation field.
         The spectrum \(\scrM(\kk)\) consists of a single point corresponding to the given absolute value \(|\cdot|\) on \(\kk\).
-        \Yang{To be checked.}
+        % \Yang{To be checked.}
     \end{example}
 
     \begin{example}\label{eg:spectrum_of_Z_with_absolute_value_norm}
@@ -40,13 +40,34 @@
         The spectrum 
         \[ \scrM(\bbZ) = \{|\cdot|_{\infty}^\varepsilon \colon \varepsilon \in (0,1]\} \cup \{| \cdot |_p^\alpha \colon p \text{ is prime}, \alpha \in (0,\infty] \} \cup \{|\cdot|_0\}, \]
         where \(|a|_p^\infty := \lim_{\alpha \to \infty} |a|_p^\alpha\) for each \(a \in \bbZ\) and \(|\cdot|_0\) is the trivial norm on \(\bbZ\).
+        \begin{center}
+        \usetikzlibrary{positioning}
+        \begin{tikzpicture}[scale=1, every node/.style={font=\small}]
+            % trivial norm (root)
+            \node[circle, fill=gray,inner sep=1pt, label=left:{\(|\cdot|_0\)}] (root) at (0,0) {};
+            % archimedean branch
+            \node[circle, fill=black, inner sep=1pt, label=above:{\(|\cdot|_\infty\)}] (archimedean_top) at (0,1) {};
+            \draw (root) -- (archimedean_top);
+            \node[circle, fill=gray, inner sep=1pt, label=right:{\(|\cdot|_\infty^\varepsilon\)}] at (0,0.5) {};
+            % non-archimedean branches
+            \foreach \p/\q in {2/0.5,3/0.667,5/0.8,7/0.857,11/0.909} {
+
+                \node[circle, fill=black, inner sep=1pt, label=below:{\(|\cdot|_{\p}^\infty\)}] (p_top_\p) at (-4 + \p,-2) {};
+                \draw (root) -- (p_top_\p);
+                \node[circle, fill=magenta, inner sep=1pt, label=left:{}] at (-4*\q + \p*\q,-2*\q) {};
+            }
+            \node[circle, fill=gray, inner sep=1pt, label=right:{\(|\cdot|_{11}^\alpha\)}] at (3.5,-1) {};
+            \node[circle, fill=magenta, inner sep=1pt, label=left:{\(|\cdot|_{2}\)}] at (-1,-1) {};
+            \node at (9,-2) {\(\cdots\)};
+            \node at (6,-1) {\(\cdots\)};
+        \end{tikzpicture}
+        \end{center}
         \Yang{To be checked.}
     \end{example}
         
     \begin{definition}\label{def:pullback_of_ring_homomorphism_of_banach_rings_on_spectrum}
         Let \(\varphi: R \to S\) be a bounded ring homomorphism of Banach rings.
         The \emph{pullback} map \(\scrM(\varphi): \scrM(S) \to \scrM(R)\) is defined by \(\scrM(\varphi)(x) = x \circ \varphi: f \mapsto |\varphi(f)|_x\) for each \(x \in \scrM(S)\).
-        % \Yang{To be revised.}
     \end{definition}
 
     \begin{proposition}\label{prop:pullback_of_bounded_homomorphism_is_continuous}
@@ -149,6 +170,16 @@
 \subsection{Reduction map and kernel map}
 
 
+    \begin{lemma}\label{lem:Zariski_topology_as_weak_topology}
+        Let \(R\) be a ring.
+        For every \(\frakp \in \Spec R\), we endow the residue field \(\kappa(\frakp) = \Frac(R/\frakp)\) with the trivial norm.
+        Then the Zariski topology on \(\Spec R\) is the weakest topology such that for each \(f \in R\), the evaluation map \(\Spec R \to \bbR\), defined by \(\frakp \mapsto |f|_{\kappa(\frakp)}\), is continuous.
+    \end{lemma}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+
+
     \begin{proposition}\label{prop:kernel_map_from_M_R_to_Spec_R}
         Let \(R\) be a Banach ring.
         For each \(x \in \scrM(R)\), let \(\wp_x\) be the kernel of the multiplicative semi-norm \(|\cdot|_x\).
@@ -158,7 +189,20 @@
         \Yang{To be completed}
     \end{proof}
 
-    Suppose that \(R\) is a non-archimedean Banach ring with valuation subring \(R^\circ\) and maximal ideal \(R^{\circ \circ}\).
+    \begin{example}\label{eg:M_Z_under_the_kernel_map}
+        Let us consider the spectrum \(\scrM(\bbZ)\) in \cref{eg:spectrum_of_Z_with_absolute_value_norm}.
+        Under the kernel map \(\scrM(\bbZ) \to \Spec(\bbZ)\), the points \(|\cdot|_p^\infty\) for each prime number \(p\) are mapped to the prime ideal \((p)\), 
+        the other above points are all mapped to the zero ideal \((0)\). 
+    \end{example}
+
+    \begin{construction}\label{cons:reduction_map_from_spectrum_of_Banach_rings_to_spectrum_of_residue_ring}
+        Suppose that \(R\) is a non-archimedean Banach ring with valuation subring \(R^\circ\) and maximal ideal \(R^{\circ \circ}\).
+        For each \(x \in \scrM(R)\), there is an induced homomorphism \(R^\circ \to \scrH(x)^\circ\) between the valuation subrings.
+        Furthermore, we have an induced homomorphism between the residue rings \(\widetilde{R} = R^\circ / R^{\circ \circ} \to \calk_{\scrH(x)}\).
+        This gives rise to the reduction map from \(\scrM(R)\) to \(\Spec(\widetilde{R})\).
+    \end{construction}
+    
+    
     There is a natural reduction map from the spectrum \(\scrM(R)\) to the spectrum \(\Spec(\widetilde{R} = R^\circ / R^{\circ \circ})\) of the residue ring \(\widetilde{R}\).
     
     \Yang{To be continued.}
@@ -169,19 +213,22 @@
     \paragraph{Spectrum of Tate algebra in one variable} Let \(\kk\) be a complete non-archimedean field, and let \(A = \kk\{T/r\}\).
     We list some types of points in the spectrum \(\scrM(A)\).
 
-    For each \(a \in \kk\) with \(|a| \leq r\), we have the \emph{type I} point \(x_a\) corresponding to the evaluation at \(a\), i.e., \(|f|_{x_a} := |f(a)|\) for each \(f \in A\).
-    For each closed disk \(E = E(a,s) := \{b \in \kk : |b - a| \leq s\}\) with center \(a \in \kk\) and radius \(s \leq r\), we have the point \(x_{a,s}\) corresponding to the multiplicative semi-norm defined by
-    \[ |f|_{x_E} := \sup_{b \in E(a,s)} |f(b)| \]
-    for each \(f \in A\).
-    If \(s \in |\kk^\times|\), then the point \(x_E\) is called a \emph{type II} point; otherwise, it is called a \emph{type III} point.
-    
-    Let \(\{E^{(s)}\}_s\) be a family of closed disks in \(\kk\) such that \(E^{(s)}\) is of radius \(s\), \(E^{(s_1)} \subsetneq E^{(s_2)}\) for any \(s_1 < s_2\) and \(\bigcap_s E^{(s)} = \emptyset\).
-    Then we have the point \(x_{\{E^{(s)}\}}\) corresponding to the multiplicative semi-norm defined by
-    \[ |f|_{x_{\{E^{(s)}\}}} := \inf_s |f|_{x_{E^{(s)}}} \]
-    for each \(f \in A\).
-    Such a point is called a \emph{type IV} point.
+    \begin{construction}\label{cons:four_types_of_points_in_spectrum_of_Tate_algebra_in_one_variable}
+        For each \(a \in \kk\) with \(|a| \leq r\), we have the \emph{type I} point \(x_a\) corresponding to the evaluation at \(a\), i.e., \(|f|_{x_a} := |f(a)|\) for each \(f \in A\).
+        
+        For each closed disk \(E = E(a,s) := \{b \in \kk : |b - a| \leq s\}\) with center \(a \in \kk\) and radius \(s \leq r\), we have the point \(x_{a,s}\) corresponding to the multiplicative semi-norm defined by
+        \[ |f|_{x_E} := \sup_{b \in E(a,s)} |f(b)| \]
+        for each \(f \in A\).
+        If \(s \in |\kk^\times|\), then the point \(x_E\) is called a \emph{type II} point; otherwise, it is called a \emph{type III} point.
+        
+        Let \(\{E^{(s)}\}_s\) be a family of closed disks in \(\kk\) such that \(E^{(s)}\) is of radius \(s\), \(E^{(s_1)} \subsetneq E^{(s_2)}\) for any \(s_1 < s_2\) and \(\bigcap_s E^{(s)} = \emptyset\).
+        Then we have the point \(x_{\{E^{(s)}\}}\) corresponding to the multiplicative semi-norm defined by
+        \[ |f|_{x_{\{E^{(s)}\}}} := \inf_s |f|_{x_{E^{(s)}}} \]
+        for each \(f \in A\).
+        Such a point is called a \emph{type IV} point.
 
-    \Yang{To be completed.}
+        \Yang{To be completed.}
+    \end{construction}
     % \end{example}
 
     \begin{proposition}\label{prop:four_types_of_points_in_spectrum_of_Tate_algebra_in_one_variable}
