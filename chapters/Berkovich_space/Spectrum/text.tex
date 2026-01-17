@@ -13,10 +13,10 @@
     However, unlike the complex case, the set \(\mSpec A\) is totally disconnected with respect to the topology induced by the absolute value on \(\kk\) (\cref{prop:ultra-metric_space_is_totally_disconnected}).
     To overcome this difficulty, Berkovich uses multiplicative semi-norms to ``fill in the gaps'' between the points in \(\mSpec A\), leading to the notion of the spectrum of a Banach ring.
 
-    We first consider the local model.
-    Hence we should consider the Tate algebra \(\kk\{T\}\) instead of the polynomial ring \(\kk[T]\).
-    \Yang{The maximal ideal of \(\kk\{T\}\) corresponding to the point in the disk \(\{a \in \kk\colon a \leq 1 \}\)}.
-    \Yang{Closed or open disk?}
+    % We first consider the local model.
+    % Hence we should consider the Tate algebra \(\kk\{T\}\) instead of the polynomial ring \(\kk[T]\).
+    % \Yang{The maximal ideal of \(\kk\{T\}\) corresponding to the point in the disk \(\{a \in \kk\colon a \leq 1 \}\)}.
+    % \Yang{Closed or open disk?}
 
 \subsection{Definition}
 
@@ -46,37 +46,70 @@
             % trivial norm (root)
             \node[circle, fill=gray,inner sep=1pt, label=left:{\(|\cdot|_0\)}] (root) at (0,0) {};
             % archimedean branch
-            \node[circle, fill=black, inner sep=1pt, label=above:{\(|\cdot|_\infty\)}] (archimedean_top) at (0,1) {};
+            \node[circle, fill=magenta, inner sep=1pt, label=above:{\(|\cdot|_\infty\)}] (archimedean_top) at (0,1) {};
             \draw (root) -- (archimedean_top);
             \node[circle, fill=gray, inner sep=1pt, label=right:{\(|\cdot|_\infty^\varepsilon\)}] at (0,0.5) {};
             % non-archimedean branches
-            \foreach \p/\q in {2/0.5,3/0.667,5/0.8,7/0.857,11/0.909} {
-
+            \foreach \p/\q/\pl in {2/0.5/left,3/0.667/right,5/0.8/right,7/0.857/right,11/0.909/above right} {
                 \node[circle, fill=black, inner sep=1pt, label=below:{\(|\cdot|_{\p}^\infty\)}] (p_top_\p) at (-4 + \p,-2) {};
                 \draw (root) -- (p_top_\p);
-                \node[circle, fill=magenta, inner sep=1pt, label=left:{}] at (-4*\q + \p*\q,-2*\q) {};
+                \node[circle, fill=magenta, inner sep=1pt, label=\pl:{\(|\cdot|_{\p}\)}] at (-4*\q + \p*\q,-2*\q) {};
             }
             \node[circle, fill=gray, inner sep=1pt, label=right:{\(|\cdot|_{11}^\alpha\)}] at (3.5,-1) {};
-            \node[circle, fill=magenta, inner sep=1pt, label=left:{\(|\cdot|_{2}\)}] at (-1,-1) {};
             \node at (9,-2) {\(\cdots\)};
-            \node at (6,-1) {\(\cdots\)};
+            \node at (9,-1) {\(\cdots\)};
         \end{tikzpicture}
         \end{center}
-        \Yang{To be checked.}
+        \Yang{To be continued.}
     \end{example}
+
+    \begin{theorem}\label{thm:norm_spectrum_of_Banach_rings_is_nonempty}
+        Let \(R\) be a Banach ring.
+        The spectrum \(\scrM(R)\) is nonempty.
+    \end{theorem}
+    \begin{proof}
+        Let \(\frakm\) be a maximal ideal of \(R\).
+        Note that the pullback of residue norm on the residue field \(R/\frakm\) is bounded with respect to the given norm on \(R\).
+        Replacing \(R\) by the completion of \(R/\frakm\), we may assume that \(R\) is a complete field.
+        Consider the set 
+        \[ \Sigma = \{ \text{norm on } R \text{ bounded by the given norm } \|\cdot\| \} \]
+        with the partial order defined by boundedness.
+        Since for a descending chain in \(\Sigma\), the infimum is a norm, by Zorn's lemma, there exists a minimal element \(|\cdot| \in \Sigma\).
+        
+        We claim that \(|\cdot|\) is multiplicative.
+        Since the spectral radius \(\rho(f) = \lim_{n \to \infty} |f^n|^{1/n}\) associated to \(|\cdot|\) is power-multiplicative and bounded by \(|\cdot|\), by minimality of \(|\cdot|\), we have \(\rho(f) = |f|\) for each \(f \in R\).
+        Thus \(|\cdot|\) is power-multiplicative.
+        If \(|\cdot|\) is not multiplicative, then there exist \(a,b \in R\setminus \{0\}\) such that \(|ab|<|a||b|\).
+        Then \(|b| \leq |a^{-1}| |ab| < |a^{-1}| |a| |b|\), which implies that \(|a| |a^{-1}| > 1\).
+        Set \(r = |a|^{-1} < |a^{-1}|\) and consider \(R\left<T/r\right>\).
+        Since \(r \cdot |a| = 1\), we have that 
+        \[ \left|\sum_{n=0}^\infty a^n T^n\right| = \sum_{n=0}^\infty |a^n| r^n = \sum_{n=0}^\infty |a|^n r^n = \sum_{n=0}^\infty 1 = \infty. \]
+        The power series is not convergent in \(R\left<T/r\right>\) and hence \(1 - aT\) is not invertible in \(R\left<T/r\right>\).
+        Let \(\frakn\) be a maximal ideal of \(R\left<T/r\right>\) containing \(1 - aT\).
+        Consider \( R \to R\left<T/r\right> \to R\left<T/r\right>/\frakn \).
+        Since \(R\) is a field, the composition is injective.
+        The residue norm on \(R\left<T/r\right>/\frakn\) induces a norm \(|\cdot|'\) on \(R\) bounded by \(|\cdot|\).
+        Note that \(|a^{-1}|' \leq |T| = r = |a|^{-1} < |a^{-1}|\), contradicting the minimality of \(|\cdot|\).  
+    \end{proof}
         
     \begin{definition}\label{def:pullback_of_ring_homomorphism_of_banach_rings_on_spectrum}
         Let \(\varphi: R \to S\) be a bounded ring homomorphism of Banach rings.
         The \emph{pullback} map \(\scrM(\varphi): \scrM(S) \to \scrM(R)\) is defined by \(\scrM(\varphi)(x) = x \circ \varphi: f \mapsto |\varphi(f)|_x\) for each \(x \in \scrM(S)\).
     \end{definition}
 
-    \begin{proposition}\label{prop:pullback_of_bounded_homomorphism_is_continuous}
-        Let \(\varphi: R \to S\) be a bounded ring homomorphism of Banach rings.
-        The pullback map \(\scrM(\varphi): \scrM(S) \to \scrM(R)\) is continuous.
-    \end{proposition}
-    \begin{proof}
-        \Yang{To be completed.}
-    \end{proof}
+    Note that \(\scrM(\varphi)(f^{-1}(V)) = \varphi(f)^{-1}(V)\) for each \(f \in R\) and open subset \(V \subset \bbR_{\geq 0}\).
+    Hence the pullback map is continuous.
+
+    % \begin{proposition}\label{prop:pullback_of_bounded_homomorphism_is_continuous}
+    %     Let \(\varphi: R \to S\) be a bounded ring homomorphism of Banach rings.
+    %     The pullback map \(\scrM(\varphi): \scrM(S) \to \scrM(R)\) is continuous.
+    % \end{proposition}
+    % \begin{proof}
+    %     Let \(U = f^{-1}(V) \subset \scrM(R)\) be a basic open subset for some \(f \in R\) and open subset \(V \subset \bbR_{\geq 0}\).
+    %     The preimage of \(U\) under the pullback map is \(\scrM(\varphi)^{-1}(U) = \{x \in \scrM(S) : |\varphi(f)|_x \in V\} = \varphi(f)^{-1}(V)\).
+    %     Since \(\varphi(f) \in S\), \(\varphi(f)^{-1}(V)\) is open in \(\scrM(S)\).
+    %     % \Yang{To be completed.}
+    % \end{proof}
 
     % For \(x \in \scrM(R)\), \Yang{the kernel of the multiplicative semi-norm \(|\cdot|_x\) is a closed prime ideal of \(R\)}, denoted by \(\wp_x\).
     % The semi-norm \(|\cdot|_x\) induces a multiplicative norm on the residue field \(\rkk(x) = \Frac(R/\wp_x)\), denoted by \(|\cdot|_{x}\) as well. 
@@ -128,13 +161,8 @@
         and the induced map \(R^u \to \prod_{x \in \scrM(R)} \scrH(x)\) is an isometric embedding.
         \Yang{To be checked.}
     \end{proposition}
-
-    \begin{theorem}\label{thm:norm_spectrum_of_Banach_rings_is_nonempty}
-        Let \(R\) be a Banach ring.
-        The spectrum \(\scrM(R)\) is nonempty.
-    \end{theorem}
     \begin{proof}
-        \Yang{To be continued.}
+        \Yang{To be added.}
     \end{proof}
 
     \begin{lemma}\label{lem:spectrum_of_product_of_completed_fields}
@@ -142,6 +170,9 @@
         Consider the Banach ring \(R = \prod_{i \in I} K_i\) equipped with the product norm.
         The spectrum \(\scrM(R)\) is homeomorphic to the Stone-\v{C}ech compactification of the discrete space \(I\).
     \end{lemma}
+    \begin{proof}
+        \Yang{To be added.}
+    \end{proof}
 
     \begin{remark}\label{rmk:some_fact_about_the_Stone_Cech_compactification}
         The Stone-\v{C}ech compactification of a discrete space is the largest compact Hausdorff space in which the original space can be densely embedded.
@@ -169,6 +200,9 @@
         \]
         \Yang{To be checked.}
     \end{proposition}
+    \begin{proof}
+        \Yang{To be added.}
+    \end{proof}
 
     
 
@@ -188,11 +222,16 @@
 
     \begin{proposition}\label{prop:kernel_map_from_M_R_to_Spec_R}
         Let \(R\) be a Banach ring.
-        For each \(x \in \scrM(R)\), let \(\wp_x\) be the kernel of the multiplicative semi-norm \(|\cdot|_x\).
-        Then \(\wp_x\) is a closed prime ideal of \(R\), and \(x \mapsto \wp_x\) defines a continuous map from \(\scrM(R)\) to \(\Spec(R)\) equipped with the Zariski topology.
+        The kernel map \(\scrM(R) \to \Spec(R), x \mapsto \wp_x\) is continuous with respect to the Zariski topology on \(\Spec(R)\).
+        % For each \(x \in \scrM(R)\), let \(\wp_x\) be the kernel of the multiplicative semi-norm \(|\cdot|_x\).
+        % Then \(\wp_x\) is a closed prime ideal of \(R\), and \(x \mapsto \wp_x\) defines a continuous map from \(\scrM(R)\) to \(\Spec(R)\) equipped with the Zariski topology.
     \end{proposition}
     \begin{proof}
-        \Yang{To be completed}
+        % Surjectivity follows from \cref{thm:norm_spectrum_of_Banach_rings_is_nonempty}.
+        % To show continuity, it suffices to show that the preimage of each principal open subset is open in \(\scrM(R)\).
+        Let \(D(f) = \{f\neq 0\} \subset \Spec(R)\) be a principal open subset for some \(f \in R\).
+        The preimage of \(D(f)\) under the kernel map is just the set \(\{x \in \scrM(R) : |f|_x > 0\} = f^{-1}(\bbR_{>0})\), which is open in \(\scrM(R)\) by definition of the topology on \(\scrM(R)\).
+        % \Yang{To be completed}
     \end{proof}
 
 
@@ -217,11 +256,19 @@
         \[ \Red: \scrM(R) \to \Spec(\widetilde{R}), \quad x \mapsto \ker(\widetilde{R} \to \calk_{\scrH(x)}). \]
     \end{construction}
 
+    \begin{example}\label{eg:Z_with_trivial_norm_under_the_reduction_map}
+        Let \((\bbZ, |\cdot|_0)\) be the Banach ring with the trivial norm.
+        \Yang{To be continued.}
+    \end{example}
+
     \begin{example}\label{eg:Tate_algebra_in_1_variable_under_reduction_map}
-        Let \(\kkk\) be a complete algebraically closed non-archimedean field and \(A = \kkk\{T\}\).
+        Let \(\kkk\) be a complete algebraically closed non-archimedean field and \(A = \kkk\{T/r\}\).
         We have \(\widetilde{A} \cong \calk_\kkk[T]\).
-        For a point \(x_a \in \scrM(A)\) of type I corresponding to \(a \in \kkk\) with \(|a| \leq 1\) (see \cref{cons:four_types_of_points_in_spectrum_of_Tate_algebra_in_one_variable}), 
-        the induced homomorphism \(\widetilde{A} \to \calk_{\scrH(x_a)}\) is given by 
+        For a point \(x_a \in \scrM(A)\) of type I corresponding to \(a \in \kkk\) with \(|a| \leq r\) (see \cref{cons:four_types_of_points_in_spectrum_of_Tate_algebra_in_one_variable}), 
+        the induced homomorphism \(\widetilde{A} = \calk_\kkk[T] \to \calk_{\scrH(x_a)} = \calk_\kkk\) is given by \(T \mapsto a \mod \kkk^{\circ \circ}\).
+
+
+        \Yang{To be continued.}
     \end{example}
 
     \begin{proposition}\label{prop:reduction_map_inverse_open_subset_to_closed_subset}
@@ -232,63 +279,109 @@
         \Yang{To be completed.}
     \end{proof}
 
-    
-
-
-    
-    \Yang{To be continued.}
-
 
 \subsection{Spectrum of Tate algebras}
 
-    \paragraph{Spectrum of Tate algebra in one variable} Let \(\kk\) be a complete non-archimedean field, and let \(A = \kk\{T/r\}\).
+    \paragraph{Spectrum of Tate algebra in one variable} Let \(\kkk\) be an algebraically closed complete non-archimedean field, and let \(A = \kkk\{T/r\}\).
     We list some types of points in the spectrum \(\scrM(A)\).
 
     \begin{construction}\label{cons:four_types_of_points_in_spectrum_of_Tate_algebra_in_one_variable}
-        For each \(a \in \kk\) with \(|a| \leq r\), we have the \emph{type I} point \(x_a\) corresponding to the evaluation at \(a\), i.e., \(|f|_{x_a} := |f(a)|\) for each \(f \in A\).
+        For each \(a \in \kkk\) with \(|a| \leq r\), we have the \emph{type I} point \(x_a\) corresponding to the evaluation at \(a\), i.e., \(|f|_{x_a} := |f(a)|\) for each \(f \in A\).
         
-        For each closed disk \(E = E(a,s) := \{b \in \kk : |b - a| \leq s\}\) with center \(a \in \kk\) and radius \(s \leq r\), we have the point \(x_{a,s}\) corresponding to the multiplicative semi-norm defined by
-        \[ |f|_{x_E} := \sup_{b \in E(a,s)} |f(b)| \]
+        For each closed disk \(E = E(a,s) := \{b \in \kkk : |b - a| \leq s\}\) with center \(a \in \kkk\) and radius \(s \leq r\), we have the point \(x_E = x_{a,s}\) corresponding to the multiplicative semi-norm defined by
+        \[ |f|_{x_E} = |f|_{x_{a,s}} := \sup_{b \in E(a,s)} |f(b)| \]
         for each \(f \in A\).
-        If \(s \in |\kk^\times|\), then the point \(x_E\) is called a \emph{type II} point; otherwise, it is called a \emph{type III} point.
+        If \(s \in |\kkk^\times|\), then the point \(x_E\) is called a \emph{type II} point; otherwise, it is called a \emph{type III} point.
         
-        Let \(\{E^{(s)}\}_s\) be a family of closed disks in \(\kk\) such that \(E^{(s)}\) is of radius \(s\), \(E^{(s_1)} \subsetneq E^{(s_2)}\) for any \(s_1 < s_2\) and \(\bigcap_s E^{(s)} = \emptyset\).
-        Then we have the point \(x_{\{E^{(s)}\}}\) corresponding to the multiplicative semi-norm defined by
-        \[ |f|_{x_{\{E^{(s)}\}}} := \inf_s |f|_{x_{E^{(s)}}} \]
+        Let \(E_n = E(a_n,s_n)\) be a sequence of closed disks in \(\kkk\) such that \(E_{n+1} \subsetneq E_n\) and \(\bigcap_n E_n = \emptyset\).
+        Then we have the point \(x_{\{E_n\}} = x_{\{a_n,s_n\}}\) corresponding to the multiplicative semi-norm defined by
+        \[ |f|_{x_{\{E_n\}}} = |f|_{x_{\{a_n,s_n\}}} := \inf_n |f|_{x_{E_n}} \]
         for each \(f \in A\).
         Such a point is called a \emph{type IV} point.
-
-        \Yang{To be completed.}
+        \Yang{To be completed. Check the definition of type IV points.}
     \end{construction}
     % \end{example}
 
     \begin{proposition}\label{prop:four_types_of_points_in_spectrum_of_Tate_algebra_in_one_variable}
-        % Let \(\kk\) be a complete non-archimedean field, and let \(r > 0\) be a positive real number.
-        % Consider the Tate algebra \(\kk\{r^{-1}T\}\) equipped with the Gauss norm.
-        The points in the spectrum \(\scrM(\kk\{r^{-1}T\})\) can be classified into four types as described above.
-        \Yang{To be checked}
+        The points in the spectrum \(\scrM(\kkk\{r^{-1}T\})\) can be classified into four types as described above.
+        % \Yang{To be checked}
+    \end{proposition}
+    \begin{proof}
+        Fix \(x \in \scrM(\kkk\{r^{-1}T\})\), set 
+        \[ s = \inf_{a \in \kkk} |T - a|_x \leq r,\quad  E = \{a \in \kkk : |T - a|_x = s\} \subset E(0,r). \]
+
+        \begin{case}\label{case_in_proof_of_four_type_points:point_type_I}
+            \(E \neq \emptyset\) and \(s=0\). 
+        \end{case}
+        By assumption, there exists \(a \in E\) such that \(|T - a|_x = 0\).
+        Note that if \(f(a) = 0\), then \(T-a \mid f\) in \(\kkk\{r^{-1}T\}\) and hence \(|f|_x = |T - a|_x|g|_x = 0\).
+        Then we have 
+        \[ |f(a)| = \big| |f(a)| - |f(a) - f|_x \big| \leq |f|_x \leq |f(a)| + |f(a) - f|_x = |f(a)| \]
+        for each \(f \in \kkk\{r^{-1}T\}\), which implies that \(|f|_x = |f(a)|\).
+        Thus \(x\) is a type I point \(x_a\).
+
+        \begin{case}\label{case_in_proof_of_four_type_points:point_type_II_and_III}
+            \(E \neq \emptyset\) and \(s > 0\).
+        \end{case}
+        % Next suppose that \(E \neq \emptyset\) and \(s > 0\).
+        Let \(a \in E\).
+        Note that for every \(b \in \kkk\), we have 
+        \[ |a-b| \leq \max\{|T - a|_x, |T - b|_x\} = |T - b|_x. \]
+        First we show that \(E = E(a,s)\).
+        For each \(b \in E(a,s)\), we have \(|T - b|_x \leq \max\{|T - a|_x, |a - b|\} = s\), which implies that \(b \in E\).
+        Conversely, for each \(b \in E\), we have \(|a - b| \leq \max\{|T - a|_x, |T - b|_x\} = s\).
+
+        Let \(f \in \kkk[T]\) be a polynomial.
+        Write \(f = \prod_{i=1}^n (T - c_i)\) for some \(c_1, \ldots, c_n \in \kkk\).
+        Then we have
+        \[ |f|_x = \prod_{i=1}^n |T - c_i|_x \geq \prod_{i=1}^n |b - c_i| = |f(b)|, \quad \forall b \in E. \]
+        I claim that for every \(\varepsilon \in (0,1)\), there exists \(b \in E\) such that \(\varepsilon |T-c_i|_x < |b - c_i|\) for each \(i = 1, \ldots, n\).
+        Indeed, if \(c_i \notin E\), then \(|T-c_i|_x = |b - c_i|\) for each \(b \in E\).
+        Hence we only need to consider the case when \(c_i \in E\).
+        Since \(\kkk\) is algebraically closed, \(E(a,s) \setminus \bigcup_{i=1}^n E(c_i,\varepsilon s) \neq \emptyset\).
+        Choose \(b\) in the set.
+        Then we have 
+        \[ |f(b)| \geq \prod_{i=1}^n \varepsilon |T - c_i|_x = \varepsilon^n |f|_x. \]
+        Thus \(|f|_x = \sup_{b \in E} |f(b)|\) for each polynomial \(f \in \kkk[T]\).
+        Since polynomials are dense in \(\kkk\{r^{-1}T\}\), we have \(|f|_x = \sup_{b \in E} |f(b)|\) for each \(f \in \kkk\{r^{-1}T\}\).
+        Therefore, \(x\) is the point \(x_E = x_{a,s}\), which is of type II or type III depending on whether \(s \in |\kkk^\times|\) or not.
+
+        \begin{case}\label{case_in_proof_of_four_type_points:point_type_IV}
+            \(E = \emptyset\).
+        \end{case}
+
+        Set \(E_n = \{a \in \kkk : |T - a|_x \leq s + 1/n\}\) and \(a_n \in E_n\) for each \(n \in \bbN\).
+        By the similar argument as in \cref{case_in_proof_of_four_type_points:point_type_II_and_III}, we have \(E_n = E(a_n, s + 1/n)\).
+        Note that \(E_n\) is a decreasing sequence of closed disks with \(\bigcap_n E_n = E = \emptyset\).
+        
+        For \(c \in \kkk\), there exists \(N\) such that \(\forall n \geq N\), we have
+        \[ c \notin E_n \implies |T - c|_x > |T - a_n|_x \implies |T - c|_x = |a_n - c|. \]
+        Thus
+        \[ \inf_n |T-c|_{E_n} = \inf_n |a_n - c| = |T - c|_x. \]
+        By multiplicativity, we have \(\inf_n |f|_{E_n} = |f|_x\) for each polynomial \(f \in \kkk[T]\).
+        And then by density of polynomials, the equality holds for each \(f \in \kkk\{r^{-1}T\}\).
+        Therefore, \(x = x_{\{E_n\}} = x_{\{a_n,s_n\}}\) is of type IV.
+        % \Yang{To be completed.}
+    \end{proof}
+
+    \begin{proposition}\label{prop:the_complete_residue_field_of_all_four_types_points_in__spectrum_of_Tate_algebra_in_one_variable}
+        The completed residue fields of the four types of points in the spectrum \(\scrM(\kk\{r^{-1}T\})\) are described as follows:
+        \begin{itemize}
+            \item type I point \(x_a\): \(\scrH(x_a)\) is isomorphic to \(\kkk\);
+            \item type II point \(x_{a,s}\): \(\scrH(x_{a,s}) \cong \calk_\kkk((t))\);
+            \item type III point \(x_{a,s}\): \(\calk_{\scrH(x_{a,s})} \cong \calk_\kkk\) and the value group \(|\scrH(x_{a,s})^\times|\) is generated by \(|\kkk^\times|\) and \(s\);
+            \item type IV point \(x_{\{a_n,s_n\}}\): \(\scrH(x_{\{a_n,s_n\}})\) is an immediate extension of \(\kkk\).
+        \end{itemize}
+        \Yang{To be checked.}
     \end{proposition}
     \begin{proof}
         \Yang{To be completed.}
     \end{proof}
 
-    \begin{proposition}\label{prop:the_complete_residue_field_of_all_four_types_points_in__spectrum_of_Tate_algebra_in_one_variable}
-        % Let \(\kk\) be a complete non-archimedean field, and let \(r > 0\) be a positive real number.
-        % Consider the Tate algebra \(\kk\{r^{-1}T\}\) equipped with the Gauss norm.
-        The completed residue fields of the four types of points in the spectrum \(\scrM(\kk\{r^{-1}T\})\) are described as follows:
-        \begin{itemize}
-            \item type I point \(x_a\): \(\scrH(x_a)\) is isomorphic to \(\kk\);
-            \item type II point \(x_{a,s}\): \(\scrH(x_{a,s}) \cong \calk_\kk((t))\);
-            \item type III point \(x_{a,s}\): \(\calk_{\scrH(x_{a,s})} \cong \calk_\kk\) and the value group \(|\scrH(x_{a,s})^\times|\) is generated by \(|\kk^\times|\) and \(s\);
-            \item type IV point \(x_{\{E^{(s)}\}}\): \(\scrH(x_{\{E^{(s)}\}})\) is an immediate extension of \(\kk\).
-        \end{itemize}
-        \Yang{To be checked.}
-    \end{proposition}
-
-    \begin{example}\label{eg:completed_residue_field_in_spectrum_of_Tate_algebra_in_one_variable_over_Q_p}
-        The completed residue field \(\scrH(x_a)\) for a type I point \(x_a\) with \(a \in \kk\) and \(|a| \leq r\) is isomorphic to \(\kk\).
+    \begin{example}\label{eg:completed_residue_field_of_type_III_and_IV_points_in_spectrum_of_Tate_algebra_in_one_variable}
+        The completed residue field \(\scrH(x_a)\) for a type I point \(x_a\) with \(a \in \kkk\) and \(|a| \leq r\) is isomorphic to \(\kkk\).
         \Yang{To be complete.}
     \end{example}
 
-    \paragraph{Spectrum of Tate algebra in servel variables} Let \(\kk\) be a complete non-archimedean field, and let \(A = \kk\{r_1^{-1}T_1, \ldots, r_n^{-1}T_n\}\).
+    \paragraph{Spectrum of Tate algebra in servel variables} Let \(\kkk\) be a complete non-archimedean field, and let \(A = \kkk\{r_1^{-1}T_1, \ldots, r_n^{-1}T_n\}\).
     We can consider the spectrum \(\scrM(A)\) similarly.
