@@ -50,12 +50,12 @@
     \end{remark}
 
     \begin{definition}\label{def:residue_semi-norm}
-        Let \(M\) be a semi-normed abelian group (or ring, \(R\)-module, \(R\)-algebra) and \(N \subseteq M\) be a subgroup (or ideal, \(R\)-submodule, ideal).
+        Let \(M\) be a semi-normed abelian group (or \(R\)-module) and \(N \subseteq M\) be a subgroup (or \(R\)-submodule).
         The \emph{residue semi-norm} on the quotient group \(M/N\) is defined as
         \[
             \|x + N\|_{M/N} = \inf_{y \in N} \|x + y\|_M.
         \]
-        For case of rings or \(R\)-algebras, we multiply a constant to make sure that \(\|1 + N\|_{M/N} = 1\) if necessary.
+        % For case of rings or \(R\)-algebras, we multiply a constant to make sure that \(\|1 + N\|_{M/N} = 1\) if necessary.
     \end{definition}
 
     Unless otherwise specified, we always equip the quotient \(M/N\) with the residue semi-norm.
@@ -108,6 +108,30 @@
         A \emph{banach ring} is a complete normed ring.
     \end{definition}
 
+    \begin{proposition}\label{prop:residue_norm_is_a_norm_for_banach_rings}
+        Let \(R\) be a banach ring and \(I \subseteq R\) be a closed ideal.
+        Then the residue norm on the quotient ring \(R/I\) is a norm for rings.
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be added.}
+    \end{proof}
+
+    \begin{proposition}\label{prop:invertible_elements_form_an_open_subset_of_banach_rings}
+        Let \(R\) be a banach ring.
+        Then the group of invertible elements \(R^\times\) is an open subset of \(R\).
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be added.}
+    \end{proof}
+
+    \begin{corollary}\label{prop:maximal_ideal_of_banach_ring_is_closed}
+        Let \(R\) be a banach ring.
+        Then every maximal ideal of \(R\) is closed.
+    \end{corollary}
+    \begin{proof}
+        \Yang{To be added.}
+    \end{proof}
+
     \begin{definition}\label{def:completion_of_normed_algebraic_structures}
         Let \((A, \|\cdot\|_A)\) be a normed algebraic structure, e.g., a normed abelian group, a normed ring, or a normed module.
         The \emph{completion} of \(A\), denoted by \(\widehat{A}\), is the completion of \(A\) as a metric space.
@@ -126,15 +150,15 @@
         The \emph{complete tensor product} \(M \widehat{\otimes}_R N\) is defined as the completion of the semi-normed \(R\)-module \(M \otimes_R N\).
     \end{definition}
 
-    \begin{example}\label{eg:ring_of_absolutely_convergent_power_series_as_banach_rings}
+    \begin{construction}\label{eg:ring_of_absolutely_convergent_power_series_as_banach_rings}
         Let \(R\) be a banach ring and \(r > 0\) be a real number.
-        We define the ring of absolutely convergent power series over \(\kk\) with radius \(r\) as
+        We define the \emph{ring of absolutely convergent power series} over \(\kk\) with radius \(r\) as
         \[ R\left<T/r\right> \coloneqq \left\{\sum_{n=0}^{\infty} a_n T^n \in R[[T]] : \sum_{n=0}^{\infty} \|a_n\| r^n < \infty \right\}. \]
         Equipped with the norm \(\|\sum_{n=0}^{\infty} a_n T^n\| = \sum_{n=0}^{\infty} \|a_n\| r^n\), the ring \(R\left<T/r\right>\) is a banach ring.
 
         When \(R = \kk\) is a 
         \Yang{To be checked.}
-    \end{example}
+    \end{construction}
 
     \begin{example}\label{eg:}
         \Yang{Example of complete tensor product.}
@@ -151,7 +175,7 @@
         \]
     \end{definition}
 
-    Since \(\|\cdot\|\) is submultiplicative, the limit defining \(\rho(f)\) exists and equals to \(\inf_{n \geq 1} \|f^n\|^{1/n}\) by Fekete's Subadditive Lemma
+    Since \(\|\cdot\|\) is submultiplicative, the limit defining \(\rho(f)\) exists and equals to \(\inf_{n \geq 1} \|f^n\|^{1/n}\) by Fekete's Subadditive Lemma.
 
     \begin{proposition}\label{prop:spectral_radius_defines_a_power-multiplicative_semi-norm}
         Let \((R,\|\cdot\|)\) be a banach ring.
@@ -200,7 +224,7 @@
     \Yang{To be continued...}
     
 
-\subsection{Tate algebras}
+\subsection{Non-archimedean case}
 
      \begin{notation}\label{notation:mult-label_for_Tate_algebra}
         Let \(T = (T_1, \ldots, T_n)\) be a tuple of \(n\) indeterminates, \(r = (r_1, \ldots, r_n)\) be a tuple of \(n\) positive real numbers, and \(\alpha = (\alpha_1, \ldots, \alpha_n) \in \bbN^n\) be a multi-index.
@@ -305,29 +329,56 @@
         % \Yang{To be checked, the original version is for a field.}
     \end{proof}
 
-    \begin{proposition}\label{prop:restricted_power_series_invertible_iff_the_constant_item_is_invertible_and_controls_others}
+    % \subsection{Reduction}
+ 
+    \begin{definition}\label{def:reduction_ring_of_nonarchimedean_banach_ring}
         Let \(R\) be a non-archimedean banach ring.
-        An element \(f = \sum_{\alpha \in \bbN^n} a_\alpha T^\alpha \in R\{ \underline{T/r} \} \) is invertible if and only if \(a_0\) is invertible in \(R\) and \(\|a_0\| > \|a_\alpha\| r^\alpha\) for all \(\alpha \neq 0\).
-        % \Yang{To be checked.}
-    \end{proposition}
-    \begin{proof}
-        Multiplying by \(a_0^{-1}\), we can reduce to the case \(a_0 = 1\).
-        Let \(g = \sum_{\alpha \in \bbN^n} b_\alpha T^\alpha\) be the inverse of \(f\) in \(R[[\underline{T}]]\).
+        We define 
+        \[
+            R^\circ = \{ f \in R : \rho(f) \leq 1 \}, \quad R^{\circ \circ} = \{ f \in R : \rho(f) < 1 \}.
+        \]
+        The \emph{reduction} of \(R\) is defined as the quotient ring
+        \[ \widetilde{R} = R^\circ / R^{\circ \circ}. \]
+    \end{definition}
+
+    For a non-archimedean field \(\kk\), its reduction ring \(\widetilde{\kk} = \calk_\kk\) is just the residue field of its valuation ring.
+
+    \begin{example}\label{eg:reduction_ring_of_trivial_normed_rings}
+        Let \(R\) be a ring equipped with the trivial norm.
+        Then we have \(R^\circ = R\) and \(R^{\circ \circ} = \nil(R)\).
+    \end{example}
+
+    \begin{example}\label{eg:reduction_ring_of_standard_tate_algebra_over_a_banach_ring}
+        Let \(R\) be a non-archimedean banach ring and \(A = R\{T\}\) be the Tate algebra in one variable over \(R\).
+        %  field and \(A = \kk\{ \underline{T} \}\) be a Tate algebra over \(\kk\).
         Then we have
-        \[ f \cdot g = \sum_{\alpha \in \bbN^n} a_\alpha T^\alpha \cdot \sum_{\beta \in \bbN^n} b_\beta T^\beta = \sum_{\gamma \in \bbN^n} \left( \sum_{\alpha + \beta = \gamma} a_\alpha b_\beta \right) T^\gamma = 1. \]
-        That is, for every \(\gamma \neq 0 \in \bbN^n\),
-        \[ b_{\gamma} = - \sum_{\substack{\alpha + \beta = \gamma \\ \alpha \neq 0}} a_\alpha b_\beta. \]
-        Let \(A = \|f-1\| < 1\).
-        We show that for every \(m \in \bbN\), there exists \(C_m > 0\) such that for all \(\alpha \in \bbN^n\) with \(|\alpha| \geq C_m\), we have \(\|b_\alpha\| r^\alpha \leq A^m\).
-        For \(m = 0\), note that \(b_0 = 1\).
-        By induction on \(\gamma\) with respect to the total order \(\leq_{\text{total}}\), we have
-        \[ \|b_\gamma\| r^\gamma \leq \max_{\substack{\alpha + \beta = \gamma \\ \alpha \neq 0}} \|a_\alpha\| r^\alpha \cdot \|b_\beta\| r^\beta \leq A \max_{\beta <_{\text{total}} \gamma} \|b_\beta\| r^\beta \leq 1. \]
-        Suppose that the claim holds for \(m\).
-        There exists \(D_{m+1} \in \bbN\) such that for all \(\alpha \in \bbN^n\) with \(|\alpha| \geq D_{m+1}\), we have \(\|a_\alpha\| r^\alpha \leq A^{m+1}\).
-        Set \(C_{m+1} = C_m + D_{m+1} + 1\).
-        For any \(\gamma \in \bbN^n\) with \(|\gamma| \geq C_{m+1}\), we have
-        \[ \|b_\gamma\| r^\gamma \leq \max_{\substack{\alpha + \beta = \gamma \\ \alpha \neq 0}} \|a_\alpha\| r^\alpha \cdot \|b_\beta\| r^\beta \leq \max \left\{ A^{m+1}, A \cdot A^m \right\} = A^{m+1} \]
-        since either \(|\alpha| \geq D_{m+1}\) or \(|\beta| \geq C_m\).
-        Thus by induction, we have \(\|b_\alpha\| r^\alpha \to 0\) as \(|\alpha| \to +\infty\).
-        It follows that \(g \in R\{ \underline{T/r} \} \).
-    \end{proof}
+        \[ A^\circ = \left\{ \sum_{n\geq 0} a_n T^n : |a_n| \leq 1 \text{ for all } n \in \bbN \right\}  = R^\circ \{ T \}, \]
+        and
+        \[ A^{\circ \circ} = \left\{ \sum_{n\geq 0} a_n T^n : |a_n| < 1 \text{ for all } n \in \bbN \right\}  = R^{\circ \circ} \{ T \}. \]
+        Since the norm of items in a restricted power series will tend to \(0\), we have
+        \[ \widetilde{A} = \widetilde{R} [\underline{T}]. \] 
+    \end{example}
+
+
+    \begin{example}\label{eg:reduction_ring_of_general_tate_algebra_over_a_banach_ring}
+        Let \(R\) is a multiplicative non-archimedean banach ring.
+        Set 
+        \[\sqrt{|R|^{-1}} = \{ r \in \bbR_{>0} : r^{-n} \in |R| \text{ for some } n \in \bbN_{>0} \}.\]
+        Fix \(r \in \bbR_{>0}^n\), consider the Tate algebra \(A = R\{T/r\}\).
+        
+        Suppose that \(r \in \sqrt{|R|^{-1}}\).
+        Let \(n\) be the minimal positive integer such that \(r^n \in |R|^{-1}\) and 
+        \[ \widetilde{M}_k:=\{a \in R: |a| = r^{-nk}\}/\{a \in R: |a| < r^{-nk}\}. \]
+        For \(a_m T^m\) with \(n \not\mid m\), we have\( \|a_m T^m\| = |a_m| r^m \leq 1 \implies |a_m|r^m < 1\).
+        Hence 
+        \[ \widetilde{R\{T/r\}} = \widetilde{R} \oplus \widetilde{M}_1 T^n \oplus \widetilde{M}_2 T^{2n} \oplus \widetilde{M}_3 T^{3n} \oplus \cdots. \]
+        In case \(R = \kk\) is a non-archimedean field, we have \(\widetilde{M}_k \cong \widetilde{\kk}\) by choosing an element \(c \in \kk\) with \(|c| = r^{-n}\).
+        Hence 
+        \[ \widetilde{\kk\{T/r\}} \cong \calk_\kk[T^n]. \]
+
+        Suppose that \(r \notin \sqrt{|R|^{-1}}\).
+        Then for every \(\|a_n T^n\| = a_n r^n \leq 1\), we have \(|a_n| < 1\).
+        It follows that
+        \[ \widetilde{R\{T/r\}} = \widetilde{R}. \]
+        % \Yang{To be continued.}
+    \end{example}
