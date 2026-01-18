@@ -147,6 +147,17 @@
         For each \(x \in \scrM(R)\), the \emph{completed residue field} at the point \(x\) is defined as the completion of the residue field \(\rkk(x) = \Frac(R/\wp_x)\) with respect to the multiplicative norm induced by the semi-norm \(|\cdot|_x\), denoted by \(\scrH(x)\).
     \end{definition}
 
+    \begin{example}\label{eg:completed_residue_field_of_Z}
+        Consider the Banach ring \((\bbZ, |\cdot|_\infty)\) as in \cref{eg:spectrum_of_Z_with_absolute_value_norm}.
+        We have 
+        \begin{itemize}
+            \item \(x = |\cdot|_\infty^\varepsilon\) for some \(\varepsilon \in (0,1]\): \(\wp_x = (0)\) and \(\scrH(x) \cong \bbR\) with the absolute value norm raised to the power \(\varepsilon\);
+            \item \(x = |\cdot|_0\): \(\wp_x = (0)\) and \(\scrH(x) \cong \bbQ\) with the trivial norm;
+            \item \(x = |\cdot|_p^\alpha\) for some prime number \(p\) and \(\alpha \in (0,\infty)\): \(\wp_x = (0)\) and \(\scrH(x) \cong \bbQ_p\) with the \(p\)-adic norm raised to the power \(\alpha\);
+            \item \(x = |\cdot|_p^\infty\) for some prime number \(p\): \(\wp_x = (p)\) and \(\scrH(x) \cong \bbF_p\) with the trivial norm.
+        \end{itemize}
+    \end{example}
+
     \begin{definition}\label{def:Gelfand_transform_of_banach_rings}
         Let \(R\) be a Banach ring.
         The \emph{Gel'fand transform} of \(R\) is the bounded ring homomorphism
@@ -242,10 +253,10 @@
     \end{example}
 
     \Yang{Is this surjective? what is its fiber?}
-    
-    \begin{example}\label{eg:Berkovich_spectrum_of_Tate_algebra_1_dim_under_reduction_map}
-        Let \(\kkk\) be a complete algebraically closed non-archimedean field.
-    \end{example}
+
+    \begin{proposition}\label{prop:kernel_map_of_affinoid_algebras}
+        \Yang{To be added.}
+    \end{proposition}
 
 
     \begin{construction}\label{cons:reduction_map_from_spectrum_of_Banach_rings_to_spectrum_of_residue_ring}
@@ -258,17 +269,63 @@
 
     \begin{example}\label{eg:Z_with_trivial_norm_under_the_reduction_map}
         Let \((\bbZ, |\cdot|_0)\) be the Banach ring with the trivial norm.
-        \Yang{To be continued.}
-    \end{example}
+        The reduction ring is \(\widetilde{\bbZ} = \bbZ\).
+        \begin{itemize}
+            \item \(x = |\cdot|_p^\alpha\) for some prime number \(p\) and \(\alpha \in (0,\infty]\): \(\calk_{\scrH(x)} \cong \bbF_p\) and the induced homomorphism \(\widetilde{\bbZ} = \bbZ \to \calk_{\scrH(x)} = \bbF_p\) is the natural projection \(\bbZ \to \bbF_p\);
+            \item \(x = |\cdot|_0\): \(\calk_{\scrH(x)} \cong \bbQ\) and the induced homomorphism \(\widetilde{\bbZ} = \bbZ \to \calk_{\scrH(x)} = \bbQ\) is the natural inclusion \(\bbZ \to \bbQ\).
+        \end{itemize}
+        The following diagram illustrates the reduction map and the kernel map for the spectrum \(\scrM(\bbZ, |\cdot|_0)\):
+        \begin{center}
+        \usetikzlibrary{positioning}
+        \begin{tikzpicture}[scale=1, every node/.style={font=\small}]
+            % M(Z) points
+            \node (MZ) at (0,1) {\(\scrM(\bbZ, |\cdot|_0)\)};
+            %% trivial norm (root)
+            \node[circle, fill=cyan,inner sep=1pt, label=above:{\(|\cdot|_0\)}] (root) at (0,0) {};
+            %% non-archimedean branches
+            \foreach \p/\n in {2/1,3/2,5/3,7/4,11/5} {
+                \node[circle, fill=blue, inner sep=1pt, label=below:{\(|\cdot|_{\p}^\infty\)}] (p_top_\p) at (-3 + \n,-2) {};
+                \draw (root) -- (p_top_\p);
+            }
 
-    \begin{example}\label{eg:Tate_algebra_in_1_variable_under_reduction_map}
-        Let \(\kkk\) be a complete algebraically closed non-archimedean field and \(A = \kkk\{T/r\}\).
-        We have \(\widetilde{A} \cong \calk_\kkk[T]\).
-        For a point \(x_a \in \scrM(A)\) of type I corresponding to \(a \in \kkk\) with \(|a| \leq r\) (see \cref{cons:four_types_of_points_in_spectrum_of_Tate_algebra_in_one_variable}), 
-        the induced homomorphism \(\widetilde{A} = \calk_\kkk[T] \to \calk_{\scrH(x_a)} = \calk_\kkk\) is given by \(T \mapsto a \mod \kkk^{\circ \circ}\).
+            % Spec(Z) points, left side
+            \node (SpecZ_left) at (-6,1) {\(\Spec(\bbZ)\)};
+            %% generic point
+            \node[circle, fill=cyan,inner sep=1pt, label=left:{\((0)\)}] (root) at (-6,0) {};
+            %% special points
+            \foreach \p/\n in {2/1,3/2,5/3,7/4,11/5} {
+                \node[circle, fill=blue, inner sep=1pt, label=below:{\((\p)\)}] (p_top_\p) at (-9 + \n,-2) {};
+                % \draw (root) -- (p_top_\p);
+            }
 
+            % Spec(Z) points, right side
+            \node (SpecZ_right) at (6,1) {\(\Spec(\bbZ)\)};
+            %% generic point
+            \node[circle, fill=cyan,inner sep=1pt, label=right:{\((0)\)}] (root) at (6,0) {};
+            %% special points
+            \foreach \p/\n in {2/1,3/2,5/3,7/4,11/5} {
+                \node[circle, fill=blue, inner sep=1pt, label=below:{\((\p)\)}] (p_top_\p) at (3 + \n,-2) {};
+                % \draw (root) -- (p_top_\p);
+            }
 
-        \Yang{To be continued.}
+            % map arrows
+            \draw[->] (MZ) -- (SpecZ_left) node[midway, above] {\(\Red\)};
+            \draw[->] (MZ) -- (SpecZ_right) node[midway, above] {\(\Ker\)};
+
+            % reduction map, maps to closed points
+            \fill[blue!20,opacity=0.4] (-0.1,-0.1) to[bend right] (-8,-2) to[bend left] (-2,-2) -- cycle;
+            \draw[->] (-0.1,-0.1) to[bend right] (-8,-2);
+            \draw[->] (-2,-2) to[bend right] (-8,-2);
+            \node at (-3,-0.7) {\(|\cdot|_p^\alpha \mapsto (p)\)};
+
+            % kernel map, maps to generic point
+            \fill[cyan!20,opacity=0.4] (0,0) to[bend right] (6,0) to[bend left] (1.9,-1.9) -- cycle;
+            \draw[->] (0,0) to[bend right] (6,0);
+            \draw[->] (1.9,-1.9) to[bend right] (6,0);
+            \node at (3,-1.3) {\(|\cdot|_p^\alpha \mapsto (0)\)};
+        \end{tikzpicture}
+        \end{center}
+        % \Yang{To be continued.}
     \end{example}
 
     \begin{proposition}\label{prop:reduction_map_inverse_open_subset_to_closed_subset}
@@ -381,6 +438,15 @@
     \begin{example}\label{eg:completed_residue_field_of_type_III_and_IV_points_in_spectrum_of_Tate_algebra_in_one_variable}
         The completed residue field \(\scrH(x_a)\) for a type I point \(x_a\) with \(a \in \kkk\) and \(|a| \leq r\) is isomorphic to \(\kkk\).
         \Yang{To be complete.}
+    \end{example}
+
+    \begin{example}\label{eg:Tate_algebra_in_1_variable_under_reduction_map}
+        Let \(\kkk\) be a complete algebraically closed non-archimedean field and \(A = \kkk\{T/r\}\).
+        We have \(\widetilde{A} \cong \calk_\kkk[T]\).
+        For a point \(x_a \in \scrM(A)\) of type I corresponding to \(a \in \kkk\) with \(|a| \leq r\) (see \cref{cons:four_types_of_points_in_spectrum_of_Tate_algebra_in_one_variable}), 
+        the induced homomorphism \(\widetilde{A} = \calk_\kkk[T] \to \calk_{\scrH(x_a)} = \calk_\kkk\) is given by \(T \mapsto a \mod \kkk^{\circ \circ}\).
+
+        \Yang{To be continued.}
     \end{example}
 
     \paragraph{Spectrum of Tate algebra in servel variables} Let \(\kkk\) be a complete non-archimedean field, and let \(A = \kkk\{r_1^{-1}T_1, \ldots, r_n^{-1}T_n\}\).
