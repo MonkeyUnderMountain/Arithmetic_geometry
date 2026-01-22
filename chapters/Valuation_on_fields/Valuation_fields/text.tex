@@ -56,10 +56,11 @@
         Then the operations of addition and multiplication on \(\kk\) can be extended to \(\widehat{\kk}\) uniquely, making \((\widehat{\kk},\|\cdot\|)\) a complete valuation field containing \(\kk\) as a dense subfield.
     \end{lemma}
     \begin{proof}
-        Simple analysis.
+        Note that the operations of addition and multiplication on \(\kk\) are uniformly continuous with respect to the metric \(d(x,y) = \|x - y\|\).
+        Thus they can be extended to \(\widehat{\kk}\) uniquely.
     \end{proof}
 
-        \begin{proposition}\label{prop:non-trivial_complete_field_is_uncountable}
+    \begin{proposition}\label{prop:non-trivial_complete_field_is_uncountable}
         Let \((\kk,\|\cdot\|)\) be a complete valuation field with non-trivial absolute value.
         Then \(\kk\) is uncountable.
     \end{proposition}
@@ -109,11 +110,20 @@
         Otherwise, we say that \(\kk\) is \emph{archimedean}.
     \end{definition}
 
+    \begin{example}\label{eg:archimedean_absolute_value_and_additive_valuation}
+        Let \(v\) be an additive valuation on a field \(\kk\).
+        Then the induced absolute value \(|\cdot|_v\) as in \cref{rmk:additive_and_multiplicative_valuation_on_a_field} is non-archimedean.
+
+        The converse is also true: if \((\kk, |\cdot|)\) is a non-archimedean valuation field, 
+        then the function \(v: \kk^\times \to \bbR\) defined by \(v(x) = -\log |x|\) is an additive valuation on \(\kk\).
+    \end{example}
+
     \begin{proposition}\label{prop:archimedean_iff_integer_are_unbound}
-        Let \((\kk,\|\cdot\|)\) be a valuation field.
-        Then \(\kk\) is archimedean if and only if the set \(\{\|n \cdot 1\|\colon n \in \bbZ\}\) is unbounded.
+        Let \((\kk,|\cdot|)\) be a valuation field.
+        Then \(\kk\) is archimedean if and only if the set \(\{|n \cdot 1|\colon n \in \bbZ\}\) is unbounded.
     \end{proposition}
     \begin{proof}
+        Sufficiency is obvious.
         \Yang{To be added.}
     \end{proof}
 
@@ -162,24 +172,83 @@
         Then we have \(\|z\|_2 < 1\) and \(\|z\|_1 > 1\), a contradiction.
     \end{proof}
 
-    \begin{definition}\label{def:place_on_a_field}
-        Let \(\kk\) be a field.
-        A \emph{place} on \(\kk\) is an equivalence class of absolute values on \(\kk\).
-        We denote the set of all places on \(\kk\) by \(\upoperatorname{Pl}_\kk\).
-    \end{definition}
-
-    \begin{theorem}\label{thm:classification_of_archimedean_complete_fields}
+        
+    \begin{theorem}[Ostrowski]\label{thm:classification_of_archimedean_complete_fields}
         Let \((\kk,\|\cdot\|)\) be an archimedean complete valuation field.
         Then \(\kk\) is isomorphic to either the real number field \(\bbR\) or the complex number field \(\bbC\) equipped with the usual absolute value.
-        \Yang{To be revised.}
+        % \Yang{To be revised.}
     \end{theorem}
     \begin{proof}
         \Yang{To be added.}
     \end{proof}
 
-    \begin{theorem}[Ostrowski's theorem]\label{theorem:ostrowski_theorem}
+    \begin{definition}\label{def:place_on_a_field}
+        Let \(\kk\) be a field.
+        A \emph{place} on \(\kk\) is an equivalence class of non-trivial absolute values on \(\kk\).
+        An archimedean (resp. non-archimedean) place is also called an \emph{finite} (resp. \emph{infinite}) place.
+        We denote the set of all places (resp. finite, infinite places) on \(\kk\) by \(M_\kk\) (resp. \(M_\kk^f\), \(M_\kk^\infty\)).
+        
+        If \(\bfl \subset \kk\) is a subfield, we denote by \(M_{\kk/\bfl}\) (resp. \(M_{\kk/\bfl}^f\), \(M_{\kk/\bfl}^\infty\)) the set of all places (resp. finite, infinite places) on \(\kk\) which are trivial on \(\bfl\).
+    \end{definition}
+
+    \begin{example}\label{eg:relative_place_set_of_C_t}
+        Let \(\kk = \bbC(t)\) and \(\bfl = \bbC\).
+        Then I claim that
+        \[ M_{\bbC(t)/\bbC} \cong \{\text{ prime divisors on } \bbP_\bbC^1\}. \]
+        For each prime divisor \(P\) on \(\bbP_\bbC^1\), we can define an additive valuation \(\Mult_P: \bbC(t)^\times \to \bbZ\) by assigning to each non-zero rational function \(f \in \bbC(t)^\times\) its multiplicity at \(P\).
+        Fix a real number \(\varepsilon \in (0,1)\).
+        Then we obtain a multiplicative valuation (absolute value) \(|\cdot|_P\) on \(\bbC(t)\) as in \cref{rmk:additive_and_multiplicative_valuation_on_a_field}.
+        It is easy to check that the absolute value \(|\cdot|_P\) is trivial on \(\bbC\) and that different prime divisors give rise to inequivalent absolute values.
+
+        Conversely, given any non-trivial absolute value \(|\cdot|\) on \(\bbC(t)\) which is trivial on \(\bbC\), by \cref{prop:archimedean_iff_integer_are_unbound,eg:archimedean_absolute_value_and_additive_valuation}, 
+        the absolute value \(|\cdot|\) is given by an additive valuation \(v: \bbC(t)^\times \to \bbR\).
+        Let \(\calO_v\) be the valuation ring of \(v\) and \(\frakm_v\) its maximal ideal.
+        Then \(t \in \calO_v\) or \(t^{-1} \in \calO_v\).
+        Without loss of generality, we assume that \(t \in \calO_v\).
+        Since \(|\cdot|\) is trivial on \(\bbC\), we have \(\bbC[t] \subseteq \calO_v\).
+        And we have \(\frakm_v \cap \bbC[t] \neq 0\) since otherwise \(v\) is trivial on \(\bbC[t]^\times\) and thus on \(\bbC(t)^\times\).
+        It follows that the image of \(\bbC[t]\) under the quotient map \(\calO_v \to \calO_v/\frakm_v\) is \(\bbC\).
+        This gives a point \(P \in \bbA_\bbC^1 \subseteq \bbP_\bbC^1\).
+        Then \(v\) is different from the additive valuation \(\Mult_P\) by a positive scalar multiple via looking at the values on \(\bbC[t]\).
+        Thus we have established the claimed bijection.
+    \end{example} 
+
+    \begin{theorem}[Ostrowski]\label{theorem:ostrowski_theorem}
         Every nontrivial absolute value on \(\bbQ\) is equivalent to either the usual absolute value \(|\cdot|_\infty\) or a \(p\)-adic absolute value \(|\cdot|_p\) for some prime number \(p\).
-        \Yang{To be revised.}
+        In other words, 
+        \[ M_\bbQ = \{|\cdot|_\infty\} \cup \{| \cdot |_p : p \text{ is a prime number}\}. \]
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be added.}
+    \end{proof}
+
+    \begin{remark}\label{rmk:normalized_place_on_Q}
+        For every non-archimedean place \(v\) on \(\bbQ\) corresponding to a prime number \(p\), 
+        we choose the unique normalized absolute value \(|\cdot|_v\) in the class \(v\) such that \(|p|_v = 1/p\).
+        For the archimedean place \(v\) on \(\bbQ\), we choose the usual absolute value \(|\cdot|_v = |\cdot|_\infty\).
+        Unless otherwise specified, we always use the normalized absolute values on \(\bbQ\).
+    \end{remark}
+
+    \begin{remark}\label{rmk:product_formula_on_Q}
+        For any non-zero rational number \(x \in \bbQ^\times\), one can easily check the \emph{product formula}:
+        \[ \prod_{v \in M_\bbQ} |x|_v = 1. \]
+        This can be viewed as an arithmetic analogue of the fact on \(\bbP_\bbC^1\) that 
+        \[ \sum_{P \in \bbP^1(\bbC)} \Mult_P(f) = 0 \]
+        for any non-zero rational function \(f \in \bbC(t)^\times\).
+        Indeed, fix a real number \(\varepsilon \in (0,1)\).
+        Then by \cref{eg:relative_place_set_of_C_t}, above fact can be rewritten as
+        \[ \prod_{P \in \bbP_\bbC^1} |f|_P = 1. \]
+    \end{remark}
+    
+    \begin{theorem}[Artin-Whaples approximations]\label{theorem:artin_whaples_approximations}
+        Let \(\kk\) be a field and \(v_1, v_2, \ldots, v_n \in M_\kk\) be pairwise distinct places on \(\kk\).
+        For each \(i \in \{1,2,\ldots,n\}\), let \(x_i \in \kk\) and \(\varepsilon_i > 0\).
+        Then there exists an element \(x \in \kk\) such that
+        \[ |x - x_i|_{v_i} < \varepsilon_i, \quad \forall i \in \{1,2,\ldots,n\}. \]
+        In particular, the image of the diagonal embedding
+        \[ \kk \to \prod_{i=1}^n \kk_{v_i} \]
+        is dense, where \(\kk_{v_i}\) is the completion of \(\kk\) with respect to the place \(v_i\).
+        % \Yang{To be checked.}
     \end{theorem}
     \begin{proof}
         \Yang{To be added.}
