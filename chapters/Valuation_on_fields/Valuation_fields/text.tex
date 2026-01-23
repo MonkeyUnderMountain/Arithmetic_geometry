@@ -118,12 +118,25 @@
         then the function \(v: \kk^\times \to \bbR\) defined by \(v(x) = -\log |x|\) is an additive valuation on \(\kk\).
     \end{example}
 
+    The following proposition explains the terminology "archimedean".
+
     \begin{proposition}\label{prop:archimedean_iff_integer_are_unbound}
         Let \((\kk,|\cdot|)\) be a valuation field.
         Then \(\kk\) is archimedean if and only if the set \(\{|n \cdot 1|\colon n \in \bbZ\}\) is unbounded.
     \end{proposition}
     \begin{proof}
         Sufficiency is obvious.
+        \Yang{To be added.}
+    \end{proof}
+            
+    \begin{theorem}[Ostrowski]\label{thm:classification_of_archimedean_complete_fields}
+        Let \((\kk,\|\cdot\|)\) be an archimedean complete valuation field.
+        Then there exists an embedding \(\iota: \kk \hookrightarrow \bbC\) and \(s \in (0, \infty)\) such that
+        \[ \|x\| = |\iota(x)|^s, \quad \forall x \in \kk, \]
+        where \(|\cdot|\) is the usual absolute value on \(\bbC\).
+        In other words, complete archimedean valuation fields are equivalent to either \(\bbR\) or \(\bbC\) equipped with usual absolute value (see \cref{def:equivalent_of_absolute_values}).
+    \end{theorem}
+    \begin{proof}
         \Yang{To be added.}
     \end{proof}
 
@@ -170,16 +183,6 @@
         Thus \(\Lambda\) is non-empty.
         Pick \((n,m) \in \Lambda\) and set \(z := x^n y^{-m}\).
         Then we have \(\|z\|_2 < 1\) and \(\|z\|_1 > 1\), a contradiction.
-    \end{proof}
-
-        
-    \begin{theorem}[Ostrowski]\label{thm:classification_of_archimedean_complete_fields}
-        Let \((\kk,\|\cdot\|)\) be an archimedean complete valuation field.
-        Then \(\kk\) is isomorphic to either the real number field \(\bbR\) or the complex number field \(\bbC\) equipped with the usual absolute value.
-        % \Yang{To be revised.}
-    \end{theorem}
-    \begin{proof}
-        \Yang{To be added.}
     \end{proof}
 
     \begin{definition}\label{def:place_on_a_field}
@@ -247,8 +250,7 @@
         \[ |x - x_i|_{v_i} < \varepsilon_i, \quad \forall i \in \{1,2,\ldots,n\}. \]
         In particular, the image of the diagonal embedding
         \[ \kk \to \prod_{i=1}^n \kk_{v_i} \]
-        is dense, where \(\kk_{v_i}\) is the completion of \(\kk\) with respect to the place \(v_i\).
-        % \Yang{To be checked.}
+        is dense, where \(\kk_{v_i}\) is the completion of \(\kk\) with respect to the place \(v_i\), and the product is equipped with the product topology.
     \end{theorem}
     \begin{proof}
         \Yang{To be added.}
