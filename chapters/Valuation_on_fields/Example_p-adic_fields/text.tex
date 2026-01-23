@@ -25,13 +25,16 @@
         The operations of addition and multiplication on \(\bbQ_p\) are defined similarly as those on decimal expansions.
     \end{example}
 
+    Easily see that \(|\bbQ_p^\times|_p = p^\bbZ\) and \(\calk_{\bbQ_p} \cong \bbF_p\).
+
     Unlike the field of real numbers \(\bbR\), the \(p\)-adic field \(\bbQ_p\) has many finite extensions.
 
     \begin{proposition}\label{prop:irreducible_polynomial_over_Q_p}
-        There are infinitely many irreducible polynomials over the \(p\)-adic field \(\bbQ_p\).
+        The field \(\bbQ_p\) has algebraic extensions of arbitrarily large degree.
     \end{proposition}
     \begin{proof}
-        Since there are infinitely many irreducible monic polynomials over the finite field \(\bbF_p\), consider any lift of such an irreducible monic polynomial to a monic polynomial with coefficients in \(\bbZ_p\).
+        Since there are infinitely many irreducible monic polynomials over the finite field \(\bbF_p\), 
+        consider any lift of such an irreducible monic polynomial to a monic polynomial with coefficients in \(\bbZ_p\).
         If the lift is not irreducible over \(\bbQ_p\), 
         then the factorization of the lift gives a nontrivial factorization of its reduction modulo \(p\) since the factors can be chosen to be monic and have coefficients in \(\bbZ_p\), 
         which contradicts the irreducibility of the original polynomial over \(\bbF_p\).
@@ -43,6 +46,12 @@
         Then by considering the reduction modulo \(p\), we have \(g(0), h(0) \equiv 0 \mod p\).
         It follows that \(|f(0)|_p = |g(0) h(0)|_p \leq p^{-2}\), which contradicts \(|f(0)|_p = |p|_p = p^{-1}\).
     \end{proof}
+
+    Let 
+    \[ R := \bigcup_{n=1}^{+\infty} \bbQ_p(\mu_{p^n}) \]
+    and 
+    \[ K := \bigcup_{n=1}^{+\infty} \bbQ_p(\bigcup_{p\not\mid m} \mu_{m}). \]
+    \Yang{\(R\) is a totally ramified extension and \(K\) is the maximal unramified extension.}
 
     % \begin{proposition}\label{prop:group_structure_of_Q_p_times}
     %     The multiplicative group \(\bbQ_p^\times\) of the \(p\)-adic field \(\bbQ_p\) admits the following decomposition:
@@ -59,7 +68,19 @@
         The algebraic closure \(\overline{\bbQ_p}\) of \(\bbQ_p\) is not complete with respect to the extension of the \(p\)-adic absolute value \(|\cdot|_p\).
     \end{proposition}
     \begin{proof}
-        \Yang{To be completed.}
+        Let \((a_n)_{n \geq 1}\) be a sequence in \(\overline{\bbQ_p}\) such that
+        \[ [\bbQ_p\left(\{a_n\}\right): \bbQ_p] = +\infty. \]
+        Set \(s_1 = 0\) and
+        \[ s_n = s_{n-1} + p^{k_n} a_n \]
+        for a suitable \(k_n \in \bbN\) such that
+        \[ |p^{k_n} a_n|_p \leq \frac{|p^{k_{n-1}} a_{n-1}|_p}{2},\quad |p^{k_n} a_n|_p < |s_{n-1} - \sigma(s_{n-1})|_p \quad \forall \sigma \in \Gal\left(\overline{\bbQ_p} / \bbQ_p\right) \text{ with } \sigma(s_{n-1}) \neq s_{n-1}. \]
+        Then the sequence \((s_n)_{n \geq 1}\) is a Cauchy sequence.
+        Let \(s \in \widehat{\overline{\bbQ_p}}\) be the limit of \((s_n)_{n \geq 1}\).
+        We have \(|s - s_{n-1}|_p = |p^{k_n} a_n|_p < |s_{n-1} - \sigma(s_{n-1})|_p\) for all \(n \geq 1\) and all \(\sigma \in \Gal\left(\overline{\bbQ_p} / \bbQ_p\right)\) with \(\sigma(s_{n-1}) \neq s_{n-1}\).
+        By Krasner's lemma (\cref{prop:krasner_lemma}), it follows that \(s_n \in \bbQ_p(s)\) for all \(n \geq 1\).
+        Thus, we have 
+        \[ [\bbQ_p(s): \bbQ_p] \geq [\bbQ_p(\{a_n\}): \bbQ_p] = +\infty, \]
+        which implies that \(s \notin \overline{\bbQ_p}\).
     \end{proof}
     
     \begin{construction}\label{constr:p-adic_complex_number}
@@ -77,6 +98,7 @@
     \begin{proof}
         \Yang{To be completed.}
     \end{proof}
+    \Yang{For example, see \href{https://sbseminar.wordpress.com/2007/08/21/p-adic-fields-for-beginners/}{p-adic fields for beginners}.}
 
     \begin{construction}\label{constr:spherically_complete_p-adic_fields}
         Let \(p\) be a prime number.
@@ -84,36 +106,38 @@
         \Yang{To be completed.}
     \end{construction}
 
-\subsection{Elementary functions}
+    \Yang{does \(\Omega_p\) has the same card as \(\bbR\)?}
 
-    \begin{lemma}\label{lem:p-valuation_of_factorial}
-        Let \(p\) be a prime number and \(n \in \bbN\).
-        We have \(v_p(n!) = \).
-    \end{lemma}
+% \subsection{Elementary functions}
 
-    \Yang{Exponential, logarithmic, and the interpolation functions.}
+%     \begin{lemma}\label{lem:p-valuation_of_factorial}
+%         Let \(p\) be a prime number and \(n \in \bbN\).
+%         We have \(v_p(n!) = \).
+%     \end{lemma}
 
-    Fix a prime number \(p\) in the following and consider \(\kk = \bbQ_p, \bbC_p\), or \(\Omega_p\).
-    Let \(r_p := p^{-1/(p-1)}\).
+%     \Yang{Exponential, logarithmic, and the interpolation functions.}
 
-    \begin{construction}\label{constr:exponential_and_logarithmic_functions}
-        The \emph{exponential function} \(\exp: \kk \to \kk\) is defined by the power series
-        \[ \exp(x) := \sum_{n=0}^{+\infty} \frac{x^n}{n!}. \]
-        The radius of convergence of \(\exp(x)\) is \(+\infty\) if \(p = 2\) and \(p^{-1/(p-1)}\) if \(p > 2\).
+%     Fix a prime number \(p\) in the following and consider \(\kk = \bbQ_p, \bbC_p\), or \(\Omega_p\).
+%     Let \(r_p := p^{-1/(p-1)}\).
 
-        The \emph{logarithmic function} \(\log: 1 + \kk^{\circ\circ} \to \kk\) is defined by the power series
-        \[ \log(1+x) := \sum_{n=1}^{+\infty} (-1)^{n+1} \frac{x^n}{n}. \]
-        The radius of convergence of \(\log(1+x)\) is \(1\).
+%     \begin{construction}\label{constr:exponential_and_logarithmic_functions}
+%         The \emph{exponential function} \(\exp: \kk \to \kk\) is defined by the power series
+%         \[ \exp(x) := \sum_{n=0}^{+\infty} \frac{x^n}{n!}. \]
+%         The radius of convergence of \(\exp(x)\) is \(+\infty\) if \(p = 2\) and \(p^{-1/(p-1)}\) if \(p > 2\).
 
-        Moreover, for every \(x\) in the domain of convergence of \(\exp\) and every \(y\) in the domain of convergence of \(\log\), we have
-        \[ \log(\exp(x)) = x, \quad \exp(\log(y)) = y. \]
-        \Yang{To be checked.}
-    \end{construction}
+%         The \emph{logarithmic function} \(\log: 1 + \kk^{\circ\circ} \to \kk\) is defined by the power series
+%         \[ \log(1+x) := \sum_{n=1}^{+\infty} (-1)^{n+1} \frac{x^n}{n}. \]
+%         The radius of convergence of \(\log(1+x)\) is \(1\).
 
-    \begin{definition}\label{def:Malher_series}
-        Let 
-    \end{definition}
+%         Moreover, for every \(x\) in the domain of convergence of \(\exp\) and every \(y\) in the domain of convergence of \(\log\), we have
+%         \[ \log(\exp(x)) = x, \quad \exp(\log(y)) = y. \]
+%         \Yang{To be checked.}
+%     \end{construction}
 
-    \begin{theorem}\label{thm:}
-        The series converges.
-    \end{theorem}
+%     \begin{definition}\label{def:Malher_series}
+%         Let 
+%     \end{definition}
+
+%     \begin{theorem}\label{thm:}
+%         The series converges.
+%     \end{theorem}
