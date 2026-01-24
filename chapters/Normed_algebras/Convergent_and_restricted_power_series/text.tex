@@ -28,6 +28,14 @@
         \[ R\left<\underline{T/r}\right> \coloneqq R\left<T_1/r_1, \ldots, T_n/r_n\right> := R\left<T_1/r, \ldots, T_{n-1}/r_{n-1}\right>\left<T_n/r_n\right>. \]
     \end{definition}
 
+    Note that if \(R\) has trivial norm, then
+    \[ R\left<T/r\right> = \begin{cases}
+        R[[T]], & \text{if } r < 1; \\
+        R[T], & \text{if } r \geq 1.
+    \end{cases} \]
+
+    \Yang{To add the spectral of absolutely convergent power series.}
+
 
 \subsection{Tate algebras}
 
@@ -116,7 +124,7 @@
         It follows that
         \[ \|f - f_m\| = \sup_{\alpha \in \bbN^n} \|a_\alpha - a_{\alpha,m}\| r^\alpha \leq \varepsilon \]
         for all \(m > N\).
-        % \Yang{To be checked, the original version is for a field.}
+        \Yang{To be revised, the original version is for a field.}
     \end{proof}
 
     % \subsection{Reduction}
@@ -131,7 +139,6 @@
         Since the norm of items in a restricted power series will tend to \(0\), we have
         \[ \widetilde{A} = \widetilde{R} [\underline{T}]. \] 
     \end{example}
-
 
     \begin{example}\label{eg:reduction_ring_of_general_tate_algebra_over_a_banach_ring}
         Let \(R\) is a multiplicative non-archimedean banach ring.
@@ -157,21 +164,24 @@
     \end{example}
 
 
-\subsection{Weierstrass division}
+\subsection{Weierstrass preparation}
 
-    \begin{definition}\label{def:distinguished_degree_of_tate_algebra}
-        Let \(R\) be a non-archimedean banach ring and \(r \in \bbR_{>0}\).
-        A restricted power series \(f = \sum_{\alpha \in \bbN^n} a_\alpha T^\alpha \in R\{ \underline{T/r} \} \) is said to be \emph{distinguished in the variable \(T_n\) of degree \(d\)} if
-        \begin{itemize}
-            \item \(a_{\alpha} \in R\) is a unit for \(\alpha = (0, \ldots, 0, d)\);
-            \item \(\|a_\alpha\| r^\alpha < \|a_{(0,\ldots,0,d)}\| r_n^d\) for all \(\alpha_n < d\).
-        \end{itemize}
-        \Yang{To be revised.}
+    \begin{definition}\label{def:degree_of_restricted_power_series}
+        Let \(R\) be a non-archimedean banach ring and \(A = R\{T/r\}\).
+        For \(f = \sum_{a_n \in \bbN} a_n T^n \in A\), we define the \emph{degree} of \(f\) as 
+        \[ \deg f := \max \{ n \in \bbN : \|a_n\| r^n = \|f\| \}. \]
+    \end{definition}
+
+    It is interesting to note that if \(R\) has trivial norm, then \(\deg f\) coincides with the usual degree of polynomials when \(r \geq 1\) and the order of formal power series when \(r < 1\).
+
+    \begin{definition}\label{def:distinguished_restricted_power_series}
+        Let \(R\) be a non-archimedean banach ring and \(A = R\{T/r\}\).
+        A restricted power series \(f = \sum_{n \in \bbN} a_n T^n \in A\) of degree \(d\) is said to be \emph{distinguished} if \(a_d\) is invertible in \(R\).
     \end{definition}
 
     \begin{proposition}\label{prop:restricted_power_series_invertible_iff_the_constant_item_is_invertible_and_controls_others}
         Let \(R\) be a non-archimedean banach ring.
-        An element \(f = \sum_{\alpha \in \bbN^n} a_\alpha T^\alpha \in R\{ \underline{T/r} \} \) is invertible if and only if \(a_0\) is invertible in \(R\) and \(\|a_0\| > \|a_\alpha\| r^\alpha\) for all \(\alpha \neq 0\).
+        An element \(f\) is invertible if and only if \(\deg f = 0\) and the constant item of \(f\) is invertible in \(R\).
         % \Yang{To be checked.}
     \end{proposition}
     \begin{proof}
@@ -194,30 +204,80 @@
         since either \(|\alpha| \geq D_{m+1}\) or \(|\beta| \geq C_m\).
         Thus by induction, we have \(\|b_\alpha\| r^\alpha \to 0\) as \(|\alpha| \to +\infty\).
         It follows that \(g \in R\{ \underline{T/r} \} \).
+        \Yang{To be revised.}
     \end{proof}
 
-    \begin{theorem}[Weierstrass preparation theorem]\label{thm:Weierstrass_preparation_theorem_Tate_algebra}
-        Let \(\kk\) be a complete non-archimedean field.
-        Let \(f \in \kk\{ \underline{T/r} \} \) be a restricted power series that is distinguished in the variable \(T_n\) of degree \(d\), i.e.,
-        \[ f = \sum_{\alpha \in \bbN^{n-1}} a_\alpha T^\alpha + \sum_{\alpha_n \geq 1} a_\alpha T^\alpha \]
-        with \(a_{(0,\ldots,0,d)}\) being a unit in \(\kk\{ \underline{T/r} \} \) and \(\|a_\alpha\| r^\alpha < \|a_{(0,\ldots,0,d)}\| r_n^d\) for all \(\alpha_n < d\).
-        Then there exists a unique monic polynomial \(P \in \kk\{ \underline{T/r} \} [T_n]\) of degree \(d\) in \(T_n\) and a unique unit \(U \in \kk\{ \underline{T/r} \} \) such that
-        \[ f = P \cdot U. \]
-        \Yang{To be checked.}
-    \end{theorem}
-
-    \begin{theorem}[Weierstrass division theorem]\label{thm:Weierstrass_division_theorem_Tate_algebra}
-        Let \(\kk\) be a complete non-archimedean field.
-        Let \(f \in \kk\{ \underline{T/r} \} \) be a restricted power series that is distinguished in the variable \(T_n\) of degree \(d\).
-        Then for every \(g \in \kk\{ \underline{T/r} \} \), there exists a unique \(Q \in \kk\{ \underline{T/r} \} \) and a unique polynomial \(R \in \kk\{ \underline{T/r} \} [T_n]\) of degree less than \(d\) in \(T_n\) such that
-        \[ g = Q \cdot f + R. \]
-        \Yang{To be checked.}
-    \end{theorem}
-
-    \begin{proposition}\label{prop:algebraic_spectra_of_Tate_algebra}
-        Let \(\kk\) be a complete non-archimedean field and \(r = (r_1, \ldots, r_n) \in \bbR_+^n\).
-        Then 
-        \[ \Spec \kk\{ \underline{T/r} \} = \{  \}, \]
-        where
+    \begin{proposition}\label{prop:Tate_alg_in_one_variable_over_field_is_ED}
+        Let \(\kk\) be a complete non-archimedean field and \(r > 0\) be a positive real number.
+        Then the Tate algebra \(\kk\{T/r\}\) is an euclidean domain with respect to the degree defined in \cref{def:degree_of_restricted_power_series}.
+        \Yang{To be added.}
     \end{proposition}
+    \begin{proof}
+        Let \(f, g \in \kk\{T/r\}\) be two elements with \(g \neq 0\).
+        Denote \(n = \deg f\) and \(m = \deg g\).
+        We need to find \(q, r \in \kk\{T/r\}\) such that
+        \[ f = q \cdot g + r, \quad \deg r < \deg g.\]
+        \Yang{To be added.}
+    \end{proof}
+
+    \begin{definition}\label{def:Weierstrass_polynomial}
+        Let \(R\) be a non-archimedean banach ring and \(A = R\{ T/r \} \).
+        A Weierstrass polynomial is a monic polynomial \(P \in A[T] \subset R\{T/r\}\) whose two degrees as a polynomial and as a restricted power series coincide.
+        % \Yang{To be checked.}
+    \end{definition}
+
+    \begin{theorem}[Weierstrass preparation theorem]\label{thm:Weierstrass_preparation_theorem_Tate_algebra}
+        Let \(R\) be a non-archimedean banach ring.
+        Let \(f \in R\{T/r\}\) be a distinguished restricted power series of degree \(d\).
+        Then there exists a unique Weierstrass polynomial \(p \in R[T]\) of degree \(d\) and a unique unit \(u \in R\{T/r\}\) such that
+        \[ f = p \cdot u. \]
+        \Yang{To be checked.}
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be added.}
+    \end{proof}
+
+    % \begin{theorem}[Weierstrass division theorem]\label{thm:Weierstrass_division_theorem_Tate_algebra}
+    %     Let \(R\) be a non-archimedean banach ring.
+    %     Let \(f \in R\{T/r\}\) be a distinguished restricted power series of degree \(d\).
+    %     Then for every \(g \in R\{T/r\}\), there exists a unique \(q \in R\{T/r\}\) and a unique polynomial \(p \in R[T]\) of degree less than \(d\) such that
+    %     \[ g = q \cdot f + p. \]
+    %     \Yang{To be checked.}
+    % \end{theorem}
+    % \begin{proof}
+    %     \Yang{To be added.}
+    % \end{proof}
+
+    \begin{remark}\label{rmk:Weierstrass_preparation_in_complex_formal_and_Tate_settings}
+        In my knowledge, there are at least three different versions of Weierstrass preparation theorem under different settings:
+        \begin{itemize}
+            \item The classical Weierstrass preparation in complex analysis;
+            \item The Weierstrass preparation for formal power series over complete noetherian local rings;
+            \item The Weierstrass preparation for Tate algebras over non-archimedean banach rings.
+        \end{itemize}
+
+
+        Let \((R,\frakm)\) be a complete noetherian local ring.
+        Note that there is also a Weierstrass preparation theorem for formal power series over \(R\) stating that 
+        for every formal power series \(f \in R[[T]]\) whose reduction \(\overline{f} \in (R/\frakm)[[T]]\) is of order \(d\), 
+        there exists a unique monic polynomial \(p \in R[T]\) of degree \(d\) and a unique unit \(u \in R[[T]]\) such that
+        \[ p \equiv T^d \mod \frakm, \quad f = p \cdot u. \]
+
+        \Yang{To be continued.}
+    \end{remark}
+
+
+% \subsection{Algebraic properties of Tate algebras}
+
+%     \begin{corollary}\label{cor:Tate_algebra_is_factorial_or_noetherian_if_coefficient_ring_is}
+%         Let \(R\) be a non-archimedean banach ring and \(A = R\{T/r\}\).
+%         If \(R\) is factorial (resp. noetherian), then so is \(A\).
+%     \end{corollary}
+
+    % \begin{proposition}\label{prop:algebraic_spectra_of_Tate_algebra}
+    %     Let \(\kk\) be a complete non-archimedean field and \(r = (r_1, \ldots, r_n) \in \bbR_+^n\).
+    %     Then 
+    %     \[ \Spec \kk\{ \underline{T/r} \} = \{  \}, \]
+    %     where
+    % \end{proposition}
 

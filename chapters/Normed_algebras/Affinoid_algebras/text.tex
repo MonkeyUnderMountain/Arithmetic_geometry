@@ -1,42 +1,88 @@
 \section{Affinoid algebras}
 
-\subsection{The first properties}
+% \subsection{The first properties}
 
     \begin{definition}\label{def:affinoid_algebras}
-        Let \(\kk\) be a non-archimedean field. 
-        A banach \(\kk\)-algebra \(A\) is called a \emph{ affinoid \(\kk\)-algebra} if there exists an admissible surjective homomorphism
+        Let \(R\) be a non-archimedean banach ring.
+        A banach \(R\)-algebra \(A\) is called a \emph{\(R\)-affinoid algebra} if there exists an admissible surjective homomorphism
         \[
-            \varphi: \kk\{ \underline{T/r} \} \twoheadrightarrow A
+            \varphi: R\{ \underline{T/r} \} \twoheadrightarrow A
         \]
         for some \(r = (r_1, \ldots, r_n) \in \bbR_{>0}^n\).
 
-        If one can choose \(r_1 = \cdots = r_n = 1\), then we say that \(A\) is a \emph{strict affinoid \(\kk\)-algebra}.
+        If one can choose \(r_1 = \cdots = r_n = 1\), then we say that \(A\) is a \emph{strictly \(R\)-affinoid algebra}.
     \end{definition}
 
     \begin{example}\label{eg:affinoid_algebra_for_trivial_norm}
-        \Yang{To be added.}
+        Suppose that the norm on \(R\) is trivial.
+        Then a strictly \(R\)-affinoid algebra is just an \(R\)-algebra of finite type equipped with the trivial norm.
     \end{example}
 
     \begin{example}\label{eg:normed_localization_as_affinoid_algebra}
-        Let \(A\) be an affinoid \(\kk\)-algebra and \(f_i,g_i \in A\).
-        Then the normed localization
+        Let \(A\) be an \(R\)-affinoid algebra, \(f_i,g_j \in A\) and \(r_i,s_j \in \bbR_{>0}\).
+        Define
+        \begin{align*}
+            A\left\{ \underline{f/r} \right\} & := A\left\{ \underline{T/r} \right\} / (T_i - f_i), \\
+            A\left\{ \underline{f/r}, \underline{s/g} \right\} & := A\left\{ \underline{T/r}, \underline{S/s} \right\} / (T_i - f_i, g_j S_j - 1). 
+        \end{align*}
+        Suppose that \(g \in R\) with \((f_i,g) = A\).
+        Then we can define
         \[
-            A\{(f_i/g_i)/r_i\}_{i=1}^n = A \otimes_{\kk\{ \underline{T} \}} \kk\{ \underline{T/r}, \underline{S} \}/(g_i T_i - f_i)_{i=1}^n 
+            A\left\{ \underline{(f/g)/r} \right\} := A\left\{ \underline{T/r} \right\} / (g T_i - f_i).
         \]
-        is again an affinoid \(\kk\)-algebra.
-        \Yang{To be added.}
+        All of the above three algebras are again \(R\)-affinoid algebras.
+        They can be viewed as normed analogues of localizations.
+        \Yang{To be replaced.}
     \end{example}
 
-    \begin{proposition}\label{prop:affinoid_algebra_is_noetherian_and_ideal_is_clsoed}
-        Let \(A\) be an affinoid \(\kk\)-algebra.
-        Then \(A\) is noetherian, and every ideal of \(A\) is closed.
+    In the rest of this section, we fix a complete non-archimedean field \(\kk\) and consider \(\kk\)-affinoid algebras.
+
+
+\subsection{Strict case}
+
+    First we consider strictly \(\kk\)-affinoid algebras, which are well-studied in the era of rigid analytic geometry.
+
+    \begin{proposition}\label{prop:automorphism_of_T_n_over_k}
+        Let \(\kk\) be a complete non-archimedean field and \(f \in \kk\{\underline{T}\}\).
+        Then there exists an automorphism \(\varphi\) of \(\kk\{\underline{T}\}\) over \(\kk\) such that \(\varphi(f)\) is \(T_n\)-distinguished, 
+        i.e., \(\varphi(f) \in A\{T_n\}\) is distinguished in the variable \(T_n\) with \(A = \kk\{T_1, \ldots, T_{n-1}\}\).
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be added.}
+    \end{proof}
+
+    \begin{proposition}\label{prop:strictly_Tate_algebra_is_noetherian_factorial_and_Jacobson}
+        Let \(\kk\) be a complete non-archimedean field.
+        Then the Tate algebra \(\kk\{\underline{T}\}\) is noetherian, factorial, and Jacobson.
     \end{proposition}
     \begin{proof}
         \Yang{To be completed.}
     \end{proof}
 
+    \begin{corollary}\label{prop:affinoid_algebra_is_noetherian}
+        Strictly \(\kk\)-affinoid algebras are noetherian.
+    \end{corollary}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+
+
+    
+    \begin{theorem}\label{thm:noetherian_normalization_theorem}
+        Let \(A\) be a strictly \(\kk\)-affinoid algebra.
+        Then there exists a finite injective admissible homomorphism
+        \[
+            \varphi: \kk\{ T_1, \ldots, T_d \} \hookrightarrow A.
+        \]
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+
+
+
     \begin{proposition}\label{prop:the_norm_on_affinoid_is_bounded_by_spectral_radius}
-        Let \(A\) be an affinoid \(\kk\)-algebra.
+        Let \(A\) be an \(\kk\)-affinoid algebra.
         Then there exists a constant \(C > 0\) and \(N > 0\) such that for all \(f \in A\) and \(n \geq N\), we have
         \[
             \|f^n\| \leq C \rho(f)^n.   
@@ -53,6 +99,11 @@
         \Yang{To be completed.}
     \end{proof}
 
+
+
+\subsection{General case}
+
+
     \begin{proposition}\label{prop:affinoid_algebra_is_strict_when_radius_in_the_radical_of_valuation_set}
         Let \(A\) be an affinoid \(\kk\)-algebra.
         If and only if \(\rho(f) \in \sqrt{|\kk|} \cup \{0\}\) for all \(f \in A\), then \(A\) is strict.
@@ -61,14 +112,11 @@
     \begin{proof}
         \Yang{To be completed.}
     \end{proof}
-
     
     \begin{definition}\label{def:restricted_Laurent_series}
         Let \(\kk\) be a non-archimedean field.
         We define the \emph{ring of restricted Laurent series} over \(\kk\) as 
-        \[ \KK_r = \bfL_{\kk,r} = \left\{\sum_{n \in \bbZ} a_n T^n : a_n \in \kk, \lim_{|n| \to \infty} |a_n| r^n = 0 \right\} \]
-        equipped with the norm
-        \[ \|f\| = \sup_{n \in \bbZ} |a_n| r^n. \]
+        \[ \KK_r = \bfL_{\kk,r} := \kk\{T/r,r/T\}. \]
     \end{definition}
 
     \Yang{Is \(\KK_r\) always a field?}
@@ -81,21 +129,19 @@
 
     \Yang{Tensor with \(\bfK_r\).}
 
+    \begin{proposition}\label{prop:tensor_K_r_making_A_strictly}
+        Let \(A\) be a \(\kk\)-affinoid algebra.
+        Then there exists \(r_i \in \bbR_{>0}\) such that
+        \[ \KK_{\underline{r}} \widehat{\otimes}_\kk A \]
+        is a strictly \(\KK_{\underline{r}}\)-affinoid algebra.
+    \end{proposition}
+
 % \subsection{Noetherian normalization theorem}
 
-    \begin{theorem}\label{thm:noetherian_normalization_theorem}
-        Let \(A\) be a strict affinoid \(\kk\)-algebra.
-        Then there exists a finite injective admissible homomorphism
-        \[
-            \varphi: \kk\{ \underline{T} \} \hookrightarrow A
-        \]
-        for some \(d \in \bbN\) and \(r_1, \ldots, r_d \in \bbR_{>0}\).
-        \Yang{To be checked.}
-    \end{theorem}
 
 
 
-\subsection{Finite modules over affinoid algebras}
+% \subsection{Finite modules over affinoid algebras}
 
     There are three different categories of finite modules over an affinoid algebra \(A\):
     \begin{itemize}
