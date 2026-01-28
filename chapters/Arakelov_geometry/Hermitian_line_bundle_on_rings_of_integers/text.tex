@@ -2,6 +2,39 @@
 
     Let \(K\) be a number field, and \(\calO_K\) be its ring of integers.
 
+
+\subsection{Hermitian vector bundles}
+
+    \begin{definition}\label{def:hermitian_coherent_sheaves_on_rings_of_integers}
+        A \emph{hermitian coherent sheaf} \(\overline{\calF}\) on \(\Spec \calO_K\) consists of
+        \begin{itemize}
+            \item a finitely generated \(\calO_K\)-module \(\calF\);
+            \item for each embedding \(\sigma: K \hookrightarrow \bbC\), a Hermitian metric \(\|\cdot\|_\sigma\) on the complex vector space \(\calF_\sigma := \calF \otimes_{\sigma} \bbC\).
+        \end{itemize}
+        \Yang{To be revised.}
+    \end{definition}
+
+    \begin{definition}\label{def:morphisms_between_hermitian_coherent_sheaves}
+        Let \(\overline{\calF}\) and \(\overline{\calG}\) be hermitian coherent sheaves on \(\Spec \calO_K\).
+        A \emph{morphism} \(f: \overline{\calF} \to \overline{\calG}\) is an \(\calO_K\)-module homomorphism \(f: \calF \to \calG\) such that for each embedding \(\sigma: K \hookrightarrow \bbC\), the induced map \(f_\sigma: \calF_\sigma \to \calG_\sigma\) is a contraction with respect to the Hermitian metrics, i.e.,
+        \[
+            \|f_\sigma(v)\|_\sigma \leq \|v\|_\sigma \quad \text{for all } v \in \calF_\sigma.
+        \]
+        \Yang{To be revised.}
+    \end{definition}
+
+    \begin{definition}\label{def:hermitian_vector_bundle_on_rings_of_integers}
+        A \emph{hermitian vector bundle} \(\overline{\calE}\) on \(\Spec \calO_K\) consists of
+        \begin{itemize}
+            \item a finitely generated projective \(\calO_K\)-module \(\calE\);
+            \item for each embedding \(\sigma: K \hookrightarrow \bbC\), a Hermitian metric \(\|\cdot\|_\sigma\) on the complex vector space \(\calE_\sigma := \calE \otimes_{\sigma} \bbC\).
+        \end{itemize}
+        \Yang{To be revised.}
+    \end{definition}
+
+
+\subsection{Line bundles and divisors}
+
     \begin{definition}\label{def:hermitian_line_bundle_on_rings_of_integers}
         A \emph{hermitian line bundle} \(\overline{\calL}\) on \(\Spec \calO_K\) consists of
         \begin{itemize}
@@ -11,7 +44,7 @@
         \Yang{To be revised.}
     \end{definition}
 
-    \begin{definition}\label{def:degree_of_hermitian_line_bundles}
+    \begin{definition}\label{def:arithmetic_degree_of_hermitian_line_bundles}
         Let \(\overline{\calL}\) be a hermitian line bundle on \(\Spec \calO_K\). 
         The \emph{degree} of \(\overline{\calL}\) is defined as
         \[
@@ -20,3 +53,46 @@
         where \(s\) is any non-zero section of \(\calL\).
         \Yang{To be revised}
     \end{definition}
+
+    \begin{definition}\label{def:arithmetic_divisor}
+        An \emph{arithmetic divisor} on \(\Spec \calO_K\) is a pair \((D, g)\), where
+        \begin{itemize}
+            \item \(D\) is a Weil divisor on \(\Spec \calO_K\), i.e., a formal sum of closed points with integer coefficients;
+            \item \(g = (g_\sigma)_{\sigma: K \hookrightarrow \bbC}\) is a collection of Green's functions \(g_\sigma: (\Spec \calO_K)_\sigma(\bbC) \setminus \{D\} \to \bbR\) for each embedding \(\sigma: K \hookrightarrow \bbC\).
+        \end{itemize}
+        \Yang{To be revised}
+    \end{definition}
+
+
+    \begin{definition}\label{def:arithmetic_degree_of_arithmetic_divisors}
+        Let \((D, g)\) be an arithmetic divisor on \(\Spec \calO_K\). 
+        The \emph{degree} of \((D, g)\) is defined as
+        \[
+            \deg (D, g) := \sum_{x \in \Spec \calO_K} n_x \log N(x) + \sum_{\sigma: K \hookrightarrow \bbC} g_\sigma(x_\sigma),
+        \]
+        where \(D = \sum_{x} n_x x\) and \(N(x)\) is the norm of the closed point \(x\).
+        \Yang{To be revised}
+    \end{definition}
+
+    \begin{proposition}\label{prop:arithmetic_divisor_line_bundle_correspondence}
+        There is a one-to-one correspondence between isomorphism classes of hermitian line bundles on \(\Spec \calO_K\) and arithmetic divisors on \(\Spec \calO_K\). 
+        Moreover, this correspondence preserves degrees, i.e., for a hermitian line bundle \(\overline{\calL}\) corresponding to an arithmetic divisor \((D, g)\), we have
+        \[
+            \adeg \overline{\calL} = \adeg (D, g).
+        \]
+        \Yang{To be revised}
+        
+    \end{proposition}
+
+    \begin{proposition}\label{prop:exact_sequence_of_several_class_groups}
+        Let \(K\) be a number field with ring of integers \(\calO_K\).
+        There is an exact sequence
+        \[
+            0 \to \frac{\bigoplus_{\sigma: K \hookrightarrow \bbC} \bbR}{\log |\calO_K^\times|} \to \aCl(\calO_K) \to \Cl(\calO_K) \to 0,
+        \]
+        where \(\aCl(\calO_K)\) is the arithmetic class group of hermitian line bundles on \(\Spec \calO_K\), and \(\Cl(\calO_K)\) is the usual class group of \(\calO_K\).
+        \Yang{To be revised}
+    \end{proposition}
+
+
+\subsection{Application: geometry of numbers}

@@ -1,0 +1,58 @@
+\section{Hermitian line bundles}
+
+Let \(K\) be a number field with ring of integers \(\calO_K\).
+Let \(\calX\) be an arithmetic variety over \(\Spec \calO_K\) of relative dimension \(n\).
+\Yang{flat,separated,of finite type,}
+
+\subsection{Definitions and examples}
+
+    \begin{definition}\label{def:hermitian_line_bundles}
+        A \emph{hermitian line bundle} \(\overline{\calL} = (\calL, \{\|\cdot\|_\sigma\}_{\sigma \in M_K^\infty})\) on \(\calX\) consists of
+        \begin{itemize}
+            \item a line bundle \(\calL\) on \(\calX\);
+            \item for each embedding \(\sigma: K \hookrightarrow \bbC\) (equivalently, each infinite place \(\sigma \in M_K^\infty\)), 
+                a smooth hermitian metric \(\|\cdot\|_\sigma\) on the complex line bundle \(\calL_\sigma(\bbC)\) over \(\calX_\sigma(\bbC)\), 
+                which is invariant under the complex conjugation map.
+        \end{itemize}
+        \Yang{To be checked.}
+    \end{definition}
+
+    \begin{definition}\label{def:tensor_product_and_dual_of_hermitian_line_bundles}
+        Let \(\overline{\calL}_1\) and \(\overline{\calL}_2\) be hermitian line bundles on \(\calX\).
+        \begin{itemize}
+            \item The \emph{tensor product} \(\overline{\calL}_1 \otimes \overline{\calL}_2\) is defined as the line bundle \(\calL_1 \otimes \calL_2\) on \(\calX\) 
+                equipped with the metrics \(\|s_1 \ten s_2\|_{\sigma} = \|s_1\|_{\sigma, 1} \cdot \|s_2\|_{\sigma, 2}\) on \((\calL_1 \otimes \calL_2)_\sigma(\bbC)\)
+            \item The \emph{dual} \(\overline{\calL}_1^\vee\) is defined as the dual line bundle \(\calL_1^\vee\) on \(\calX\) 
+                equipped with the dual metrics \(\|\cdot\|_{\sigma, 1}^\vee\) on \((\calL_1^\vee)_\sigma(\bbC)\) for each \(\sigma \in M_K^\infty\).
+        \end{itemize}
+        \Yang{To be checked.}
+    \end{definition}
+
+    \begin{definition}\label{def:pullback_of_hermitian_line_bundles}
+        Let \(f: \calY \to \calX\) be a morphism of arithmetic varieties over \(\Spec \calO_K\).
+        Let \(\overline{\calL} = (\calL, \{\|\cdot\|_\sigma\}_{\sigma \in M_K^\infty})\) be a hermitian line bundle on \(\calX\).
+        The \emph{pullback} \(f^* \overline{\calL}\) is defined as the line bundle \(f^* \calL\) on \(\calY\)
+        equipped with the metrics \(\|s\|_{\sigma}' = \|f_\sigma^* s\|_{\sigma}\) on \((f^* \calL)_\sigma(\bbC)\) for each \(\sigma \in M_K^\infty\),
+        where \(f_\sigma: \calY_\sigma(\bbC) \to \calX_\sigma(\bbC)\) is the induced morphism of complex manifolds.
+        \Yang{To be checked.}
+    \end{definition}
+
+
+    \begin{definition}\label{def:H^0_of_hermitian_line_bundles}
+        Let \(\overline{\calL} = (\calL, \{\|\cdot\|_\sigma\}_{\sigma \in M_K^\infty})\) be a hermitian line bundle on \(\calX\).
+        The set of \emph{small sections} of \(\overline{\calL}\) is defined as
+        \[ H^0(\calX, \overline{\calL}) := \{ s \in H^0(\calX, \calL) : \|s\|_{\sigma} \leq 1 \text{ for all } \sigma \in M_K^\infty \}. \]
+        \Yang{To be checked.}
+    \end{definition}
+
+    \begin{proposition}\label{def:H^0_of_hermitian_lb_is_finite}
+        The set \(H^0(\calX, \overline{\calL})\) is finite.
+    \end{proposition}
+
+    \begin{definition}\label{def:h^0_and_volume_of_hermitian_line_bundles}
+        Let \(\overline{\calL}\) be a hermitian line bundle on \(\calX\).
+        We set 
+        \[ h^0(\calX, \overline{\calL}) := \log \# H^0(\calX, \overline{\calL}). \]
+        The \emph{volume} of \(\overline{\calL}\) is defined as
+        \[ \vol(\overline{\calL}) := \limsup_{m \to \infty} \frac{h^0(\calX, \overline{\calL}^{\otimes m})}{m^{n+1}/(n+1)!}. \]
+    \end{definition}
