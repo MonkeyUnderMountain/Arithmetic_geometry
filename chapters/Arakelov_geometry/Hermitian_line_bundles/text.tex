@@ -138,8 +138,18 @@ the complex analytic space associated to the base change of \(\calX\) along \(\s
         \[ \|t(x)\| = \frac{\left|\sum a_\alpha x^\alpha\right|}{\|x\|^m} \]
         with \(\|x\| = (|x_0|^2 + |x_1|^2 + \cdots + |x_n|^2)^{1/2}\).
 
+
+        \Yang{}
         In general, it seems difficult to compute \(h^0(\bbP^n_\bbZ,\overline{\calO(m)})\) explicitly.
         For example, when \(m=2\), we have that \(\sup_{x \in \bbP^n(\bbC)} \|t(x)\|\) is equal to the largest norm of eigenvalues of the matrix associated to the quadratic form \((a_{ij})\).
+        Hence we just compute its asymptotic behavior when \(m \to \infty\).
+        Note that we have 
+        \[ \frac{\left|\sum x^\alpha\right|}{\|x\|^m} \cdot \min_{|\alpha|=m} |a_\alpha| \leq \|t(x)\| \leq \frac{\left|\sum x^\alpha\right|}{\|x\|^m} \cdot \max_{|\alpha|=m} |a_\alpha|. \]
+        By the lore of inequalities (like Karamata's inequality), one can show that
+        \[ \sup_{x \in \bbP^n(\bbC)} \frac{\left|\sum x^\alpha\right|}{\|x\|^m} = \binom{m+n}{n} \frac{1}{(n+1)^{m/2}}. \]
 
         \Yang{To be checked.}
     \end{example}
+
+
+\subsection{Arithmetic intersection theory}
