@@ -4,6 +4,9 @@ Let \(K\) be a number field with ring of integers \(\calO_K\).
 Let \(\calX\) be an arithmetic variety over \(\Spec \calO_K\) of relative dimension \(n\).
 \Yang{flat,separated,of finite type,}
 
+For every \(\sigma: \calO_K \to \bbC\), we denote by \(\calX_\sigma(\bbC) := \calX \times_{\Spec \calO_K, \sigma} \Spec \bbC\)
+the complex analytic space associated to the base change of \(\calX\) along \(\sigma\).
+
 \subsection{Definitions and examples}
 
     \begin{definition}\label{def:hermitian_line_bundles}
@@ -17,10 +20,22 @@ Let \(\calX\) be an arithmetic variety over \(\Spec \calO_K\) of relative dimens
         \Yang{To be checked.}
     \end{definition}
 
-    \begin{example}\label{eg:hermitian_O_1_on_P^n_Z}
-        Let \(\calX = \bbP^n_\bbZ\).
+    \begin{example}\label{eg:Fubini_Study_metric_on_O_1}
+        Consider \(\calX = \bbP^n_{\calO_K}\) and \(\calL = \calO_{\bbP^n_{\calO_K}}(1)\).
+        There is a class of natural hermitian metrics on \(\calO_{\bbP^n_{\calO_K}}(1)_\sigma(\bbC)\) called the \emph{Fubini-Study metrics} constructed as follows.
 
-        \Yang{To be continued.}
+        Recall that \(\bbP^n\) represents the functor that sends a scheme \(S\) to the set of isomorphism classes of pairs \((\calE, \phi)\),
+        where \(\calE\) is a rank \(n+1\) vector bundle on \(S\) and \(\phi: \calE \twoheadrightarrow \calL\) is a surjective morphism onto a line bundle \(\calL\) on \(S\).
+        And the universal pair on \(\bbP^n\) is given by \(\calO_{\bbP^n}^{\oplus n+1} \twoheadrightarrow \calO_{\bbP^n}(1)\).
+
+        For each \(\sigma \in M_K^\infty\), fix a hermitian metric \(\|\cdot\|\) on \(\bbC^{n+1}\).
+        Every point \(x \in \bbP^n_{\calO_K}(\sigma)\), it corresponds to a surjective morphism \(\phi_x: \bbC^{n+1} \twoheadrightarrow L_x\) with \(L_x\) the fiber of \(\calL_\sigma(\bbC)\) at \(x\).
+        Explicitly, every point \(x = [z_0: z_1: \cdots: z_n] \in \bbP^n(\bbC)\) corresponds to the surjective morphism
+        \[ \phi_{[z_0: z_1: \cdots: z_n]}: \bbC^{n+1} \twoheadrightarrow \bbC \cong L_x, \quad (x_0, x_1, \ldots, x_n) \mapsto x_0 z_0 + x_1 z_1 + \cdots + x_n z_n. \]
+        The fixed hermitian metric induces the quotient hermitian metric \(\|\cdot\|_x\) on \(L_x\).
+        Hence we obtain a hermitian metric \(\|\cdot\|_{\sigma}\) on \(\calO_{\bbP^n_{\calO_K}}(1)_\sigma(\bbC)\).
+        This construction defines a hermitian line bundle \(\overline{\calO_{\bbP^n_{\calO_K}}(1)}\).
+        \Yang{To be checked.}
     \end{example}
 
     \begin{definition}\label{def:tensor_product_and_dual_of_hermitian_line_bundles}
@@ -33,6 +48,33 @@ Let \(\calX\) be an arithmetic variety over \(\Spec \calO_K\) of relative dimens
         \end{itemize}
         \Yang{To be checked.}
     \end{definition}
+
+    \begin{proposition}\label{prop:arithmetic_picard_group}
+        The set of isomorphism classes of hermitian line bundles on \(\calX\) forms an abelian group under the tensor product operation.
+        The group is called the \emph{arithmetic Picard group} of \(\calX\) and is denoted by \(\aPic(\calX)\).
+    \end{proposition}
+    \begin{proof}
+        Direct verification.
+    \end{proof}
+
+    Note that for every \(\sigma \in M_K^\infty\), 
+    any two smooth hermitian metrics on \(\calL_\sigma(\bbC)\) differ by a smooth function on \(\calX_\sigma(\bbC)\).
+    Explicitly, for any two smooth hermitian metrics \(\|\cdot\|_{\sigma}\) and \(\|\cdot\|_{\sigma}'\) on \(\calL_\sigma(\bbC)\),
+    there exists a unique smooth function \(f: \calX_\sigma(\bbC) \to \bbR\) such that
+    \[ \|s\|_{\sigma}' = \upe^{-f} \|s\|_{\sigma} \]
+    for all local sections \(s\) of \(\calL_\sigma(\bbC)\).
+    Conversely, given any smooth hermitian metric \(\|\cdot\|_{\sigma}\) on \(\calL_\sigma(\bbC)\)
+    and any smooth function \(f: \calX_\sigma(\bbC) \to \bbR\),
+    we can define a new smooth hermitian metric \(\|\cdot\|_{\sigma}'\) on \(\calL_\sigma(\bbC)\) by the above formula.
+
+    \begin{example}\label{eg:arithmetic_picard_group_of_P^n_Z}
+        Let \(\calX = \bbP^n_\bbZ\).
+        Then we have 
+        \[ \aPic(\bbP^n_\bbZ) \cong \bbZ \times \calC^\infty(\bbP^n(\bbC), \bbR). \]
+        Here the generator of the first factor \(\bbZ\) corresponds to the hermitian line bundle \(\overline{\calO_{\bbP^n_\bbZ}(1)}\) constructed in \cref{eg:Fubini_Study_metric_on_O_1}.
+        % \Yang{To be continued.}
+    \end{example}
+
 
     \begin{definition}\label{def:pullback_of_hermitian_line_bundles}
         Let \(f: \calY \to \calX\) be a morphism of arithmetic varieties over \(\Spec \calO_K\).
@@ -47,9 +89,27 @@ Let \(\calX\) be an arithmetic variety over \(\Spec \calO_K\) of relative dimens
     \begin{definition}\label{def:H^0_of_hermitian_line_bundles}
         Let \(\overline{\calL} = (\calL, \{\|\cdot\|_\sigma\}_{\sigma \in M_K^\infty})\) be a hermitian line bundle on \(\calX\).
         The set of \emph{small sections} of \(\overline{\calL}\) is defined as
-        \[ H^0(\calX, \overline{\calL}) := \{ s \in H^0(\calX, \calL) : \|s\|_{\sigma} \leq 1 \text{ for all } \sigma \in M_K^\infty \}. \]
+        \[ H^0(\calX, \overline{\calL}) := \{ s \in H^0(\calX, \calL) : \|s(x)\|_{\sigma} \leq 1,\ \forall \sigma \in M_K^\infty, x \in \calX_\sigma(\bbC) \}. \]
         \Yang{To be checked.}
     \end{definition}
+
+    \begin{example}\label{eg:H^0_of_normed_O_1_on_P^n_Z}
+        Let \(\calX = \bbP^n_{\bbZ}\) and \(\overline{\calL} = \overline{\calO_{\bbP^n_{\bbZ}}(1)}\) be the hermitian line bundle constructed in \cref{eg:Fubini_Study_metric_on_O_1}.
+        We have 
+        \[ H^0(\bbP^n_{\bbZ}, \calL) = \bbZ X_0 \oplus \bbZ X_1 \oplus \cdots \oplus \bbZ X_n, \]
+        where \(X_0, X_1, \ldots, X_n\) are the standard homogeneous coordinates on \(\bbP^n_{\bbZ}\).
+        For every \(s = \sum a_n X_n \in H^0(\bbP^n_{\bbZ}, \calL)\) and \(x = [x_0:\cdots:x_n] \in \bbP^n(\bbC)\), we have
+        \[ \|s(x)\| = \inf_{x_0y_0+\cdots+x_ny_n = 0} \left( \sum |a_k + y_k|^2 \right)^{1/2} = \frac{\left|\sum a_kx_k\right|}{\|x\|}, \]
+        where \(\|x\| = (|x_0|^2 + |x_1|^2 + \cdots + |x_n|^2)^{1/2}\).
+        When \(x\) varies, by Cauchy-Schwarz inequality, we have 
+        \[ \sup_{x \in \bbP^n(\bbC)} \|s(x)\| = \sup_{x \in \bbP^n(\bbC)} \frac{\left|\sum a_kx_k\right|}{\|x\|} = \|a\|.\]
+        Note that \(a_n \in \bbZ\) for all \(n\).
+        Therefore, we have
+        \[ H^0(\bbP^n_{\bbZ}, \overline{\calO_{\bbP^n_{\bbZ}}(1)}) = \{0, \pm X_0, \pm X_1, \ldots, \pm X_n\} \]
+        and 
+        \[ \# H^0(\bbP^n_{\bbZ}, \overline{\calO_{\bbP^n_{\bbZ}}(1)}) = 2n + 3. \]
+        % \Yang{To be checked.}
+    \end{example}
 
     \begin{proposition}\label{def:H^0_of_hermitian_lb_is_finite}
         The set \(H^0(\calX, \overline{\calL})\) is finite.
@@ -62,3 +122,24 @@ Let \(\calX\) be an arithmetic variety over \(\Spec \calO_K\) of relative dimens
         The \emph{volume} of \(\overline{\calL}\) is defined as
         \[ \vol(\overline{\calL}) := \limsup_{m \to \infty} \frac{h^0(\calX, \overline{\calL}^{\otimes m})}{m^{n+1}/(n+1)!}. \]
     \end{definition}
+
+    \begin{example}\label{eg:volume_of_normed_O_1_on_P^n_Z}
+        We continue with \cref{eg:H^0_of_normed_O_1_on_P^n_Z}.
+        For every integer \(m \geq 1\), we have
+        \[ H^0(\bbP^n_{\bbZ}, \calO_{\bbP^n_{\bbZ}}(m)) = \bigoplus_{|\alpha| = m} \bbZ X^\alpha. \]
+        Let \(t = \sum_{|\alpha| = m} a_\alpha X^\alpha \in H^0(\bbP^n_{\bbZ}, \calO_{\bbP^n_{\bbZ}}(m))\) be a global section.
+        Denote by \(M\) (resp. \(L\)) the geometric vector bundle associated to \(\calO_{\bbP^n_{\bbZ}}(m)\) (resp. \(\calO_{\bbP^n_{\bbZ}}(1)\)).
+                
+        We first focus on the affine chart \(U_0 = \{X_0 \neq 0\}\) and let \(s = X_0 \in H^0(\bbP^n, \calO(1))\).
+        For every point \(x = [1: x_1: \cdots: x_n] \in U_0(\bbC)\), 
+        \[ \|s(x)\| = \frac{1}{\left(1 + |x_1|^2 + \cdots + |x_n|^2\right)^{1/2}} \implies 
+            \|t(x)\| = \frac{\left|\sum a_\alpha x^\alpha\right|}{\left(1 + |x_1|^2 + \cdots + |x_n|^2\right)^{m/2}}. \]
+        Hence one can see that for any point \(x = [x_0:\cdots:x_n] \in \bbP^n(\bbC)\), we have 
+        \[ \|t(x)\| = \frac{\left|\sum a_\alpha x^\alpha\right|}{\|x\|^m} \]
+        with \(\|x\| = (|x_0|^2 + |x_1|^2 + \cdots + |x_n|^2)^{1/2}\).
+
+        In general, it seems difficult to compute \(h^0(\bbP^n_\bbZ,\overline{\calO(m)})\) explicitly.
+        For example, when \(m=2\), we have that \(\sup_{x \in \bbP^n(\bbC)} \|t(x)\|\) is equal to the largest norm of eigenvalues of the matrix associated to the quadratic form \((a_{ij})\).
+
+        \Yang{To be checked.}
+    \end{example}
