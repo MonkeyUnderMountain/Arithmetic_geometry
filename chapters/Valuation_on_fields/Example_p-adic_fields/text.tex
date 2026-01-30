@@ -96,9 +96,28 @@
         The field \(\bbC_p\) of \(p\)-adic complex numbers is not spherically complete.
     \end{proposition}
     \begin{proof}
-        \Yang{To be completed.}
+        Choose a strictly descending sequence \(r_n \in |\bbC_p^\times|\) with \(r_n \to r > 0\) as \(n \to +\infty\).
+        We inductively construct a collection of closed ball.
+        Begin from \(r_0\), choose any nonempty closed ball \(E\) of radius \(r_0\).
+        On \(E\), choose two disjoint nonempty closed balls of radius \(r_1\) and denote them by \(E_{0}\) and \(E_{1}\).
+        Inductively, for any binary sequence \(a_1a_2\cdots a_n \in \{0,1\}^n\), suppose that we have constructed the ball \(E_{a_1\cdots a_n}\) has radius \(r_n\).
+        On \(E_{a_1\cdots a_n}\), choose two disjoint nonempty closed balls of radius \(r_{n+1}\) and denote them by \(E_{a_1\cdots a_n 0}\) and \(E_{a_1\cdots a_n 1}\).
+        In this way, we obtain a collection of nonempty closed balls 
+        \[ \{E_{a_1\cdots a_n} \mid n \geq 0, a_1\cdots a_n \in \{0,1\}^n\}. \]
+        For \(a = a_1 a_2 \cdots \in \{0,1\}^\bbN\), set
+        \[ E_a := \bigcap_{n=0}^{+\infty} E_{a_1\cdots a_n}. \]
+        Then each \(E_a\) is a closed ball of radius \(r\).
+        And for \(a \neq b \in \{0,1\}^\bbN\), we have \(E_a \cap E_b = \emptyset\).
+        Note that \(\overline{\bbQ}\) is dense in \(\bbC_p\).
+        Since \(\overline{\bbQ}\) is countable and \(\{0,1\}^\bbN\) is uncountable, there exists some \(a \in \{0,1\}^\bbN\) such that \(E_a \cap \overline{\bbQ_p} = \emptyset\).
+        In ultra-metric spaces, closed balls are also open.
+        It follows that \(E_a = \emptyset\).
+        % \Yang{To be completed.}
     \end{proof}
-    \Yang{For example, see \href{https://sbseminar.wordpress.com/2007/08/21/p-adic-fields-for-beginners/}{p-adic fields for beginners}.}
+
+    \begin{remark}\label{rmk:certain_example_of_C_p_is_not_spherically_complete}
+        For a concrete example, see \href{https://sbseminar.wordpress.com/2007/08/21/p-adic-fields-for-beginners/}{p-adic fields for beginners}.
+    \end{remark}
 
     \begin{construction}\label{constr:spherically_complete_p-adic_fields}
         Let \(p\) be a prime number.
