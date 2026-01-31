@@ -81,7 +81,7 @@
 
     \begin{example}\label{eg:trivial_normed_rings}
         Let \(R\) be arbitrary ring.
-        The \emph{trivial norm} on \(R\) is defined as \(\|x\| = 0\) if \(x = 0\) and \(\|x\| = 1\) if \(x \neq 0\).
+        The \emph{trivial norm} on \(R\) is defined as \(|x| = 0\) if \(x = 0\) and \(|x| = 1\) if \(x \neq 0\).
         The ring \(R\) equipped with the trivial norm is a valuation ring.
         This norm is non-archimedean and multiplicative.
     \end{example}
@@ -97,7 +97,7 @@
 
     \begin{example}\label{eg:ring_of_continuous_function_as_normed_rings}
         Let \(X\) be a compact Hausdorff topological space.
-        The ring \(C(X, \bbR)\) of continuous real-valued functions on \(X\) equipped with the norm \(\|f\| = \sup_{x \in X} |f(x)|\) is a normed ring.
+        The ring \(C(X, \bbR)\) of continuous real-valued functions on \(X\) equipped with the norm \(\|f\| = \sup_{x \in X} |f(x)|\) is a normed \(\bbR\)-algebra.
         Its norm is power-multiplicative but not multiplicative in general.
         It is worth mentioning that the Gelfand-Kolmogorov Theorem saying that we can recover \(X\) from the normed ring \(C(X, \bbR)\).
     \end{example}
@@ -162,38 +162,12 @@
         The \emph{complete tensor product} \(M \widehat{\otimes}_R N\) is defined as the completion of the semi-normed \(R\)-module \(M \otimes_R N\).
     \end{definition}
 
-    % \begin{construction}\label{eg:ring_of_absolutely_convergent_power_series_as_banach_rings}
-    %     Let \(R\) be a banach ring and \(r > 0\) be a real number.
-    %     We define the \emph{ring of absolutely convergent power series} over \(\kk\) with radius \(r\) as
-    %     \[ R\left<T/r\right> \coloneqq \left\{\sum_{n=0}^{\infty} a_n T^n \in R[[T]] : \sum_{n=0}^{\infty} \|a_n\| r^n < \infty \right\}. \]
-    %     Equipped with the norm \(\|\sum_{n=0}^{\infty} a_n T^n\| = \sum_{n=0}^{\infty} \|a_n\| r^n\), the ring \(R\left<T/r\right>\) is a banach ring.
-
-    %     When \(R = \kk\) is a 
-    %     \Yang{To be checked.}
-    % \end{construction}
-
     \begin{example}\label{eg:}
         \Yang{Example of complete tensor product.}
     \end{example}
 
 
-    \begin{definition}\label{def:reduction_ring_of_nonarchimedean_banach_ring}
-        Let \(R\) be a non-archimedean banach ring.
-        We define 
-        \[
-            R^\circ = \{ f \in R : \rho(f) \leq 1 \}, \quad R^{\circ \circ} = \{ f \in R : \rho(f) < 1 \}.
-        \]
-        The \emph{reduction ring} of \(R\) is defined as the quotient ring
-        \[ \widetilde{R} = R^\circ / R^{\circ \circ}. \]
-    \end{definition}
 
-    For a non-archimedean field \(\kk\), its reduction ring \(\widetilde{\kk} = \calk_\kk\) is just the residue field of its valuation ring.
-    
-    \begin{example}\label{eg:reduction_ring_of_trivial_normed_rings}
-        Let \(R\) be a ring equipped with the trivial norm.
-        Then we have \(R^\circ = R\) and \(R^{\circ \circ} = \nil(R)\).
-        Hence the reduction ring \(\widetilde{R}\) is isomorphic to the reduced ring \(R_{\text{red}} = R/\nil(R)\).
-    \end{example}
 
 
 \subsection{Spectral radius}
@@ -250,18 +224,25 @@
         \Yang{To be continued.}
     \end{proof}
 
+\subsection{Reduction rings}
 
-    % \begin{example}\label{eg:uniformization_of_ring_of_absolutely_convergent_series}
-    %     Let \(R\) be a banach ring and \(r > 0\) be a real number.
-    %     Consider the ring of absolutely convergent power series \(R\left<T/r\right>\) defined in \cref{eg:ring_of_absolutely_convergent_power_series_as_banach_rings}.
-    %     For each \(f = \sum_{n=0}^{\infty} a_n T^n \in R\left<T/r\right>\), we have
-    %     \[            \rho(f) = \max_{n \geq 0} \|a_n\| r^n. \]
-    %     Thus the uniformization of \(R\left<T/r\right>\) is given by the ring
-    %     \[ R\left\{T/r\right\} = \left\{\sum_{n=0}^{\infty} a_n T^n \in R[[T]] : \lim_{n \to \infty} \|a_n\| r^n = 0 \right\}, \]
-    %     equipped with the norm \(\|\sum_{n=0}^{\infty} a_n T^n\| = \max_{n \geq 0} \|a_n\| r^n\).
-    %     \Yang{To be revised.}
-    % \end{example}
+    \begin{definition}\label{def:reduction_ring_of_nonarchimedean_banach_ring}
+        Let \(R\) be a non-archimedean banach ring.
+        We define 
+        \[
+            R^\circ = \{ f \in R : \rho(f) \leq 1 \}, \quad R^{\circ \circ} = \{ f \in R : \rho(f) < 1 \}.
+        \]
+        The \emph{reduction ring} of \(R\) is defined as the quotient ring
+        \[ \widetilde{R} = R^\circ / R^{\circ \circ}. \]
+    \end{definition}
 
+    For a non-archimedean field \(\kk\), its reduction ring \(\widetilde{\kk} = \calk_\kk\) is just the residue field of its valuation ring.
+    
+    \begin{example}\label{eg:reduction_ring_of_trivial_normed_rings}
+        Let \(R\) be a ring equipped with the trivial norm.
+        Then we have \(R^\circ = R\) and \(R^{\circ \circ} = \nil(R)\).
+        Hence the reduction ring \(\widetilde{R}\) is isomorphic to the reduced ring \(R_{\text{red}} = R/\nil(R)\).
+    \end{example}
 
     \Yang{To be continued...}
     
