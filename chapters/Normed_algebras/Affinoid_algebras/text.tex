@@ -65,8 +65,6 @@
     \begin{proof}
         \Yang{To be completed.}
     \end{proof}
-
-
     
     \begin{theorem}\label{thm:noetherian_normalization_theorem}
         Let \(A\) be a strictly \(\kk\)-affinoid algebra.
@@ -78,8 +76,6 @@
     \begin{proof}
         \Yang{To be completed.}
     \end{proof}
-
-
 
     \begin{proposition}\label{prop:the_norm_on_affinoid_is_bounded_by_spectral_radius}
         Let \(A\) be an \(\kk\)-affinoid algebra.
@@ -99,10 +95,40 @@
         \Yang{To be completed.}
     \end{proof}
 
+    There are three different categories of finite modules over a \(\kk\)-affinoid algebra \(A\):
+    \begin{itemize}
+        \item The category \(\Banmod_A\) of finite banach \(A\)-modules with \(A\)-linear maps as morphisms.
+        \item The category \(\Banmod_A^b\) of finite banach \(A\)-modules with bounded \(A\)-linear maps as morphisms.
+        \item The category \(\module_A\) of finite \(A\)-modules with all \(A\)-linear maps as morphisms.
+    \end{itemize}
+
+    \begin{theorem}\label{thm:strictly_affinoid_algebra_equivalent_of_categroy_of_finite_banach_module_and_algebraic_module}
+        Let \(A\) be a strictly \(\kk\)-affinoid algebra.
+        % Then the category of finite banach \(A\)-modules with bounded \(A\)-linear maps as morphisms is equivalent to the category of finite \(A\)-modules with \(A\)-linear maps as morphisms.
+        Then the three categories \(\Banmod_A\), \(\Banmod_A^b\) and \(\module_A\) are equivalent by natural forgetful functors.
+        % \Yang{To be revised.}
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be revised.}
+    \end{proof}
+
+    % For simplicity, we will just write \(\mod_A\) to denote the category of finite banach \(A\)-modules with bounded \(A\)-linear maps as morphisms.
+
+
+
+
+
 
 
 \subsection{General case}
 
+
+    \begin{proposition}\label{prop:krull_dimension_of_affinoid_domain_under_ground_field_changing}
+        Let \(A\) be a strictly \(\kk\)-affinoid algebra.
+        For any completed valued field extension \(\KK/\kk\), we have 
+        \[ \dim_{\text{Krull}}(A) = \dim_{\text{Krull}}(A \hat{\otimes}_\kk \KK). \]
+        \Yang{To be checked.}
+    \end{proposition}
 
     \begin{proposition}\label{prop:affinoid_algebra_is_strict_when_radius_in_the_radical_of_valuation_set}
         Let \(A\) be an affinoid \(\kk\)-algebra.
@@ -143,12 +169,12 @@
 
 % \subsection{Finite modules over affinoid algebras}
 
-    There are three different categories of finite modules over an affinoid algebra \(A\):
-    \begin{itemize}
-        \item The category \(\Banmod_A\) of finite banach \(A\)-modules with \(A\)-linear maps as morphisms.
-        \item The category \(\Banmod_A^b\) of finite banach \(A\)-modules with bounded \(A\)-linear maps as morphisms.
-        \item The category \(\module_A\) of finite \(A\)-modules with all \(A\)-linear maps as morphisms.
-    \end{itemize}
+    % There are three different categories of finite modules over an affinoid algebra \(A\):
+    % \begin{itemize}
+    %     \item The category \(\Banmod_A\) of finite banach \(A\)-modules with \(A\)-linear maps as morphisms.
+    %     \item The category \(\Banmod_A^b\) of finite banach \(A\)-modules with bounded \(A\)-linear maps as morphisms.
+    %     \item The category \(\module_A\) of finite \(A\)-modules with all \(A\)-linear maps as morphisms.
+    % \end{itemize}
 
     \begin{theorem}\label{thm:equivalent_of_categroy_of_finite_banach_module_and_algebraic_module}
         Let \(A\) be an affinoid \(\kk\)-algebra.
