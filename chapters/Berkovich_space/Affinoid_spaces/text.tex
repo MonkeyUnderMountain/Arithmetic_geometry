@@ -73,6 +73,8 @@
     \[ \{\text{Affinoid domains}\} \supseteq \{\text{Rational domains}\} \supseteq \{\text{Laurent domains}\} \supseteq \{\text{Weierstrass domains}\}. \]
 
     \Yang{Why Laurent domain is rational domain?}
+
+    \Yang{Is these domain open?}
     
     \begin{proposition}\label{prop:spectrum_of_affinoid_algebra_represent_affinoid_domain}
         Let \(V \subseteq X\) be an affinoid domain represented by the \(\kk\)-affinoid algebra \(A_V\).
@@ -145,30 +147,6 @@
 
 \subsection{The Grothendieck topology and structure sheaf}
 
-
-    \begin{definition}\label{def:special_domain}
-        A \emph{special domain} of \(X\) is a finite union of affinoid domains of \(X\).
-    \end{definition}
-
-
-    \begin{definition}\label{def:site_of_affinoid_domains_on_affinoid_space}
-        The \emph{site of affinoid domains} on \(X\), is defined as follows:
-        \begin{itemize}
-            \item the underlying category has as objects the affinoid domains \(V \subseteq X\), and the morphisms are given by the inclusion maps;
-            \item a covering of an objects \(V \subseteq X\) is a finite family of affinoid domains \(\{V_i\}_{i \in I}\) such that \(V = \bigcup_{i \in I} V_i\).
-        \end{itemize}
-    \Yang{To be revised.}
-    \end{definition}
-
-    \begin{definition}\label{def:structure_sheaf_on_affinoid_space}
-        For every open subset \(U \subseteq X\), we define the ring of analytic functions on \(U\) as follows:
-        \[ \scrO_X(U) \coloneqq \varprojlim_{V \subseteq U} A_V, \]
-        where the limit is taken over all affinoid domains \(V \subseteq U\), and \(A_V\) is the \(\kk\)-affinoid algebra representing the affinoid domain \(V\).
-    % \Yang{To be revised.}
-    \end{definition}
-
-
-
     \begin{theorem}[Acyclicity theorem]\label{thm:acyclicity_theorem_for_affinoid_domains}
         Let \(A\) be a \(\kk\)-affinoid algebra, and let \(X = \scrM(A)\) be the associated affinoid space.
         Let \(\{V_i\}_{i \in I}\) be a finite covering of \(X\) by affinoid domains.
@@ -181,6 +159,91 @@
         \Yang{To be checked.}
     \end{theorem}
 
+    \begin{definition}\label{def:special_domain}
+        A \emph{special domain} of \(X\) is a finite union of affinoid domains of \(X\).
+        Let \(V \subseteq X\) be a special domain, say \(V = V_1 \cup \cdots \cup V_m\) with each \(V_i\) an affinoid domain.
+        We define 
+        \[ A_V \coloneqq \ker\left( \prod_{i=1}^m A_{V_i} \to \prod_{1 \le i < j \le m} A_{V_i \cap V_j} \right). \]
+        \Yang{To be checked.}
+    \end{definition}
+
+    \begin{proposition}\label{prop:when_is_special_domain_affinoid_domain}
+        Let \(V \subseteq X\) be a special domain, say \(V = V_1 \cup \cdots \cup V_m\) with each \(V_i\) an affinoid domain.
+        Then \(V\) is an affinoid domain if and only if the \(\kk\)-algebra \(A_V\) defined in \cref{def:special_domain} is a \(\kk\)-affinoid algebra.
+        In this case, \(V\) is represented by the \(\kk\)-affinoid algebra \(A_V\).
+        \Yang{To be added.}
+    \end{proposition}
+
+    \begin{definition}\label{def:site_of_special_domains_on_affinoid_space}
+        The \emph{site of special domains} on \(X\), is defined as follows:
+        \begin{itemize}
+            \item the underlying category has as objects the special domains \(V \subseteq X\), and the morphisms are given by the inclusion maps;
+            \item a covering of an objects \(V \subseteq X\) is a finite family of affinoid domains \(\{V_i\}_{i \in I}\) such that \(V = \bigcup_{i \in I} V_i\).
+        \end{itemize}
+        The \emph{structure sheaf on site of special domains} is given by assigning to each special domain \(V \subseteq X\) the ring \(A_V\).
+    \Yang{To be revised.}
+    \end{definition}
+
+    \begin{definition}\label{def:structure_sheaf_on_affinoid_space}
+        For every open subset \(U \subseteq X\), we define the ring of analytic functions on \(U\) as follows:
+        \[ \scrO_X(U) \coloneqq \varprojlim_{V \subseteq U} A_V \ \in \Alg_{\kk}, \]
+        where the limit is taken over all special domains \(V \subseteq U\), and \(A_V\) is the \(\kk\)-algebra representing the special domain \(V\).
+    \Yang{To be revised.}
+    \end{definition}
 
 
-\subsection{Relative boundary and interior}
+    \begin{remark}\label{rmk:two_different_site_and_structure_sheaf_for_affinoid_spaces}
+        Note that in \cref{def:site_of_special_domains_on_affinoid_space} we have defined a site on \(X\) consisting of special domains, and in \cref{def:structure_sheaf_on_affinoid_space} we have defined a structure sheaf on the usual topological space \(X\).
+        In fact, these two definitions are closely related.
+        \Yang{To be revised.}
+    \end{remark}
+
+    \begin{definition}\label{def:the_category_of_k_affinoid_space}
+        The \emph{category of \(\kk\)-affinoid spaces} is defined as the opposite category of the category of \(\kk\)-affinoid algebras:
+        \[ {\kk} \coloneqq (\Alg_{\kk}^{\text{aff}})^{\op}. \]
+        \Yang{To be revised.}
+    \end{definition}
+
+    \Yang{Coherent sheaf.}
+
+
+
+
+
+
+
+
+\subsection{Boundary and interior}
+
+    Let \(A, B\) be two \(\kk\)-affinoid algebras, and let \(f: Y=\scrM(B) \to X = \scrM(A)\) be a morphism of \(\kk\)-affinoid spaces induced by a bounded homomorphism of \(\kk\)-affinoid algebras \(\phi: A \to B\).
+
+    \begin{definition}\label{def:relative_boundary_and_interior}
+        The \emph{relative interior} of \(Y\) over \(X\) is defined as
+        \[ (Y/X) := \{ y \in Y \colon \text{there exists an admissible surjective} A \to B \text{ inducing } y \}. \]
+        \Yang{To be revised.}
+    \end{definition}
+
+    \begin{definition}\label{def:Shilov_boundary}
+        
+    \end{definition}
+
+
+\subsection{Some local properties}
+
+    \Yang{The local ring \(\scrO_{X,x}\).}
+
+    \Yang{The residue field and its completion.}
+
+    \begin{example}\label{eg:residue_field_of_affinoid_space_depends_on_neighborhood}
+        \Yang{To be added.}
+    \end{example}
+
+    \begin{proposition}\label{prop:local_ring_of_affinoid_space_is_noetherian}
+        The local ring \(\scrO_{X,x}\) at any point \(x \in X\) is noetherian.
+    \end{proposition}
+
+
+    \begin{definition}\label{def:local_properities_of_affinoid_space}
+        We say that the affinoid space \(X\) has a local property \(\mathcal{P}\) at a point \(x \in X\) if the local ring \(\scrO_{X,x}\) has the property \(\mathcal{P}\).
+        \Yang{To be added.}
+    \end{definition}
