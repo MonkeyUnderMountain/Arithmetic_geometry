@@ -5,10 +5,81 @@
 \subsection{Definition of analytic spaces}
 
 
+    \begin{definition}\label{def:net_and_quasi_net_to_define_analytic_space}
+        Let \(X\) be a topological space. A \emph{net} (resp. \emph{quasi-net}) on \(X\) is a collection \(\tau\) of subsets of \(X\) such that
+        \begin{enumerate}
+            \item for every \(x \in X\), there exist \(U_1, \ldots, U_n \in \tau\) such that \(x \in U_1 \cap \cdots \cap U_n\) and \(U_1 \cup \cdots \cup U_n\) is a neighborhood of \(x\) in \(X\);
+            \item for every \(U, V \in \tau\), the collection of all \(W \in \tau\) such that \(W \subseteq U \cap V\) is a (resp. quasi-) net on \(U \cap V\).
+        \end{enumerate}
+        \Yang{To be checked.}
+    \end{definition}
+
     \begin{definition}\label{def:k-quasiaffinoid_space}
         A \emph{\(\kk\)-quasiaffinoid space} is a locally ringed space \((X, \scrO_X)\) which is isomorphic to an open subspace of a \(\kk\)-affinoid space.
     \end{definition}
 
     \begin{definition}\label{def:k-analytic_space}
         A \emph{\(\kk\)-analytic space} is a locally ringed space \((X, \scrO_X)\) such that every point \(x \in X\) has an open neighborhood \(U\) such that \((U, \scrO_X|_U)\) is a \(\kk\)-quasiaffinoid space.
+    \end{definition}
+
+    \begin{remark}\label{rmk:two_different_definition_of_analytic_space}
+        There are two different versions of the definition of \(\kk\)-analytic spaces in the literature: one given by Berkovich in 
+    \end{remark}
+
+
+    \begin{definition}\label{def:category_of_analytic_space}
+        Let \((X, \scrO_X)\) and \((Y, \scrO_Y)\) be \(\kk\)-analytic spaces. 
+        A \emph{morphism} \(f \colon (X, \scrO_X) \to (Y, \scrO_Y)\) of \(\kk\)-analytic spaces is a morphism of locally ringed spaces. 
+        The category of \(\kk\)-analytic spaces is the category whose objects are \(\kk\)-analytic spaces and whose morphisms are morphisms of \(\kk\)-analytic spaces.
+        \Yang{To be revised.}
+    \end{definition}
+
+    \begin{theorem}\label{thm:fibre_product_of_analytic_space_existss}
+        Let \((X, \scrO_X)\), \((Y, \scrO_Y)\), and \((Z, \scrO_Z)\) be \(\kk\)-analytic spaces, and let \(f \colon (X, \scrO_X) \to (Z, \scrO_Z)\) and \(g \colon (Y, \scrO_Y) \to (Z, \scrO_Z)\) be morphisms of \(\kk\)-analytic spaces. 
+        Then the fibre product \((X, \scrO_X) \times_{(Z, \scrO_Z)} (Y, \scrO_Y)\) exists in the category of \(\kk\)-analytic spaces.
+        \Yang{To be revised.}
+    \end{theorem}
+
+    \begin{definition}\label{def:good_analytic_space}
+        Let \((X, \scrO_X)\) be a \(\kk\)-analytic space. 
+        We say that \((X, \scrO_X)\) is \emph{good} if every point \(x \in X\) has an open neighborhood \(U\) such that \((U, \scrO_X|_U)\) is a \(\kk\)-affinoid space.
+    \end{definition}
+
+
+\subsection{The first properties}
+
+    \begin{definition}\label{def:finite_morphism_between_analytic_space}
+        Let \(f \colon (X, \scrO_X) \to (Y, \scrO_Y)\) be a morphism of \(\kk\)-analytic spaces. 
+        We say that \(f\) is \emph{finite} if for every affinoid domain \(V \subseteq Y\), the preimage \(f^{-1}(V)\) is an affinoid domain in \(X\) and the induced morphism \(\scrO_Y(V) \to \scrO_X(f^{-1}(V))\) is a finite morphism of \(\kk\)-affinoid algebras.
+        \Yang{}
+    \end{definition}
+
+    \begin{theorem}\label{thm:Stein_factoriation_of_analytic_space}
+        Let \(f \colon (X, \scrO_X) \to (Y, \scrO_Y)\) be a morphism of \(\kk\)-analytic spaces. 
+        Then there exists a factorization \(f = g \circ h\) where \(h \colon (X, \scrO_X) \to (Z, \scrO_Z)\) is a finite morphism and \(g \colon (Z, \scrO_Z) \to (Y, \scrO_Y)\) is a morphism such that for every affinoid domain \(W \subseteq Y\), the preimage \(g^{-1}(W)\) is an affinoid domain in \(Z\) and the induced morphism \(\scrO_Y(W) \to \scrO_Z(g^{-1}(W))\) is a flat morphism of \(\kk\)-affinoid algebras.
+        \Yang{}
+    \end{theorem}
+
+    \begin{definition}\label{def:seperated_morphism_between_analytic_space}
+        Let \(f \colon (X, \scrO_X) \to (Y, \scrO_Y)\) be a morphism of \(\kk\)-analytic spaces. 
+        We say that \(f\) is \emph{separated} if the diagonal morphism \(\Delta_f \colon (X, \scrO_X) \to (X, \scrO_X) \times_{(Y, \scrO_Y)} (X, \scrO_X)\) is a closed immersion.
+        \Yang{}
+    \end{definition}
+
+    \begin{definition}\label{def:proper_morphism_between_analytic_space}
+        Let \(f \colon (X, \scrO_X) \to (Y, \scrO_Y)\) be a morphism of \(\kk\)-analytic spaces. 
+        We say that \(f\) is \emph{proper} if it is separated, compact, and without boundary.
+        \Yang{}
+    \end{definition}
+
+    \begin{theorem}\label{thm:direct_image_under_proper_morphism_is_coherent}
+        Let \(f \colon (X, \scrO_X) \to (Y, \scrO_Y)\) be a proper morphism of \(\kk\)-analytic spaces. 
+        Then for every coherent \(\scrO_X\)-module \(\scrF\), the direct image \(f_*(\scrF)\) is a coherent \(\scrO_Y\)-module.
+        \Yang{}
+    \end{theorem}
+
+    \begin{definition}\label{def:smooth_etale_morphism_between_analytic_space}
+        Let \(f \colon (X, \scrO_X) \to (Y, \scrO_Y)\) be a morphism of \(\kk\)-analytic spaces. 
+        We say that \(f\) is \emph{smooth} (resp. \emph{étale}) if for every \(x \in X\), there exist open neighborhoods \(U\) of \(x\) in \(X\) and \(V\) of \(f(x)\) in \(Y\) such that \(f(U) \subseteq V\) and a commutative diagram
+        \Yang{}
     \end{definition}
