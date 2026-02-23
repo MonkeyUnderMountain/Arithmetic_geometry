@@ -470,6 +470,113 @@
         % \Yang{To be completed.}
     \end{proof}
 
+    % Here is a picture illustrating the four types of points in the spectrum \(\scrM(\kkk\{T\})\):
+
+    Now we describe the structure of \(X = \scrM(\kkk\{T\})\) in more details.
+    For each \(a \in \kkk\) with \(|a| \leq 1\), there is a line segment \(L_{\xi,x_a}=\{x_{a,r}| r \in [0,1]\}\) in \(X\) connecting the Gauss point \(x_{0,1}\) and the type I point \(x_a\).
+    Two such line segments \(L_{\xi,x_a}\) and \(L_{\xi,x_b}\) will meet at the point \(x_{a,s}=x_{b,s}\) where \(s = |a - b|\).
+    
+    On such a line segment \(L_{\xi,x_a}\), if \(s \in |\kkk^\times|\), then the point \(x_{a,s}\) is of type II; otherwise, it is of type III.
+    One can think of the type II points like rational points and the type III points like irrational points on the line segment.
+    
+    On a type II point \(x_{a,s}\), there are infinitely many line segments \(L_{x_{a,s},x_b}\) connecting \(x_{a,s}\) and type I points \(x_b\) with \(|b - a| < s\).
+    It looks like a tree with infinitely many branches rooted at \(x_{a,s}\).
+    The branch is indexed by the quotient set \(E(a,s)/B(a,s) \cong \calk_\kkk\).
+    On a type III point \(x_{a,s}\), there are no line segments branching out.
+    In a slogan, the spectrum \(\scrM(\kkk\{T\})\) looks like a fractal tree with infinitely many branches.
+    In the tree, \(|\kkk^\times|\) controls the placement of roots of branches, while \(\calk_\kkk\) controls the number of branches at each root.
+
+    Consider a sequence of disks \(E_n = E(a_n,s_n)\) such that \(E_{n+1} \subset E_n\).
+    It corresponds to a piecewise linear path \(L_{x_{a_1,s_1}, x_{a_2,s_2}} \cup L_{x_{a_2,s_2}, x_{a_3,s_3}} \cup \cdots\) in the tree.
+    Topologically, it is homeomorphic to \([0,1)\).
+    If the intersection \(\bigcap_n E_n\) is nonempty, then it corresponds to a type I,II, or III point fitting into the place of \(1\) in the path.
+    It is compact and everything is fine.
+    However, if the intersection \(\bigcap_n E_n\) is empty, then it will look like \([0,1)\) with a missing point \(1\) locally if we only consider the points of type I, II, and III.
+    The type IV point \(x_{\{E_n\}}\) is exactly the missing point \(1\) in the path, which makes the path compact.
+    
+    \begin{figure}[ht]
+        \centering
+        \begin{tikzpicture}[scale=1.5, every node/.style={font=\small}]
+            % Gauss point 
+            \node[circle, fill=SkyBlue!70, inner sep=1.2pt, label=above:{Gauss point \(x_{0,1}\) (type II)}] (gauss) at (0,0) {};
+
+            % branches rooted at Gauss point
+            \foreach \angle/\radius in {-150/2, -140/1.556, -130/1.305, -120/1.155, -90/4.0, -60/1.155, -50/1.305, -40/1.556, -30/8} {
+                \draw[cyan!50!blue] (gauss) -- (\angle:\radius);           
+            }
+            % -150/2, -140/1.556, -130/1.305, -120/1.155, -110/1.064, -100/1.015, -90/4.0, -80/1.015, -70/1.064, -60/1.155, -50/1.305, -40/1.556, -30/8
+
+            % type I points
+            \foreach \x in {-3,-2.5,-2,-1.5,-1,-0.5,0.5,1,1.5,2,2.5,3} {
+                \node[circle, fill=Blue!70, inner sep=1.2pt] (typeI\x) at (\x,-4) {};
+                % \draw[cyan] (gauss) -- (typeI\x);
+            }
+            \node[circle, fill=Blue!70, inner sep=1.2pt, label=below:{Type I points}] (typeI) at (0,-4) {};
+            \node at (5,-4) {\textcolor{Blue!70}{\(\cdots\)}};
+            \node[circle, fill=Blue!70, inner sep=1.2pt] (typeIright) at (6.928,-4) {};
+            
+            
+            % branches along the main trunk
+            \node[circle, fill=SkyBlue!70, inner sep=1.2pt] (trunk0) at (0,-0.5) {};
+            \foreach \angle/\radius in {-130/0.4568, -120/0.40425, -110/0.3724, -100/0.3553, -80/0.3553, -70/0.3724, -60/0.40425, -50/0.4568} {
+                \draw[cyan!50!blue] (trunk0) -- ([yshift=-0.5cm]\angle:\radius);           
+            }
+            \node[circle, fill=SkyBlue!70, inner sep=1.2pt] (trunk1) at (0,-1) {};
+            \foreach \angle/\radius in {-140/0.6613, -130/0.55446, -120/0.4739, -110/0.4522, -100/0.4314, -80/0.4314, -70/0.4522, -60/0.4739, -50/0.55446, -40/0.6613} {
+                \draw[cyan!50!blue] (trunk1) -- ([yshift=-1cm]\angle:\radius);           
+            }
+            \node[circle, fill=SkyBlue!70, inner sep=1.2pt] (trunk2) at (0,-2) {};
+            \foreach \angle/\radius in {-140/0.934, -130/0.783, -120/0.693, -110/0.6384, -100/0.609, -80/0.609, -70/0.6384, -60/0.693, -50/0.783, -40/0.934} {
+                \draw[cyan!50!blue] (trunk2) -- ([yshift=-2cm]\angle:\radius);           
+            }
+
+            % branches along the line segment connecting Gauss point and type I point right
+            \node[circle, fill=SkyBlue!70, inner sep=1.2pt] (trunk01) at (0.866,-0.5) {};
+            \foreach \angle/\radius in {-70/0.4568, -60/0.40425, -50/0.3724, -40/0.3553, -20/0.3553, -10/0.3724, 0/0.40425, 10/0.4568} {
+                \draw[cyan!50!blue] (trunk01) -- ([yshift=-0.5cm, xshift=0.866cm]\angle:\radius);           
+            }
+            \node[circle, fill=SkyBlue!70, inner sep=1.2pt] (trunk11) at (1.732,-1) {};
+            \foreach \angle/\radius in {-80/0.6613, -70/0.55446, -60/0.4739, -50/0.4522, -40/0.4314, -20/0.4314, -10/0.4522, 0/0.4739, 10/0.55446, 20/0.6613} {
+                \draw[cyan!50!blue] (trunk11) -- ([yshift=-1cm, xshift=1.732cm]\angle:\radius);           
+            }
+            \node[circle, fill=SkyBlue!70, inner sep=1.2pt] (trunk21) at (3.464,-2) {};
+            \foreach \angle/\radius in {-80/0.934, -70/0.783, -60/0.693, -50/0.6384, -40/0.609, -20/0.609, -10/0.6384, 0/0.693, 10/0.783, 20/0.934} {
+                \draw[cyan!50!blue] (trunk21) -- ([yshift=-2cm, xshift=3.464cm]\angle:\radius);           
+            }
+
+            % type II point
+            \node (labelII) at (2,-2.5) {Type II points};
+            \draw[->] (labelII) -- (trunk21);
+            \draw[->] (labelII) -- (trunk2);
+            \draw[->] (labelII) -- (trunk11);
+
+            % type III point
+            \node (labelIII) at (5,-1) {Type III points};
+            \node[circle, fill=cyan!50!blue, inner sep=0.8pt] (III1) at (2.598,-1.5) {};
+            \node[circle, fill=cyan!50!blue, inner sep=0.8pt] (III2) at (5.196,-3) {};
+            \draw[->] (labelIII) -- (III1);
+            \draw[->] (labelIII) -- (III2);
+            
+
+            % type IV point on the left
+            \node[circle, fill=SkyBlue!70, inner sep=1.2pt] (IV1) at (-1.732,-1) {};
+            \foreach \angle/\radius in {-200/0.6613, -190/0.55446, -180/0.4739, -170/0.4522, -160/0.4314, -150/0.425, -140/0.4314, -130/0.4522, -120/0.4739, -110/0.55446, -100/0.8} {
+                \draw[cyan!50!blue] (IV1) -- ([yshift=-1cm, xshift=-1.732cm]\angle:\radius);           
+            }
+            \node[circle, fill=SkyBlue!70, inner sep=0.8pt] (IV2) at (-1.871,-1.788) {};
+            \node[circle, fill=SkyBlue!70, inner sep=0.5pt] (IV3) at (-2.38,-1.99) {};
+            \node (IV4) at (-2.58,-2.203) {};
+            \node[circle, fill=Green!70, inner sep=1.2pt,label=below:{type IV point}] (IV) at (-2.65,-2.35) {};
+            \draw[cyan!50!blue] (IV2) -- (IV3);
+            \draw[cyan!70!blue, line width=0.8pt, line cap=round, dash pattern=on 0pt off 1.4pt] (IV3) -- (IV);
+
+        
+        \end{tikzpicture}
+        \caption{The Berkovich spectrum \(\scrM(\kkk\{T\})\)}
+        \label{fig:berkovich_disc}
+    \end{figure}
+
+
     \begin{proposition}\label{prop:the_complete_residue_field_of_all_four_types_points_in__spectrum_of_Tate_algebra_in_one_variable}
         The completed residue fields of the four types of points in the spectrum \(\scrM(\kk\{r^{-1}T\})\) are described as follows:
         \begin{itemize}
