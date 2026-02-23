@@ -6,24 +6,37 @@
 
 
     \begin{definition}\label{def:net_and_quasi_net_to_define_analytic_space}
-        Let \(X\) be a topological space. A \emph{net} (resp. \emph{quasi-net}) on \(X\) is a collection \(\tau\) of subsets of \(X\) such that
+        Let \(X\) be a topological space. 
+        A \emph{net} on \(X\) is a collection \(\calN\) of subsets of \(X\) such that
         \begin{enumerate}
-            \item for every \(x \in X\), there exist \(U_1, \ldots, U_n \in \tau\) such that \(x \in U_1 \cap \cdots \cap U_n\) and \(U_1 \cup \cdots \cup U_n\) is a neighborhood of \(x\) in \(X\);
-            \item for every \(U, V \in \tau\), the collection of all \(W \in \tau\) such that \(W \subseteq U \cap V\) is a (resp. quasi-) net on \(U \cap V\).
+            \item for every \(x \in X\), there exist \(U_1, \ldots, U_n \in \calN\) such that \(x \in \bigcap_i U_i\) and \(\bigcup_i U_i\) is an open neighborhood of \(x\) in \(X\);
+            \item for every \(U, V \in \calN\), the collection \(\calN|_{U \cap V} \coloneqq \{W \in \calN : W \subseteq U \cap V\} \subset \calP(U \cap V)\) satisfies the first condition for the topological space \(U \cap V\).
         \end{enumerate}
-        \Yang{To be checked.}
     \end{definition}
 
-    \begin{definition}\label{def:k-quasiaffinoid_space}
-        A \emph{\(\kk\)-quasiaffinoid space} is a locally ringed space \((X, \scrO_X)\) which is isomorphic to an open subspace of a \(\kk\)-affinoid space.
-    \end{definition}
+    \Yang{For example, if \(X\) is a \(\kk\)-affinoid space, then the collection of all affinoid domains in \(X\) forms a net on \(X\).}
 
-    \begin{definition}\label{def:k-analytic_space}
-        A \emph{\(\kk\)-analytic space} is a locally ringed space \((X, \scrO_X)\) such that every point \(x \in X\) has an open neighborhood \(U\) such that \((U, \scrO_X|_U)\) is a \(\kk\)-quasiaffinoid space.
+    % \begin{definition}\label{def:k-quasiaffinoid_space}
+    %     A \emph{\(\kk\)-quasiaffinoid space} is a locally ringed space \((X, \scrO_X)\) which is isomorphic to an open subspace of a \(\kk\)-affinoid space.
+    % \end{definition}
+
+    % \begin{definition}\label{def:k-analytic_space}
+    %     A \emph{\(\kk\)-analytic space} is a locally ringed space \((X, \scrO_X)\) such that every point \(x \in X\) has an open neighborhood \(U\) such that \((U, \scrO_X|_U)\) is a \(\kk\)-quasiaffinoid space.
+    % \end{definition}
+
+    \begin{definition}\label{def:berkovich_analytic_space_by_net}
+        Let \(X\) be a locally Hausdorff topological space.
+        A \emph{\(\kk\)-affinoid atlas} on \(X\) is a net \(\calN\) on \(X\) together with
+        \begin{enumerate}
+            \item for every \(U \in \calN\), a structure of a \(\kk\)-affinoid space on \(U\), i.e. a \(\kk\)-affinoid algebra \(A_U\) and an isomorphism \(U \cong \calM(A_U)\);
+            \item for every \(U, V \in \calN\) with \(V \subseteq U\), a morphism \(\res^U_V \colon A_U \to A_V\) of \(\kk\)-affinoid algebras such that the induced morphism \(\calM(A_V) \to \calM(A_U)\) making \(V\) a \(\kk\)-affinoid subdomain in \(U\).
+        \end{enumerate}
+        A \emph{\(\kk\)-analytic space} or \emph{Berkovich space} is a locally Hausdorff topological space \(X\) together with a \(\kk\)-affinoid atlas on \(X\).
     \end{definition}
 
     \begin{remark}\label{rmk:two_different_definition_of_analytic_space}
         There are two different versions of the definition of \(\kk\)-analytic spaces in the literature: one given by Berkovich in 
+        \Yang{}
     \end{remark}
 
 
