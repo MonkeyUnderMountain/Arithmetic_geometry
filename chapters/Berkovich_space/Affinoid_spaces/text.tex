@@ -24,7 +24,7 @@
         \[
         \begin{tikzcd}
             & V  \arrow[dl, hook'] & \\
-            X  & & \scrM(B) \arrow[ul] \arrow[ll, "\scrM(\psi)"]
+            X  & & \scrM(B) \arrow[ul, gray] \arrow[ll, "\scrM(\psi)"]
         \end{tikzcd} 
         \quad \leadsto \quad
         \begin{tikzcd}
@@ -60,21 +60,21 @@
 
     \begin{proposition}\label{prop:weierstrass_Laurent_rational_domains_are_affinoid_domains}
         Let \(A\) be a \(\kk\)-affinoid algebra, and let \(X = \scrM(A)\) be the associated affinoid space.
-        Then any Weierstrass domain, Laurent domain, or rational domain of \(X\) is an affinoid domain.
-        Moreover, if \(A\) is strict, then these affinoid domains are all strict.
-        \Yang{To be checked.}
+        Then Weierstrass domains, Laurent domains, and rational domains of \(X\) are affinoid domains.
+        They are represented by \(A\{f/r\}\), \(A\{f/r;g/s\}\), and \(A\{(f/g)/p\}\) in \Yang{ref}, respectively.
     \end{proposition}
     \begin{proof}
         \Yang{To be added.}
     \end{proof}
 
     We have a sequence of inclusion:
-    % \[ \{\text{Weierstrass domains}\} \subseteq \{\text{Laurent domains}\} \subseteq \{\text{Rational domains}\} \subseteq \{\text{Affinoid domains}\}. \]
-    \[ \{\text{Affinoid domains}\} \supseteq \{\text{Rational domains}\} \supseteq \{\text{Laurent domains}\} \supseteq \{\text{Weierstrass domains}\}. \]
+    \[ \{\text{Weierstrass domains}\} \subseteq \{\text{Laurent domains}\} \subseteq \{\text{Rational domains}\} \subseteq \{\text{Affinoid domains}\}. \]
+    % \[ \{\text{Affinoid domains}\} \supseteq \{\text{Rational domains}\} \supseteq \{\text{Laurent domains}\} \supseteq \{\text{Weierstrass domains}\}. \]
 
     \Yang{Why Laurent domain is rational domain?}
 
     \Yang{Is these domain open?}
+    \Yang{In the sence of Tate, they are.}
     
     \begin{proposition}\label{prop:spectrum_of_affinoid_algebra_represent_affinoid_domain}
         Let \(V \subseteq X\) be an affinoid domain represented by the \(\kk\)-affinoid algebra \(A_V\).
@@ -147,17 +147,20 @@
 
 \subsection{The Grothendieck topology and structure sheaf}
 
-    \begin{theorem}[Acyclicity theorem]\label{thm:acyclicity_theorem_for_affinoid_domains}
+    \begin{theorem}[Tate's Acyclicity Theorem]\label{thm:acyclicity_theorem_for_affinoid_domains}
         Let \(A\) be a \(\kk\)-affinoid algebra, and let \(X = \scrM(A)\) be the associated affinoid space.
         Let \(\{V_i\}_{i \in I}\) be a finite covering of \(X\) by affinoid domains.
         For each finite subset \(J \subseteq I\), set \(V_J := \bigcap_{j \in J} V_j\), which is an affinoid domain by \cref{prop:intersection_of_affinoid_domain}.
         Then the augmented Čech complex
         \[
-        0 \to A \to \prod_{i \in I} A_{V_i} \to \prod_{\substack{J \subseteq I \\ |J| = 2}} A_{V_J} \to \prod_{\substack{J \subseteq I \\ |J| = 3}} A_{V_J} \to \cdots
+            0 \to A \to \prod_{i \in I} A_{V_i} \to \prod_{\substack{J \subseteq I \\ |J| = 2}} A_{V_J} \to \prod_{\substack{J \subseteq I \\ |J| = 3}} A_{V_J} \to \cdots
         \]
         is exact.
         \Yang{To be checked.}
     \end{theorem}
+    \begin{proof}
+        \Yang{To be added.}
+    \end{proof}
 
     \begin{definition}\label{def:special_domain}
         A \emph{special domain} of \(X\) is a finite union of affinoid domains of \(X\).
@@ -193,23 +196,42 @@
 
 
     \begin{remark}\label{rmk:two_different_site_and_structure_sheaf_for_affinoid_spaces}
-        Note that in \cref{def:site_of_special_domains_on_affinoid_space} we have defined a site on \(X\) consisting of special domains, and in \cref{def:structure_sheaf_on_affinoid_space} we have defined a structure sheaf on the usual topological space \(X\).
-        In fact, these two definitions are closely related.
+        Note that in \cref{def:site_of_special_domains_on_affinoid_space} we have defined a site on \(X\) consisting of special domains, 
+        and in \cref{def:structure_sheaf_on_affinoid_space} we have defined a structure sheaf on the usual topological space \(X\).
+        These two sheaves are closely related, and also has some differences.
+
+        \Yang{on special site, the assigning algebra is a normed algebra, \(\kk\)-affinoid algebra. On open subset, the assigning algebra is even not necessarily normed.}
+
+        \Yang{If a special subset \(V \subseteq X\) is open, then they coincide?}
+
+        \Yang{On a point, they are the same?}\Yang{Yes, this is right.}
+
         \Yang{To be revised.}
     \end{remark}
 
     \begin{definition}\label{def:the_category_of_k_affinoid_space}
-        The \emph{category of \(\kk\)-affinoid spaces} is defined as the opposite category of the category of \(\kk\)-affinoid algebras:
-        \[ {\kk} \coloneqq (\Alg_{\kk}^{\text{aff}})^{\op}. \]
-        \Yang{To be revised.}
+        The morphism of \(\kk\)-affinoid spaces is defined as the morphism \((f,f^\sharp)\) of locally ringed spaces 
+        satisfying that
+        \begin{enumerate}
+            \item the underlying map \(f: Y \to X\) is continuous with respect to the spectral topology;
+            \item the morphism \(f^\sharp: \scrO_X \to f_* \scrO_Y\) is bounded, that is, for every special domains \(V \subseteq X\) and \(W \subseteq Y\) such that \(f(W) \subseteq V\), the induced homomorphism \(A_V \to A_W\) is bounded.
+        \end{enumerate}
+
+        We denote by \Yang{} the category of \(\kk\)-affinoid spaces with morphisms defined as above.
     \end{definition}
 
-    \Yang{Coherent sheaf.}
+    \begin{proposition}\label{prop:equivalence_between_affinoid_space_and_affinoid_algebra}
+        The category of \(\kk\)-affinoid spaces is equivalent to the category of \(\kk\)-affinoid algebras with bounded homomorphisms via the functor \(\scrM\).
+    \end{proposition}
 
 
+    Let \(M\) be an \(A\)-module, we can associate to \(M\) a sheaf \(\scrO_X(M)\) of \(\scrO_X\)-modules on \(X\) by setting
+    \[ \Gamma(U, \scrO_X(M)) \coloneqq \invlim_{V \subseteq U} A_V \otimes_A M, \]
+    where the limit is taken over all special domains \(V \subseteq U\).
 
-
-
+    \begin{proposition}\label{thm:equivalence_between_finite_A_modules_and_coherent_sheaves_on_affinoid_space}
+        The functor \(M \mapsto \scrO_X(M)\) induces an equivalence of categories between the category of finite \(A\)-modules and the category of coherent \(\scrO_X\)-modules on \(X\).
+    \end{proposition}
 
 
 
@@ -230,20 +252,57 @@
 
 \subsection{Some local properties}
 
-    \Yang{The local ring \(\scrO_{X,x}\).}
+    In this subsection, we will study some local properties of affinoid spaces.
+    As in algebraic geometry, the local ring at a point \(x \in X\) is defined as
+    \[ \scrO_{X,x} \coloneqq \dirlim_{x \in U} \scrO_X(U), \]
+    where the limit is taken over all open neighborhoods \(U\) of \(x\) in \(X\).
 
-    \Yang{The residue field and its completion.}
+    \begin{proposition}\label{prop:local_ring_of_affinoid_space_can_be_computed_by_affinoid_or_special_domain}
+        We have 
+        \[ \scrO_{X,x} \cong \dirlim_{\substack{x \in V \\ \text{affinoid}}} A_V \cong \dirlim_{\substack{x \in V \\ \text{special}}} A_V. \]
+    \end{proposition}
+    \Yang{}
+
+    \begin{theorem}\label{prop:local_ring_of_affinoid_space_is_noetherian}
+        The ring \(\scrO_{X,x}\) at any point \(x \in X\) is a noetherian local ring.
+        And it is faithfully flat over the local ring \(\calO_{\Spec A, \wp_x}\).
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be added.}
+    \end{proof}
+
+    In algebraic geometry, there is an amazing fact we often overlook: the residue field of the local ring at a point \(x\) of an affine variety is isomorphic to the residue field of the local ring at \(x\) of any open neighborhood of \(x\).
+    This fails in the non-archimedean analytic geometry, see \cref{eg:residue_field_of_affinoid_space_depends_on_neighborhood}. 
 
     \begin{example}\label{eg:residue_field_of_affinoid_space_depends_on_neighborhood}
+        Let \(A = \kkk\{T\}\) and \(X= \scrM(A)\).
+
         \Yang{To be added.}
     \end{example}
 
-    \begin{proposition}\label{prop:local_ring_of_affinoid_space_is_noetherian}
-        The local ring \(\scrO_{X,x}\) at any point \(x \in X\) is noetherian.
-    \end{proposition}
+    By \cref{eg:residue_field_of_affinoid_space_depends_on_neighborhood}, the residue field \(\Frac A/\wp_x\) may not be a good invariant of the point \(x\).
+    This seems a good reason to consider the completed residue field \(\scrH(x)\) instead, by \cref{prop:completed_residue_field_independent_of_neighborhood}.
 
+    \begin{proposition}\label{prop:completed_residue_field_independent_of_neighborhood}
+        Let \(x \in X\) be a point, and let \(V\) be an affinoid domain containing \(x\) represented by the \(\kk\)-affinoid algebra \(A_V\).
+        Then the completed residue field \(\scrH(x)\) is isomorphic to the completion of the residue field \(\Frac A_V/\wp_x\) with respect to the norm induced by the point \(x\).
+
+        Furthermore, the completed residue field \(\scrH(x)\) contains the residue field \(\scrO_{X,x}/\frakm_x\) as a dense subfield.
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be added.}
+    \end{proof}
 
     \begin{definition}\label{def:local_properities_of_affinoid_space}
+        Let \(\calP\) be one of the following properties: regular, normal, reduced, Gorenstein, Cohen-Macaulay, complete intersection, etc.
         We say that the affinoid space \(X\) has a local property \(\mathcal{P}\) at a point \(x \in X\) if the local ring \(\scrO_{X,x}\) has the property \(\mathcal{P}\).
         \Yang{To be added.}
     \end{definition}
+
+    Using \(\calP(X)\) to denote the set of points \(x \in X\) such that \(X\) has the property \(\calP\) at \(x\), we have the following result.
+
+    \begin{theorem}\label{thm:openness_of_P_locus_regular_normal_reduced_Gorenstein_CM_complete_intersection}
+        Let \(X\) be an affinoid space, and let \(\calP\) be one of the following properties: regular, normal, reduced, Gorenstein, Cohen-Macaulay, complete intersection.
+        Then the locus of points \(x \in X\) such that \(X\) has the property \(\calP\) at \(x\) is a Zariski open subset of \(X\).
+        More explicitly, we have \(\calP(X) = \Ker^{-1}(\calP(\Spec A))\).
+    \end{theorem}
