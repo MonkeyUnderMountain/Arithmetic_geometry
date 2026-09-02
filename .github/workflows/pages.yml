@@ -1,0 +1,111 @@
+name: Build and deploy notes
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository and template submodule
+        uses: actions/checkout@v6
+        with:
+          submodules: recursive
+
+      - name: Validate the note manifest and TeX sources
+        run: ./accessories/manage-notes validate
+
+      - name: Read compilation roots from notes.json
+        id: documents
+        shell: bash
+        run: |
+          {
+            echo 'root_files<<__ROOT_FILES__'
+            jq -r '.book.tex, .book.chapters[].tex, .book.chapters[].sections[].tex' notes.json
+            echo '__ROOT_FILES__'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Compile every book, chapter, and section
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: ${{ steps.documents.outputs.root_files }}
+          texlive_version: 2026
+          os: debian
+          work_in_root_file_dir: true
+          continue_on_error: false
+          latexmk_use_xelatex: true
+          extra_fonts: ./accessories/fonts/lxgw-wenkai/LXGWWenKai-Regular.ttf
+          pre_compile: |
+            texmf_home="$(kpsewhich -var-value=TEXMFHOME)"
+            mkdir -p "$texmf_home/tex/latex/noteformyself"
+            cp accessories/templates-of-latex/noteformyself/noteformyself.cls \
+              "$texmf_home/tex/latex/noteformyself/noteformyself.cls"
+            mktexlsr "$texmf_home"
+
+      - name: Assemble the Pages site
+        shell: bash
+        run: |
+          set -euo pipefail
+          site_dir="_site"
+          mkdir -p "$site_dir"
+          cp notes.json "$site_dir/notes.json"
+          cp .github/pages/index.html "$site_dir/index.html"
+          touch "$site_dir/.nojekyll"
+
+          while IFS=$'\t' read -r tex_path pdf_url; do
+            pdf_path="${tex_path%.tex}.pdf"
+            if [[ ! -f "$pdf_path" ]]; then
+              echo "Missing compiled PDF: $pdf_path" >&2
+              exit 1
+            fi
+            destination="$site_dir/$pdf_url"
+            mkdir -p "$(dirname "$destination")"
+            cp "$pdf_path" "$destination"
+          done < <(
+            jq -r '
+              [.book, .book.chapters[], .book.chapters[].sections[]]
+              | .[]
+              | [.tex, .url]
+              | @tsv
+            ' notes.json
+          )
+
+          expected_count="$(
+            jq '[.book, .book.chapters[], .book.chapters[].sections[]] | length' notes.json
+          )"
+          actual_count="$(find "$site_dir/pdf" -type f -name '*.pdf' | wc -l)"
+          if [[ "$actual_count" -ne "$expected_count" ]]; then
+            echo "Expected $expected_count PDFs, staged $actual_count." >&2
+            exit 1
+          fi
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload the Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
