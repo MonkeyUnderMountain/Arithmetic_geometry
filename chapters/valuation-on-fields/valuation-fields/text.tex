@@ -1,0 +1,349 @@
+% !TeX root = valuation-fields.tex
+\section{Valuation fields}
+
+\subsection{Absolute values and completion}
+
+    \begin{definition}\label{def:valuation_field}
+        Let \(\kk\) be a field.
+        An \emph{absolute value} on \(\kk\) is a function \(|\cdot|:\kk\to\bbR_{\ge0}\) satisfying the following properties for all \(x,y\in\kk\):
+        \begin{enumerate}
+            \item \(|x|=0\) if and only if \(x=0\);
+            \item \(|xy|=|x|\cdot|y|\);
+            \item \(|x+y|\leq|x|+|y|\).
+        \end{enumerate}
+        A field \(\kk\) equipped with an absolute value \(|\cdot|\) is called a \emph{valuation field}.
+    \end{definition}
+
+    \begin{remark}\label{rmk:additive_and_multiplicative_valuation_on_a_field}
+        Let \(\kk\) be a field.
+        Recall that a (additive) valuation on \(\kk\) is a function \(v: \kk^\times \to \bbR\) such that
+        \begin{itemize}
+            \item \(\forall x,y \in \kk^\times, v(xy) = v(x) + v(y)\);
+            \item \(\forall x,y \in \kk^\times, v(x + y) \geq \min\{v(x), v(y)\}\).
+        \end{itemize}
+        We can extend \(v\) to the whole field \(\kk\) by defining \(v(0) = +\infty\).
+        Fix a real number \(\varepsilon \in (0,1)\).
+        Then \(v\) induces an absolute value \(|\cdot|_v: \kk \to \bbR_+\) defined by \(|x|_v = \varepsilon^{v(x)}\) for each \(x \in \kk\).
+
+        The valuation \(v\) defined above is called an \emph{additive valuation}.
+        And an absolute value \(|\cdot|\) on \(\kk\) is called a \emph{multiplicative valuation}.
+        In this note, the term \emph{valuation} may refer to either an additive valuation or a multiplicative valuation, depending on the context.
+    \end{remark}
+
+    \begin{example}\label{eg:trivial_absolute_value_on_any_fields}
+        Let \(\kk\) be a field.
+        The \emph{trivial absolute value} on \(\kk\) is defined as
+        \[ |x| := \begin{cases}
+            0, & x = 0; \\
+            1, & x \neq 0.
+        \end{cases} \]
+    \end{example}
+
+    \begin{example}\label{eg:usual_absolute_value_on_Q}
+        Let \(|\cdot|_\infty\) be the usual absolute value on the field \(\bbQ\) of rational numbers.
+        Then \((\bbQ, |\cdot|_\infty)\) is a valuation field.
+        Its completion is the field \(\bbR\) of real numbers equipped with the usual absolute value.
+    \end{example}
+
+    \begin{example}\label{eg:p-adic_absolute_value_on_Q}
+        Let \(p\) be a prime number.
+        The valuation \(v_p\) on \(\bbQ\) induced by the ideal \((p) \subset \bbZ\) is called the \emph{\(p\)-adic valuation}.
+        It gives an absolute value \(|\cdot|_p\) on \(\bbQ\); see \cref{eg:p-adic_field}
+        % For any non-zero rational number \(x \in \bbQ\), we can write it as \(x = p^n \frac{a}{b}\), where \(n \in \bbZ\) and \(a,b \in \bbZ\) are integers not divisible by \(p\).
+        % The \emph{\(p\)-adic absolute value} on \(\bbQ\) is defined as
+        % \[ |x|_p := \begin{cases}
+        %     0, & x = 0; \\
+        %     p^{-n}, & x = p^n \frac{a}{b} \text{ as above}.
+        % \end{cases} \]
+        % Then \((\bbQ, |\cdot|_p)\) is a valuation field.
+        % Its completion is the field 
+        % \[ \bbQ_p = \left\{\sum_{n = k}^{+\infty} a_n p^n \colon k \in \bbZ, a_n \in \{0,1,\ldots,p-1\}\right\} \]
+        % of \(p\)-adic numbers equipped with the \(p\)-adic absolute value; see \Yang{to be added.}.
+    \end{example}
+
+    \begin{definition}\label{def:valuation_group_of_a_valuation_field}
+        The \emph{(multiplicative) valuation group} of a valuation field \((\kk,|\cdot|)\) is defined as the subgroup of \(\bbR_{>0}\) given by
+        \[ |\kk^\times| := \{|x|\colon x \in \kk^\times\}. \]
+        We use the notation \(\sqrt{|\kk^\times|}\) to denote the set \(\{|x|^{1/n}\colon x \in \kk^\times, n \in \bbZ_{>0}\}\).
+    \end{definition}
+
+    Note that an absolute value \(|\cdot|\) is non-trivial if and only if its valuation group \(|\kk^\times|\) is not equal to \(\{1\}\).
+
+    \begin{definition}\label{def:complete_valuation_field}
+        Let \((\kk,|\cdot|)\) be a valuation field.
+        We say that \(\kk\) is \emph{complete} if the metric \(d(x,y) := |x - y|\) makes \(\kk\) a complete metric space.
+    \end{definition}
+
+    \begin{lemma}\label{lem:completion_of_valuation_field}
+        Let \((\kk,|\cdot|)\) be a valuation field and \((\widehat{\kk},|\cdot|)\) its completion as a metric space.
+        Then the operations of addition and multiplication on \(\kk\) can be extended to \(\widehat{\kk}\) uniquely, making \((\widehat{\kk},|\cdot|)\) a complete valuation field containing \(\kk\) as a dense subfield.
+    \end{lemma}
+    \begin{proof}
+        Note that the operations of addition and multiplication on \(\kk\) are uniformly continuous with respect to the metric \(d(x,y) = |x - y|\).
+        Thus they can be extended to \(\widehat{\kk}\) uniquely.
+    \end{proof}
+
+    \begin{proposition}\label{prop:non-trivial_complete_field_is_uncountable}
+        Let \((\kk,|\cdot|)\) be a complete valuation field with non-trivial absolute value.
+        Then \(\kk\) is uncountable.
+    \end{proposition}
+    \begin{proof}
+        Since the absolute value \(|\cdot|\) is non-trivial, we can construct a sequence \(\{x_n\}_{n=1}^\infty \subseteq \kk\) inductively such that \(|x_n| < |x_{n-1}|/2\) for any \(n\geq 1\) and \(|x_0| < 1\).
+        Then there is an injective map from \(\bbN^{\{0,1\}}\) to \(\kk\) defined by
+        \[ (a_n)_{n=1}^\infty \mapsto \sum_{n=1}^\infty a_n x_n, \quad a_n \in \{0,1\}. \]
+        Since \(|x_n| < 2^{-n}\), the series \(\sum_{n=1}^\infty a_n x_n\) converges in \(\kk\).
+        Note \(|x_n| > |\sum_{m\geq n} x_m|\) for each \(n\), we have that the map is injective.
+        Thus \(\kk\) is uncountable.
+    \end{proof}
+
+    Unlike the real number field \(\bbR\), even a valuation field is complete, we can not expect the theorem of nested intervals to hold.
+
+    \begin{definition}\label{def:spherically_complete}
+        A valuation field \((\kk,|\cdot|)\) is called \emph{spherically complete} if every decreasing sequence of closed balls in \(\kk\) has a non-empty intersection.
+    \end{definition}
+
+    \begin{example}\label{eg:p-adic_complex_field_is_not_spherically_complete}
+        The field \(\bbC_p\) of \(p\)-adic complex numbers is not spherically complete; see \cref{prop:C_p_is_not_spherically_complete}.
+    \end{example}
+
+    \begin{definition}\label{def:archimedean_and_non-archimedean_valuation}
+        Let \((\kk,|\cdot|)\) be a valuation field.
+        We say that \(\kk\) is \emph{non-archimedean} if its absolute value \(|\cdot|\) satisfies the \emph{strong triangle inequality}:
+        \[ |x+y|\leq\max\{|x|,|y|\},\quad\forall x,y\in\kk. \]
+        Otherwise, we say that \(\kk\) is \emph{archimedean}.
+    \end{definition}
+
+    \begin{example}\label{eg:archimedean_absolute_value_and_additive_valuation}
+        Let \(v\) be an additive valuation on a field \(\kk\).
+        Then the induced absolute value \(|\cdot|_v\) as in \cref{rmk:additive_and_multiplicative_valuation_on_a_field} is non-archimedean.
+
+        The converse is also true: if \((\kk, |\cdot|)\) is a non-archimedean valuation field, 
+        then the function \(v: \kk^\times \to \bbR\) defined by \(v(x) = -\log |x|\) is an additive valuation on \(\kk\).
+    \end{example}
+
+    The following proposition explains the terminology "archimedean".
+
+    \begin{proposition}\label{prop:archimedean_iff_integer_are_unbound}
+        Let \((\kk,|\cdot|)\) be a valuation field.
+        Then \(\kk\) is archimedean if and only if the set \(\{|n \cdot 1|\colon n \in \bbZ\}\) is unbounded.
+    \end{proposition}
+    \begin{proof}
+        If \(\kk\) is non-archimedean, then for any integer \(n > 0\), we have
+        \[ |n \cdot 1| = |1 + 1 + \cdots + 1| \leq \max\{|1|, |1|, \ldots, |1|\} = 1. \]
+        Thus the set \(\{|n \cdot 1|\colon n \in \bbZ\}\) is bounded.
+
+        Conversely, suppose that \(\{|n \cdot 1|\colon n \in \bbZ\}\) is bounded by a real number \(C > 0\).
+        For any \(x,y \in \kk\), we have 
+        \[ |x + y|^n = \left| \sum_{k=0}^n \binom{n}{k} x^k y^{n-k} \right| \leq \sum_{k=0}^n C |x|^k |y|^{n-k}. \]
+        Without loss of generality, we assume that \(|x| \leq 1\) and \(y = 1\).
+        Then the above inequality becomes
+        \[ |x + 1|^n \leq \sum_{k=0}^n C |x|^k \leq C (n+1). \]
+        Taking \(n\)-th root and letting \(n \to \infty\), we obtain \(|x + 1| \leq 1\).
+        Hence \(|x + y| \leq \max\{|x|, |y|\}\) for any \(x,y \in \kk\).
+    \end{proof}
+            
+    \begin{theorem}[Ostrowski]\label{thm:classification_of_archimedean_complete_fields}
+        Let \((\kk,|\cdot|)\) be an archimedean complete valuation field.
+        Then there exists an embedding \(\iota: \kk \hookrightarrow \bbC\) and \(s \in (0, \infty)\) such that
+        \[ |x| = |\iota(x)|_\infty^s, \quad \forall x \in \kk, \]
+        where \(|\cdot|_\infty\) is the usual absolute value on \(\bbC\).
+        In other words, complete archimedean valuation fields are equivalent to either \(\bbR\) or \(\bbC\) equipped with usual absolute value (see \cref{def:equivalent_of_absolute_values}).
+    \end{theorem}
+    \begin{proof}
+        By \cref{prop:archimedean_iff_integer_are_unbound}, \(\kk\) has characteristic zero.
+        For any integers \(n,m \in \bbZ_{>0}\), we write \(n\) in base \(m\) as
+        \[ n = a_k m^k + a_{k-1} m^{k-1} + \cdots + a_1 \cdot m + a_0, \]
+        where \(a_i \in \{0,1,\cdots,m-1\}\) for each \(i\) and \(a_k \neq 0\).
+        Then we have
+        \[ |n| \leq \sum_{i} |a_i| |m|^i \leq k|m|^{k+1}\quad \text{and} \quad k \leq \frac{\log n}{\log m}. \]
+        Combining the above two inequalities, we obtain
+        \[ \log |n| \leq  \log (\log n) + \left(\frac{\log n}{\log m} + 1\right) \log |m|. \]
+        Replace \(n\) by \(n^t\), \(t \in \bbZ_{>0}\), and divide both sides by \(t\), we get
+        \[ \log |n| \leq \frac{\log (\log n) + \log t}{t} + \left(\frac{\log n}{\log m} + \frac{1}{t}\right) \log |m|. \]
+        Let \(t\) trend to infinity, we get 
+        \[ \frac{\log |n|}{\log n} \leq \frac{\log |m|}{\log m}. \]
+        By symmetry, we have
+        \[ \frac{\log |n|}{\log n} = \frac{\log |m|}{\log m}, \quad \forall n,m \in \bbZ_{>0}. \]
+        Set \(s\) be the constant \(\log |n|/\log n\) for any \(n > 1\).
+        Then we have \(|n| = n^s\) for any \(n \in \bbZ\).
+        By \cref{prop:archimedean_iff_integer_are_unbound}, we get \(s > 0\).
+        Without loss of generality, we may assume that \(s = 1\) by replacing \(|\cdot|\) by \(|\cdot|^{1/s}\).
+
+        We have show that the natural embedding \(\bbQ \hookrightarrow \kk\) is an isometry if we equip \(\bbQ\) with the usual absolute value \(|\cdot|_\infty\).
+        Thus it can be extended to an isometric embedding \(\bbR \hookrightarrow \kk\).
+        For every \(\alpha \in \kk\), consider 
+        \[ f(z) := |\alpha^2 - (z+\bar{z}) \alpha + z\bar{z}|, \quad z \in \bbC. \]
+        Since \(\lim_{z \to \infty} f(z) = +\infty\), there exists \(z_0 \in \bbC\) such that \(f(z_0) = m\) is the minimum of \(f\).
+        Since \(f^{-1}(m)\) is closed and bounded, this is a compact set; and then we can assume that \(z_0\) has the largest norm among all points in \(f^{-1}(m)\).
+        We only need to show that \(m = 0\).
+
+        Suppose the contrary that \(m > 0\).
+        Choose \(0 < \varepsilon < m\).
+        The polynomial \(g(T) = T^2 - (z_0 + \bar{z_0})T + z_0 \bar{z_0} + \varepsilon\) has two distinct roots \(\beta, \bar{\beta} \in \bbC\).
+        Then \(\beta\bar{\beta} = z_0\bar{z_0} + \varepsilon\) implies \(|\beta| > |z_0|\); 
+        and hence \(f(\beta) > m\).
+
+        Fix \(n \in \bbZ_{>0}\), define
+        \[ G(T) = (T^2 - (z_0 + \bar{z_0})T + z_0 \bar{z_0})^n - (-\varepsilon)^n. \]
+        We have \(G(\beta) = 0\) and \(G(T) = g(T) \prod_{i=1}^{n-1} (T^2-(\beta_i+\bar{\beta_i})T+ \beta_i\bar{\beta_i})\) for some \(\beta_i \in \bbC\).
+        Then 
+        \[ f(\beta) m^{n-1} \leq |G(\alpha)| \leq |\alpha^2 - (z_0 + \bar{z_0})\alpha + z_0 \bar{z_0}|^n + \varepsilon^n = m^n + \varepsilon^n. \]
+        It follows that 
+        \[ f(\beta) \leq m + \frac{\varepsilon^n}{m^{n-1}}. \]
+        Let \(n\) trend to infinity, we get \(f(\beta) \leq m\), a contradiction.
+        % \Yang{To be added.}
+    \end{proof}
+
+
+\subsection{Places on a field}
+
+    \begin{definition}\label{def:equivalent_of_absolute_values}
+        Let \(\kk\) be a field.
+        Two absolute values \(|\cdot|_1\) and \(|\cdot|_2\) on \(\kk\) are said to be \emph{equivalent} if there exists a real number \(c \in (0,\infty)\) such that
+        \[ |x|_1 = |x|_2^c, \quad \forall x \in \kk. \]
+    \end{definition}
+
+    Note that equivalent absolute values induce the same topology on the field \(\kk\).
+    Moreover, the following lemma shows that the converse is also true.
+
+    \begin{lemma}\label{prop:equivalent_of_absolute_values_and_topology_and_unit_disk}
+        Let \(\kk\) be a field and \(|\cdot|_1\), \(|\cdot|_2\) be two absolute values on \(\kk\).
+        Then the following statements are equivalent:
+        \begin{enumerate}
+            \item \(|\cdot|_1\) and \(|\cdot|_2\) are equivalent;
+            \item \(|\cdot|_1\) and \(|\cdot|_2\) induce the same topology on \(\kk\);
+            \item The unit disks \(D_1 = \{x \in \kk\colon |x|_1 < 1\}\) and \(D_2 = \{x \in \kk\colon |x|_2 < 1\}\) are the same.
+        \end{enumerate}
+    \end{lemma}
+    \begin{proof}
+        The implications (a) \(\Rightarrow\) (b) is obvious.
+        Now we prove (b) \(\Rightarrow\) (c).
+        For any \(x \in D_1\), we have \(x^n \to 0\) as \(n \to \infty\) under the absolute value \(|\cdot|_1\) and thus under \(|\cdot|_2\).
+        Therefore, \(|x|_2^n \to 0\) as \(n \to \infty\), which implies that \(|x|_2 < 1\), i.e., \(x \in D_2\).
+        Similarly, we can prove that \(D_2 \subseteq D_1\).
+
+        Finally, we prove (c) \(\Rightarrow\) (a).
+        If \(|\cdot|_1\) is trivial, then \(D_1 = \{0\}\) and thus \(|\cdot|_2\) is also trivial.
+        In this case, they are equivalent.
+        Suppose that both \(|\cdot|_1\) and \(|\cdot|_2\) are non-trivial.
+        Pick any \(x,y \notin D_1 = D_2\).
+        Then there exist real numbers \(\alpha, \beta > 0\) such that \(|x|_1 = |x|_2^\alpha\) and \(|y|_1 = |y|_2^\beta\).
+        Suppose the contrary that \(\alpha \neq \beta\).
+        Consider the domain \(\Lambda \subseteq \bbZ^2\) defined by
+        \[ \begin{cases}
+            n \log |x|_2 < m \log |y|_2; \\
+            n \alpha \log |x|_2 > m \beta \log |y|_2.
+        \end{cases} \]
+        Since \(\alpha \neq \beta\), the two lines defined by the equalities are not parallel.
+        Thus \(\Lambda\) is non-empty.
+        Pick \((n,m) \in \Lambda\) and set \(z := x^n y^{-m}\).
+        Then we have \(|z|_2 < 1\) and \(|z|_1 > 1\), a contradiction.
+    \end{proof}
+
+    \begin{definition}\label{def:place_on_a_field}
+        Let \(\kk\) be a field.
+        A \emph{place} on \(\kk\) is an equivalence class of non-trivial absolute values on \(\kk\).
+        An archimedean (resp. non-archimedean) place is also called an \emph{finite} (resp. \emph{infinite}) place.
+        We denote the set of all places (resp. finite, infinite places) on \(\kk\) by \(M_\kk\) (resp. \(M_\kk^f\), \(M_\kk^\infty\)).
+        
+        If \(\bfl \subset \kk\) is a subfield, we denote by \(M_{\kk/\bfl}\) the set of all places on \(\kk\) which are trivial on \(\bfl\).
+    \end{definition}
+
+    \begin{example}\label{eg:relative_place_set_of_C_t}
+        Let \(\kk = \bbC(t)\) and \(\bfl = \bbC\).
+        Then I claim that
+        \[ M_{\bbC(t)/\bbC} \cong \{\text{ prime divisors on } \bbP_\bbC^1\}. \]
+        For each prime divisor \(P\) on \(\bbP_\bbC^1\), we can define an additive valuation \(\Mult_P: \bbC(t)^\times \to \bbZ\) by assigning to each non-zero rational function \(f \in \bbC(t)^\times\) its multiplicity at \(P\).
+        Fix a real number \(\varepsilon \in (0,1)\).
+        Then we obtain a multiplicative valuation (absolute value) \(|\cdot|_P\) on \(\bbC(t)\) as in \cref{rmk:additive_and_multiplicative_valuation_on_a_field}.
+        It is easy to check that the absolute value \(|\cdot|_P\) is trivial on \(\bbC\) and that different prime divisors give rise to inequivalent absolute values.
+
+        Conversely, given any non-trivial absolute value \(|\cdot|\) on \(\bbC(t)\) which is trivial on \(\bbC\), by \cref{prop:archimedean_iff_integer_are_unbound,eg:archimedean_absolute_value_and_additive_valuation}, 
+        the absolute value \(|\cdot|\) is given by an additive valuation \(v: \bbC(t)^\times \to \bbR\).
+        Let \(\calO_v\) be the valuation ring of \(v\) and \(\frakm_v\) its maximal ideal.
+        Then \(t \in \calO_v\) or \(t^{-1} \in \calO_v\).
+        Without loss of generality, we assume that \(t \in \calO_v\).
+        Since \(|\cdot|\) is trivial on \(\bbC\), we have \(\bbC[t] \subseteq \calO_v\).
+        And we have \(\frakm_v \cap \bbC[t] \neq 0\) since otherwise \(v\) is trivial on \(\bbC[t]^\times\) and thus on \(\bbC(t)^\times\).
+        It follows that the image of \(\bbC[t]\) under the quotient map \(\calO_v \to \calO_v/\frakm_v\) is \(\bbC\).
+        This gives a point \(P \in \bbA_\bbC^1 \subseteq \bbP_\bbC^1\).
+        Then \(v\) is different from the additive valuation \(\Mult_P\) by a positive scalar multiple via looking at the values on \(\bbC[t]\).
+        Thus we have established the claimed bijection.
+    \end{example} 
+
+    \begin{theorem}[Ostrowski]\label{thm:ostrowski_theorem_places_on_Q}
+        Every nontrivial absolute value on \(\bbQ\) is equivalent to either the usual absolute value \(|\cdot|_\infty\) or a \(p\)-adic absolute value \(|\cdot|_p\) for some prime number \(p\).
+        In other words, 
+        \[ M_\bbQ = \{|\cdot|_\infty\} \cup \{| \cdot |_p : p \text{ is a prime number}\}. \]
+    \end{theorem}
+    \begin{proof}
+        By \cref{thm:classification_of_archimedean_complete_fields}, all archimedean places on \(\bbQ\) are equivalent to the usual absolute value \(|\cdot|_\infty\).
+        Now we consider a non-archimedean absolute value \(|\cdot|\) on \(\bbQ\).
+        By \cref{eg:archimedean_absolute_value_and_additive_valuation}, \(|\cdot|\) is induced by an additive valuation \(v: \bbQ^\times \to \bbR\).
+        Consider its valuation ring \(\calO_v\) and maximal ideal \(\frakm_v\).
+        We have \(\bbZ \subseteq \calO_v\).
+        If \(\calm_v \cap \bbZ = 0\), then \(\bbQ \subset \calO_v\) and thus \(v\) is trivial, a contradiction.
+        Thus there exists a prime number \(p\) such that \(\frakm_v \cap \bbZ = p \bbZ\).
+        It follows that \(v\) is different from the \(p\)-adic valuation \(v_p\) by a positive scalar multiple via looking at the values on \(\bbZ\).
+        Hence \(|\cdot|\) is equivalent to the \(p\)-adic absolute value \(|\cdot|_p\).
+    \end{proof}
+
+    \begin{remark}\label{rmk:normalized_place_on_Q}
+        For every non-archimedean place \(v\) on \(\bbQ\) corresponding to a prime number \(p\), 
+        we choose the unique normalized absolute value \(|\cdot|_v\) in the class \(v\) such that \(|p|_v = 1/p\).
+        For the archimedean place \(v\) on \(\bbQ\), we choose the usual absolute value \(|\cdot|_v = |\cdot|_\infty\).
+        Unless otherwise specified, we always use the normalized absolute values on \(\bbQ\).
+    \end{remark}
+
+    \begin{remark}\label{rmk:product_formula_on_Q}
+        For any non-zero rational number \(x \in \bbQ^\times\), one can easily check the \emph{product formula}:
+        \[ \prod_{v \in M_\bbQ} |x|_v = 1. \]
+        This can be viewed as an arithmetic analogue of the fact on \(\bbP_\bbC^1\) that 
+        \[ \sum_{P \in \bbP^1(\bbC)} \Mult_P(f) = 0 \]
+        for any non-zero rational function \(f \in \bbC(t)^\times\).
+        Indeed, fix a real number \(\varepsilon \in (0,1)\).
+        Then by \cref{eg:relative_place_set_of_C_t}, above fact can be rewritten as
+        \[ \prod_{P \in \bbP_\bbC^1} |f|_P = 1. \]
+    \end{remark}
+    
+    \begin{theorem}[Artin-Whaples approximations]\label{theorem:artin_whaples_approximations}
+        Let \(\kk\) be a field and \(v_1, v_2, \ldots, v_n \in M_\kk\) be pairwise distinct places on \(\kk\).
+        For each \(i \in \{1,2,\ldots,n\}\), let \(x_i \in \kk\) and \(\varepsilon_i > 0\).
+        Then there exists an element \(x \in \kk\) such that
+        \[ |x - x_i|_{v_i} < \varepsilon_i, \quad \forall i \in \{1,2,\ldots,n\}. \]
+        In particular, the image of the diagonal embedding
+        \[ \kk \to \prod_{i=1}^n \kk_{v_i} \]
+        is dense, where \(\kk_{v_i}\) is the completion of \(\kk\) with respect to the place \(v_i\), and the product is equipped with the product topology.
+    \end{theorem}
+    \begin{proof}
+        We only need to find \(c_i \in \kk\) such that
+        \[ |c_i|_{v_j} < 1, \quad \forall j \neq i; \quad \text{and} \quad |c_i|_{v_i} > 1. \]
+        If so, set \(c_i(m) = c_i^m/(1+c_i^m)\) for each \(m \in \bbZ_{>0}\).
+        Then we have
+        \[ \lim_{m \to \infty} c_i(m) = \begin{cases}
+            0, & \text{ under } v_j, j \neq i; \\
+            1, & \text{ under } v_i.
+        \end{cases} \]
+        Thus the element \(x = \sum_{i=1}^n c_i(m) x_i\) satisfies the required property for sufficiently large \(m\).
+
+        Now we construct such \(c=c_1\) by induction on \(n\).
+        By proof of \cref{prop:equivalent_of_absolute_values_and_topology_and_unit_disk}, there exists \(c\) with \(|c|_1>1\) and \(|c|_2 < 1\).
+        This gives the base case \(n=2\).
+        Suppose that we have constructed \(c\) for \(n-1\) places, i.e., \(|c|_1 > 1\) and \(|c|_i < 1\) for all \(2 \leq i \leq n-1\).
+        There is \(a \in \kk\) such that \(|a|_1 > 1\) and \(|a|_n < 1\).
+        Consider 
+        \[ c_m = \begin{cases}
+            \frac{c^m}{c^m +1}, & |c|_n > 1;\\
+            c^m, & |c|_n = 1;
+        \end{cases} \]
+        we have 
+        \[ \lim_{m \to \infty} |ac_m|_i = \begin{cases}
+            +\infty, & i = 1; \\
+            0, & i=2,\cdot,n-1;\\
+            |a|_n<1, & i = n.
+        \end{cases} \]
+        Thus for sufficiently large \(m\), the element \(c = ac_m\) satisfies the required property.
+    \end{proof}
+
+
+
