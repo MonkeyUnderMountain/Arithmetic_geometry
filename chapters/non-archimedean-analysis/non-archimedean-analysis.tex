@@ -2,7 +2,9 @@
 % !TeX encoding = UTF-8
 % !BIB program = biber
 \documentclass[sectionlevel=chapter]{noteformyself}
-\usepackage{draftwatermark} % 水印宏包
+% manage-notes:begin watermark
+% \usepackage{draftwatermark}
+% manage-notes:end watermark
 
 \input{../../accessories/notation.tex}
 \addbibresource{../../accessories/ref.bib}
@@ -34,10 +36,6 @@
     The main references for this chapter are \cite{Gou97padic,Rob00padic,Li18aljabr1}.
 
     % manage-notes:begin sections
-    % \section{Tate algebras} % planned
-    % \input{tate-algebras/text.tex} % planned
-    % \section{Analytic functions on closed polydisks} % planned
-    % \input{analytic-functions-on-closed-polydisks/text.tex} % planned
     \section{Local theory I: functions}
     \input{local-theory-i-functions/text.tex}
     \section{Local theory II: maps}
