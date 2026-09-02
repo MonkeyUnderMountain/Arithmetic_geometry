@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "build": {
     "engine": "xelatex"
   },
@@ -8,7 +8,10 @@
     "title": "Arithmetic Geometry",
     "tex": "arithmetic-geometry.tex",
     "url": "pdf/arithmetic-geometry.pdf",
-    "status": "draft-unpublished",
+    "status": {
+      "published": 0,
+      "finished": 0
+    },
     "chapters": [
       {
         "id": "valuation-on-fields",
@@ -16,7 +19,10 @@
         "order": 1,
         "tex": "chapters/valuation-on-fields/valuation-on-fields.tex",
         "url": "pdf/chapters/valuation-on-fields/valuation-on-fields.pdf",
-        "status": "finished-published",
+        "status": {
+          "published": 0,
+          "finished": 0
+        },
         "sections": [
           {
             "id": "valuation-fields",
@@ -24,7 +30,10 @@
             "order": 1,
             "tex": "chapters/valuation-on-fields/valuation-fields/valuation-fields.tex",
             "url": "pdf/chapters/valuation-on-fields/valuation-fields/valuation-fields.pdf",
-            "status": "finished-published"
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
           },
           {
             "id": "non-archimedean-valuations",
@@ -32,7 +41,10 @@
             "order": 2,
             "tex": "chapters/valuation-on-fields/non-archimedean-valuations/non-archimedean-valuations.tex",
             "url": "pdf/chapters/valuation-on-fields/non-archimedean-valuations/non-archimedean-valuations.pdf",
-            "status": "finished-published"
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
           },
           {
             "id": "finite-field-extensions",
@@ -40,7 +52,10 @@
             "order": 3,
             "tex": "chapters/valuation-on-fields/finite-field-extensions/finite-field-extensions.tex",
             "url": "pdf/chapters/valuation-on-fields/finite-field-extensions/finite-field-extensions.pdf",
-            "status": "finished-published"
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
           },
           {
             "id": "artin-whaples-approximations",
@@ -48,7 +63,10 @@
             "order": 4,
             "tex": "chapters/valuation-on-fields/artin-whaples-approximations/artin-whaples-approximations.tex",
             "url": "pdf/chapters/valuation-on-fields/artin-whaples-approximations/artin-whaples-approximations.pdf",
-            "status": "draft-published"
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
           },
           {
             "id": "example-p-adic-fields",
@@ -56,7 +74,10 @@
             "order": 5,
             "tex": "chapters/valuation-on-fields/example-p-adic-fields/example-p-adic-fields.tex",
             "url": "pdf/chapters/valuation-on-fields/example-p-adic-fields/example-p-adic-fields.pdf",
-            "status": "finished-published"
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
           }
         ]
       },
@@ -66,7 +87,10 @@
         "order": 2,
         "tex": "chapters/normed-algebras/normed-algebras.tex",
         "url": "pdf/chapters/normed-algebras/normed-algebras.pdf",
-        "status": "finished-published",
+        "status": {
+          "published": 0,
+          "finished": 0
+        },
         "sections": [
           {
             "id": "normed-rings-and-modules",
@@ -74,7 +98,10 @@
             "order": 1,
             "tex": "chapters/normed-algebras/normed-rings-and-modules/normed-rings-and-modules.tex",
             "url": "pdf/chapters/normed-algebras/normed-rings-and-modules/normed-rings-and-modules.pdf",
-            "status": "finished-published"
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
           },
           {
             "id": "convergent-and-restricted-power-series",
@@ -82,7 +109,10 @@
             "order": 2,
             "tex": "chapters/normed-algebras/convergent-and-restricted-power-series/convergent-and-restricted-power-series.tex",
             "url": "pdf/chapters/normed-algebras/convergent-and-restricted-power-series/convergent-and-restricted-power-series.pdf",
-            "status": "finished-published"
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
           },
           {
             "id": "affinoid-algebras",
@@ -90,7 +120,10 @@
             "order": 3,
             "tex": "chapters/normed-algebras/affinoid-algebras/affinoid-algebras.tex",
             "url": "pdf/chapters/normed-algebras/affinoid-algebras/affinoid-algebras.pdf",
-            "status": "finished-published"
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
           }
         ]
       },
@@ -100,7 +133,10 @@
         "order": 3,
         "tex": "chapters/non-archimedean-analysis/non-archimedean-analysis.tex",
         "url": "pdf/chapters/non-archimedean-analysis/non-archimedean-analysis.pdf",
-        "status": "finished-published",
+        "status": {
+          "published": 0,
+          "finished": 0
+        },
         "sections": [
           {
             "id": "local-theory-i-functions",
@@ -108,7 +144,10 @@
             "order": 1,
             "tex": "chapters/non-archimedean-analysis/local-theory-i-functions/local-theory-i-functions.tex",
             "url": "pdf/chapters/non-archimedean-analysis/local-theory-i-functions/local-theory-i-functions.pdf",
-            "status": "finished-published"
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
           },
           {
             "id": "local-theory-ii-maps",
@@ -116,7 +155,10 @@
             "order": 2,
             "tex": "chapters/non-archimedean-analysis/local-theory-ii-maps/local-theory-ii-maps.tex",
             "url": "pdf/chapters/non-archimedean-analysis/local-theory-ii-maps/local-theory-ii-maps.pdf",
-            "status": "finished-published"
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
           },
           {
             "id": "analytic-functions-in-one-variable",
@@ -124,7 +166,10 @@
             "order": 3,
             "tex": "chapters/non-archimedean-analysis/analytic-functions-in-one-variable/analytic-functions-in-one-variable.tex",
             "url": "pdf/chapters/non-archimedean-analysis/analytic-functions-in-one-variable/analytic-functions-in-one-variable.pdf",
-            "status": "finished-published"
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
           },
           {
             "id": "elementary-functions",
@@ -132,7 +177,10 @@
             "order": 4,
             "tex": "chapters/non-archimedean-analysis/elementary-functions/elementary-functions.tex",
             "url": "pdf/chapters/non-archimedean-analysis/elementary-functions/elementary-functions.pdf",
-            "status": "finished-published"
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
           }
         ]
       },
@@ -142,7 +190,10 @@
         "order": 4,
         "tex": "chapters/berkovich-space/berkovich-space.tex",
         "url": "pdf/chapters/berkovich-space/berkovich-space.pdf",
-        "status": "finished-published",
+        "status": {
+          "published": 0,
+          "finished": 0
+        },
         "sections": [
           {
             "id": "spectrum",
@@ -150,7 +201,10 @@
             "order": 1,
             "tex": "chapters/berkovich-space/spectrum/spectrum.tex",
             "url": "pdf/chapters/berkovich-space/spectrum/spectrum.pdf",
-            "status": "finished-published"
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
           },
           {
             "id": "affinoid-spaces",
@@ -158,7 +212,10 @@
             "order": 2,
             "tex": "chapters/berkovich-space/affinoid-spaces/affinoid-spaces.tex",
             "url": "pdf/chapters/berkovich-space/affinoid-spaces/affinoid-spaces.pdf",
-            "status": "finished-published"
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
           },
           {
             "id": "analytic-spaces",
@@ -166,7 +223,10 @@
             "order": 3,
             "tex": "chapters/berkovich-space/analytic-spaces/analytic-spaces.tex",
             "url": "pdf/chapters/berkovich-space/analytic-spaces/analytic-spaces.pdf",
-            "status": "finished-published"
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
           },
           {
             "id": "gaga",
@@ -174,7 +234,10 @@
             "order": 4,
             "tex": "chapters/berkovich-space/gaga/gaga.tex",
             "url": "pdf/chapters/berkovich-space/gaga/gaga.pdf",
-            "status": "finished-published"
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
           }
         ]
       },
@@ -184,7 +247,10 @@
         "order": 5,
         "tex": "chapters/arakelov-geometry/arakelov-geometry.tex",
         "url": "pdf/chapters/arakelov-geometry/arakelov-geometry.pdf",
-        "status": "finished-published",
+        "status": {
+          "published": 0,
+          "finished": 0
+        },
         "sections": [
           {
             "id": "classical-height-machine",
@@ -192,7 +258,10 @@
             "order": 1,
             "tex": "chapters/arakelov-geometry/classical-height-machine/classical-height-machine.tex",
             "url": "pdf/chapters/arakelov-geometry/classical-height-machine/classical-height-machine.pdf",
-            "status": "finished-published"
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
           },
           {
             "id": "hermitian-line-bundle-on-rings-of-integers",
@@ -200,7 +269,10 @@
             "order": 2,
             "tex": "chapters/arakelov-geometry/hermitian-line-bundle-on-rings-of-integers/hermitian-line-bundle-on-rings-of-integers.tex",
             "url": "pdf/chapters/arakelov-geometry/hermitian-line-bundle-on-rings-of-integers/hermitian-line-bundle-on-rings-of-integers.pdf",
-            "status": "draft-published"
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
           },
           {
             "id": "hermitian-line-bundles-on-projective-arithmetic-varieties",
@@ -208,7 +280,10 @@
             "order": 3,
             "tex": "chapters/arakelov-geometry/hermitian-line-bundles-on-projective-arithmetic-varieties/hermitian-line-bundles-on-projective-arithmetic-varieties.tex",
             "url": "pdf/chapters/arakelov-geometry/hermitian-line-bundles-on-projective-arithmetic-varieties/hermitian-line-bundles-on-projective-arithmetic-varieties.pdf",
-            "status": "draft-published"
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
           },
           {
             "id": "on-rings-of-integers",
@@ -216,7 +291,10 @@
             "order": 4,
             "tex": "chapters/arakelov-geometry/on-rings-of-integers/on-rings-of-integers.tex",
             "url": "pdf/chapters/arakelov-geometry/on-rings-of-integers/on-rings-of-integers.pdf",
-            "status": "finished-published"
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
           },
           {
             "id": "hermitian-line-bundles",
@@ -224,7 +302,10 @@
             "order": 5,
             "tex": "chapters/arakelov-geometry/hermitian-line-bundles/hermitian-line-bundles.tex",
             "url": "pdf/chapters/arakelov-geometry/hermitian-line-bundles/hermitian-line-bundles.pdf",
-            "status": "finished-published"
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
           },
           {
             "id": "arithmetic-hilbert-samuel",
@@ -232,7 +313,10 @@
             "order": 6,
             "tex": "chapters/arakelov-geometry/arithmetic-hilbert-samuel/arithmetic-hilbert-samuel.tex",
             "url": "pdf/chapters/arakelov-geometry/arithmetic-hilbert-samuel/arithmetic-hilbert-samuel.pdf",
-            "status": "finished-published"
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
           },
           {
             "id": "arithmetic-fundamental-inequality",
@@ -240,7 +324,10 @@
             "order": 7,
             "tex": "chapters/arakelov-geometry/arithmetic-fundamental-inequality/arithmetic-fundamental-inequality.tex",
             "url": "pdf/chapters/arakelov-geometry/arithmetic-fundamental-inequality/arithmetic-fundamental-inequality.pdf",
-            "status": "finished-published"
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
           }
         ]
       },
@@ -250,16 +337,10 @@
         "order": 6,
         "tex": "chapters/varieties/varieties.tex",
         "url": "pdf/chapters/varieties/varieties.pdf",
-        "status": "draft-published",
-        "sections": []
-      },
-      {
-        "id": "test-chapter",
-        "title": "Test chapter",
-        "order": 7,
-        "tex": "chapters/test-chapter/test-chapter.tex",
-        "url": "pdf/chapters/test-chapter/test-chapter.pdf",
-        "status": "draft-unpublished",
+        "status": {
+          "published": 0,
+          "finished": 0
+        },
         "sections": []
       }
     ]
