@@ -264,31 +264,9 @@
             }
           },
           {
-            "id": "hermitian-line-bundle-on-rings-of-integers",
-            "title": "Hermitian line bundles on rings of integers",
-            "order": 2,
-            "tex": "chapters/arakelov-geometry/hermitian-line-bundle-on-rings-of-integers/hermitian-line-bundle-on-rings-of-integers.tex",
-            "url": "pdf/chapters/arakelov-geometry/hermitian-line-bundle-on-rings-of-integers/hermitian-line-bundle-on-rings-of-integers.pdf",
-            "status": {
-              "published": 0,
-              "finished": 0
-            }
-          },
-          {
-            "id": "hermitian-line-bundles-on-projective-arithmetic-varieties",
-            "title": "Hermitian line bundles on projective arithmetic varieties",
-            "order": 3,
-            "tex": "chapters/arakelov-geometry/hermitian-line-bundles-on-projective-arithmetic-varieties/hermitian-line-bundles-on-projective-arithmetic-varieties.tex",
-            "url": "pdf/chapters/arakelov-geometry/hermitian-line-bundles-on-projective-arithmetic-varieties/hermitian-line-bundles-on-projective-arithmetic-varieties.pdf",
-            "status": {
-              "published": 0,
-              "finished": 0
-            }
-          },
-          {
             "id": "on-rings-of-integers",
             "title": "On rings of integers",
-            "order": 4,
+            "order": 2,
             "tex": "chapters/arakelov-geometry/on-rings-of-integers/on-rings-of-integers.tex",
             "url": "pdf/chapters/arakelov-geometry/on-rings-of-integers/on-rings-of-integers.pdf",
             "status": {
@@ -297,11 +275,11 @@
             }
           },
           {
-            "id": "hermitian-line-bundles",
-            "title": "Hermitian line bundles",
-            "order": 5,
-            "tex": "chapters/arakelov-geometry/hermitian-line-bundles/hermitian-line-bundles.tex",
-            "url": "pdf/chapters/arakelov-geometry/hermitian-line-bundles/hermitian-line-bundles.pdf",
+            "id": "on-projective-arithmetic-varieties",
+            "title": "On projective arithmetic varieties",
+            "order": 3,
+            "tex": "chapters/arakelov-geometry/on-projective-arithmetic-varieties/on-projective-arithmetic-varieties.tex",
+            "url": "pdf/chapters/arakelov-geometry/on-projective-arithmetic-varieties/on-projective-arithmetic-varieties.pdf",
             "status": {
               "published": 0,
               "finished": 0
@@ -310,7 +288,7 @@
           {
             "id": "arithmetic-hilbert-samuel",
             "title": "Arithmetic Hilbert-Samuel theorem",
-            "order": 6,
+            "order": 4,
             "tex": "chapters/arakelov-geometry/arithmetic-hilbert-samuel/arithmetic-hilbert-samuel.tex",
             "url": "pdf/chapters/arakelov-geometry/arithmetic-hilbert-samuel/arithmetic-hilbert-samuel.pdf",
             "status": {
@@ -321,7 +299,7 @@
           {
             "id": "arithmetic-fundamental-inequality",
             "title": "Arithmetic fundamental inequality",
-            "order": 7,
+            "order": 5,
             "tex": "chapters/arakelov-geometry/arithmetic-fundamental-inequality/arithmetic-fundamental-inequality.tex",
             "url": "pdf/chapters/arakelov-geometry/arithmetic-fundamental-inequality/arithmetic-fundamental-inequality.pdf",
             "status": {
@@ -332,11 +310,11 @@
         ]
       },
       {
-        "id": "varieties",
-        "title": "Varieties",
+        "id": "adelic-line-bundles",
+        "title": "Adelic line bundles",
         "order": 6,
-        "tex": "chapters/varieties/varieties.tex",
-        "url": "pdf/chapters/varieties/varieties.pdf",
+        "tex": "chapters/adelic-line-bundles/adelic-line-bundles.tex",
+        "url": "pdf/chapters/adelic-line-bundles/adelic-line-bundles.pdf",
         "status": {
           "published": 0,
           "finished": 0
