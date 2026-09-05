@@ -319,7 +319,52 @@
           "published": 0,
           "finished": 0
         },
-        "sections": []
+        "sections": [
+          {
+            "id": "essentially-quasi-projectivity",
+            "title": "Essentially quasi-projectivity",
+            "order": 1,
+            "tex": "chapters/adelic-line-bundles/essentially-quasi-projectivity/essentially-quasi-projectivity.tex",
+            "url": "pdf/chapters/adelic-line-bundles/essentially-quasi-projectivity/essentially-quasi-projectivity.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "adelic-divisors-and-line-bundles",
+            "title": "Adelic divisors and line bundles",
+            "order": 2,
+            "tex": "chapters/adelic-line-bundles/adelic-divisors-and-line-bundles/adelic-divisors-and-line-bundles.tex",
+            "url": "pdf/chapters/adelic-line-bundles/adelic-divisors-and-line-bundles/adelic-divisors-and-line-bundles.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "intersection-and-deligne-pairing",
+            "title": "Intersection and Deligne pairing",
+            "order": 3,
+            "tex": "chapters/adelic-line-bundles/intersection-and-deligne-pairing/intersection-and-deligne-pairing.tex",
+            "url": "pdf/chapters/adelic-line-bundles/intersection-and-deligne-pairing/intersection-and-deligne-pairing.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "volumes-and-heights",
+            "title": "Volumes and heights",
+            "order": 4,
+            "tex": "chapters/adelic-line-bundles/volumes-and-heights/volumes-and-heights.tex",
+            "url": "pdf/chapters/adelic-line-bundles/volumes-and-heights/volumes-and-heights.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          }
+        ]
       }
     ]
   }
